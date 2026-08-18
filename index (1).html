@@ -1,0 +1,2590 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="theme-color" content="#045a52">
+<title>Engenharia 360 — Profissão e Carreira | ULBRA</title>
+<style>
+:root{
+  --green:#045a52;--green2:#0a6d63;--dark:#034740;--deep:#023b35;
+  --gold:#cba168;--gold2:#e7c89c;--cream:#fffaf4;--white:#fff;
+  --muted:#d6e4e0;--surface:rgba(255,255,255,.075);--surface2:rgba(255,255,255,.11);
+  --border:rgba(255,255,255,.13);--shadow:0 24px 70px rgba(0,0,0,.24);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;color:#fff;
+  font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
+  background:
+    radial-gradient(circle at 90% 0%,rgba(203,161,104,.14),transparent 30%),
+    linear-gradient(180deg,var(--green),var(--dark) 62%,var(--deep));
+  min-height:100vh;
+}
+button,input,select,textarea{font:inherit}
+button{cursor:pointer}
+.hidden{display:none!important}
+.app{width:min(1200px,100%);margin:auto;padding:15px 14px 44px}
+
+/* GLOBAL NAV */
+.global-nav{
+  position:sticky;top:10px;z-index:50;
+  display:flex;align-items:center;justify-content:space-between;gap:16px;
+  padding:10px 14px;margin-bottom:14px;border-radius:20px;
+  background:rgba(2,59,53,.88);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);
+  border:1px solid rgba(255,255,255,.12);box-shadow:0 12px 35px rgba(0,0,0,.14);
+}
+.nav-logo{display:flex;align-items:center;gap:10px;min-width:180px}
+.nav-logo img{width:118px;height:auto;display:block}
+.nav-logo span{font-size:.72rem;color:var(--muted);line-height:1.25}
+.nav-links{display:flex;gap:6px;flex-wrap:wrap;justify-content:flex-end}
+.nav-links button{
+  border:0;padding:9px 12px;border-radius:12px;background:transparent;color:#f0f6f4;
+  font-size:.84rem;font-weight:750;transition:.18s;
+}
+.nav-links button:hover{background:rgba(255,255,255,.09);transform:translateY(-1px)}
+.nav-links .accent{background:linear-gradient(90deg,var(--gold),var(--gold2));color:var(--deep)}
+
+/* HERO */
+.hero{
+  position:relative;overflow:hidden;isolation:isolate;border-radius:34px;min-height:780px;
+  border:1px solid rgba(255,255,255,.11);box-shadow:var(--shadow);
+  background:
+    linear-gradient(180deg,rgba(2,59,53,.62),rgba(2,59,53,.86)),
+    url("https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=1800&auto=format&fit=crop") center/cover no-repeat;
+}
+.hero:before{
+  content:"";position:absolute;inset:0;z-index:-1;
+  background:radial-gradient(circle at 50% 22%,rgba(203,161,104,.18),transparent 28%);
+}
+.hero-logo{padding:28px 20px 0;text-align:center}
+.hero-logo img{width:230px;max-width:70%;height:auto}
+.hero-inner{
+  width:min(920px,calc(100% - 36px));margin:30px auto 32px;padding:44px 38px 34px;text-align:center;
+  border-radius:30px;background:rgba(3,71,64,.58);border:1px solid rgba(255,255,255,.09);
+  backdrop-filter:blur(10px);box-shadow:0 18px 46px rgba(0,0,0,.18);
+}
+.badge{
+  display:inline-flex;align-items:center;gap:8px;padding:9px 15px;margin-bottom:18px;border-radius:999px;
+  background:rgba(203,161,104,.13);border:1px solid rgba(203,161,104,.38);
+  color:var(--gold2);font-size:.79rem;font-weight:850;letter-spacing:.04em;
+}
+.hero h1{margin:0 0 18px;font-size:clamp(3rem,7vw,5.4rem);line-height:.96;letter-spacing:-.035em;color:var(--cream)}
+.gold{color:var(--gold2)}
+.hero-lead{max-width:780px;margin:0 auto;color:#f8fbfa;font-size:1.12rem;line-height:1.72}
+.quick{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin:25px 0}
+.pill{padding:11px 15px;border-radius:999px;background:rgba(255,255,255,.09);border:1px solid rgba(255,255,255,.14);font-size:.88rem}
+.pill strong{color:var(--gold2)}
+.hero-actions{display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:10px;max-width:800px;margin:28px auto 0}
+
+/* BUTTONS */
+.btn{
+  border:0;border-radius:16px;padding:14px 17px;font-weight:850;transition:.18s;line-height:1.25
+}
+.btn:hover{transform:translateY(-2px)}
+.btn-primary{background:linear-gradient(90deg,var(--gold),var(--gold2));color:var(--deep);box-shadow:0 12px 28px rgba(203,161,104,.24)}
+.btn-secondary{background:rgba(255,255,255,.09);color:#fff;border:1px solid rgba(255,255,255,.14)}
+.btn-ghost{background:transparent;color:var(--muted);border:1px solid rgba(255,255,255,.15)}
+.full{width:100%}
+
+/* SCREENS */
+.screen{
+  padding:34px;margin-top:16px;border-radius:28px;
+  background:radial-gradient(circle at 100% 0%,rgba(203,161,104,.07),transparent 25%),
+             linear-gradient(180deg,rgba(4,90,82,.99),rgba(3,71,64,.995));
+  border:1px solid rgba(255,255,255,.10);box-shadow:var(--shadow)
+}
+.screen h1,.screen h2{color:var(--cream)}
+.small{font-size:.93rem;line-height:1.62;color:var(--muted)}
+.section-title{margin:30px 0 14px;color:var(--gold2);font-size:1.28rem}
+.quote{padding:4px 0 4px 16px;border-left:4px solid var(--gold);line-height:1.68;color:#fbf8f3}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.cards{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+.card{
+  padding:18px;border-radius:18px;background:var(--surface);border:1px solid rgba(255,255,255,.10);
+  box-shadow:0 5px 18px rgba(0,0,0,.07)
+}
+.card strong{color:var(--gold2)}
+label{display:block;margin:15px 0 7px;color:#e6efec;font-size:.91rem;font-weight:650}
+input,select,textarea{
+  width:100%;padding:14px 15px;border-radius:15px;border:1px solid rgba(255,255,255,.16);
+  background:rgba(255,255,255,.07);color:#fff;outline:none
+}
+input:focus,select:focus,textarea:focus{border-color:var(--gold);box-shadow:0 0 0 3px rgba(203,161,104,.10)}
+option{background:var(--dark);color:#fff}
+
+/* QUIZ */
+.quiz-head{display:flex;justify-content:space-between;gap:12px}
+.progress{height:10px;margin:14px 0 25px;border-radius:999px;overflow:hidden;background:rgba(255,255,255,.10)}
+.progress>div{height:100%;background:linear-gradient(90deg,var(--gold),var(--gold2));transition:width .25s}
+.question{font-size:clamp(1.4rem,4vw,1.82rem);color:var(--gold2);line-height:1.35}
+.option{
+  width:100%;display:block;margin:10px 0;padding:17px 18px;text-align:left;color:#fff;line-height:1.45;
+  border-radius:18px;border:1px solid rgba(255,255,255,.14);
+  background:linear-gradient(135deg,rgba(255,255,255,.085),rgba(255,255,255,.045));font-weight:760
+}
+.option:hover{border-color:var(--gold);background:rgba(203,161,104,.10);transform:translateY(-1px)}
+.loading{text-align:center;padding:54px 20px}
+.spinner{width:68px;height:68px;margin:0 auto 22px;border-radius:50%;border:7px solid rgba(255,255,255,.12);border-top-color:var(--gold);animation:spin 1s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* RESULT */
+.profile-title{margin:7px 0 10px;color:var(--gold2);font-size:clamp(2.15rem,6vw,3.7rem);line-height:1.08}
+.top3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.podium{padding:18px 14px;text-align:center;border-radius:18px;background:var(--surface);border:1px solid rgba(255,255,255,.10)}
+.podium strong{display:block;margin-top:5px}
+.podium .pct{margin-top:8px;font-size:1.75rem;font-weight:900;color:var(--gold2)}
+.score-row{margin:14px 0}
+.score-head{display:flex;justify-content:space-between;gap:10px;font-weight:780}
+.bar{height:10px;margin-top:7px;border-radius:999px;overflow:hidden;background:rgba(255,255,255,.10)}
+.bar span{display:block;height:100%;background:linear-gradient(90deg,var(--gold),var(--gold2))}
+.course-note,.callout{padding:18px;border-radius:18px;background:rgba(203,161,104,.08);border:1px solid rgba(203,161,104,.27);line-height:1.6}
+.course-note strong,.callout strong{color:var(--gold2)}
+.result-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+
+/* INTERACTIVE RECOMMENDATION CARDS */
+.detail-card{
+  position:relative;padding:18px 18px 16px;border-radius:19px;background:var(--surface);
+  border:1px solid rgba(255,255,255,.10);transition:.18s;overflow:hidden
+}
+.detail-card:hover{transform:translateY(-2px);border-color:rgba(203,161,104,.48);background:rgba(255,255,255,.095)}
+.detail-card h4{margin:0 0 7px;color:var(--gold2);font-size:1rem;line-height:1.35}
+.detail-card p{margin:0;color:var(--muted);font-size:.88rem;line-height:1.5}
+.detail-card .open-detail{
+  width:100%;margin-top:13px;padding:9px 10px;border-radius:12px;border:1px solid rgba(203,161,104,.26);
+  background:rgba(203,161,104,.08);color:var(--gold2);font-weight:800;font-size:.82rem
+}
+
+/* MODAL */
+.modal{
+  position:fixed;inset:0;z-index:100;display:flex;align-items:center;justify-content:center;padding:18px;
+  background:rgba(1,25,23,.76);backdrop-filter:blur(8px)
+}
+.modal-box{
+  width:min(720px,100%);max-height:88vh;overflow:auto;padding:26px;border-radius:24px;
+  background:linear-gradient(180deg,#075e56,#034740);border:1px solid rgba(255,255,255,.14);box-shadow:0 30px 90px rgba(0,0,0,.4)
+}
+.modal-top{display:flex;justify-content:space-between;align-items:flex-start;gap:16px}
+.modal-title{margin:0;color:var(--gold2);font-size:1.55rem}
+.close{
+  width:38px;height:38px;padding:0;border-radius:50%;border:1px solid rgba(255,255,255,.15);
+  background:rgba(255,255,255,.08);color:#fff;font-size:1.2rem
+}
+.modal-section{margin-top:20px}
+.modal-section h4{margin:0 0 7px;color:var(--gold2)}
+.modal-section p{margin:0;color:#eef5f3;line-height:1.65}
+.tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.tagchip{padding:8px 10px;border-radius:999px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.11);font-size:.82rem}
+
+/* ROADMAP */
+.roadmap{display:flex;gap:8px;align-items:stretch;overflow-x:auto;padding:8px 0 5px}
+.road{min-width:150px;padding:15px;text-align:center;border-radius:18px;background:var(--surface);border:1px solid rgba(255,255,255,.10)}
+.arrow{align-self:center;color:var(--gold2);font-weight:900;font-size:1.4rem}
+
+/* PRESENTATION */
+.presentation-hero{
+  display:grid;grid-template-columns:1.25fr .75fr;gap:18px;align-items:stretch;margin-bottom:18px
+}
+.presentation-main,.presentation-side{
+  padding:24px;border-radius:22px;background:var(--surface);border:1px solid rgba(255,255,255,.10)
+}
+.presentation-main h1{margin:6px 0 10px;font-size:clamp(2.3rem,5vw,4rem)}
+.presentation-side{display:flex;flex-direction:column;justify-content:center}
+.presentation-menu{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:18px 0}
+.presentation-menu button{
+  padding:14px;border-radius:16px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.10);color:#fff;font-weight:800
+}
+.presentation-menu button:hover{border-color:var(--gold);background:rgba(203,161,104,.09)}
+.pres-section{scroll-margin-top:100px;margin-top:18px;padding:25px;border-radius:22px;background:rgba(255,255,255,.055);border:1px solid rgba(255,255,255,.10)}
+.pres-number{display:inline-flex;width:38px;height:38px;align-items:center;justify-content:center;border-radius:50%;background:linear-gradient(135deg,var(--gold),var(--gold2));color:var(--deep);font-weight:900}
+.pres-section h2{display:inline;margin-left:8px;color:var(--gold2);vertical-align:middle}
+.pres-section p{line-height:1.7;color:#edf4f2}
+.pres-points{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:15px}
+.pres-point{padding:15px;border-radius:16px;background:var(--surface);border:1px solid rgba(255,255,255,.09)}
+.pres-point strong{color:var(--gold2)}
+.timeline{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:15px}
+.week{padding:17px;border-radius:17px;background:var(--surface);border:1px solid rgba(255,255,255,.09)}
+.week span{display:block;color:var(--gold2);font-weight:900;margin-bottom:6px}
+.speaker-note{margin-top:15px;padding:14px;border-left:4px solid var(--gold);background:rgba(203,161,104,.07);color:#f7f2eb;line-height:1.6}
+
+/* TEAM */
+.team-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}
+.team{padding:18px 12px;text-align:center;border-radius:18px;background:var(--surface);border:1px solid rgba(255,255,255,.10)}
+.avatar{width:60px;height:60px;margin:0 auto 12px;display:flex;align-items:center;justify-content:center;border-radius:50%;background:linear-gradient(135deg,var(--gold),var(--gold2));font-size:1.6rem}
+.team strong{display:block;color:var(--gold2);font-size:.92rem;line-height:1.35}
+.team span{display:block;margin-top:7px;color:var(--muted);font-size:.78rem;line-height:1.4}
+
+/* FEEDBACK */
+.stars{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0}
+.star{padding:10px 13px;border-radius:12px;color:var(--gold2);background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.11)}
+.star.selected{background:linear-gradient(90deg,var(--gold),var(--gold2));color:var(--deep)}
+.result-actions{display:grid;grid-template-columns:1.25fr 1fr 1fr;gap:10px;margin-top:22px}
+
+/* FOOTER */
+.footer{text-align:center;padding:28px 10px 4px;color:#c6d9d4;font-size:.8rem;line-height:1.5}
+
+/* RESPONSIVE */
+@media(max-width:950px){
+  .team-grid{grid-template-columns:repeat(2,1fr)}
+  .pres-points,.timeline{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:780px){
+  .global-nav{position:relative;top:0;flex-direction:column;align-items:center}
+  .nav-logo{justify-content:center;min-width:0}
+  .nav-links{justify-content:center}
+  .hero{min-height:auto;border-radius:24px}
+  .hero-logo{padding-top:22px}
+  .hero-logo img{width:190px}
+  .hero-inner{width:calc(100% - 20px);margin:20px auto;padding:28px 18px 24px;border-radius:22px}
+  .hero h1{font-size:clamp(2.45rem,12vw,3.8rem)}
+  .hero-lead{font-size:.98rem}
+  .hero-actions,.result-actions,.grid2,.cards,.result-grid,.top3,.presentation-hero{grid-template-columns:1fr}
+  .screen{padding:22px;border-radius:22px}
+  .presentation-menu{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:520px){
+  .team-grid,.pres-points,.timeline,.presentation-menu{grid-template-columns:1fr}
+  .nav-links button{font-size:.76rem;padding:8px 9px}
+}
+
+/* V4 - CONTEÚDOS DA DISCIPLINA */
+.check-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:14px}
+.check-item{padding:16px;border-radius:17px;background:rgba(255,255,255,.065);border:1px solid rgba(255,255,255,.10)}
+.check-item strong{display:block;color:var(--gold2);margin-bottom:6px}
+.check-item p{margin:0;color:var(--muted);font-size:.88rem;line-height:1.5}
+.course-table{width:100%;border-collapse:collapse;margin-top:14px;overflow:hidden;border-radius:16px}
+.course-table th,.course-table td{padding:12px 13px;border-bottom:1px solid rgba(255,255,255,.09);text-align:left;vertical-align:top}
+.course-table th{color:var(--gold2);background:rgba(203,161,104,.08);font-size:.88rem}
+.course-table td{color:#eef5f3;font-size:.88rem;line-height:1.45}
+.course-table tr:last-child td{border-bottom:0}
+.method-flow{display:flex;gap:8px;align-items:stretch;overflow-x:auto;padding:8px 0 4px}
+.method-step{min-width:135px;padding:14px;text-align:center;border-radius:16px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.10)}
+.method-step strong{display:block;color:var(--gold2);margin-bottom:4px}
+.method-arrow{align-self:center;color:var(--gold2);font-weight:900;font-size:1.35rem}
+.status-good{color:#bce8cf;font-weight:850}
+.status-plan{color:var(--gold2);font-weight:850}
+.note-source{margin-top:12px;font-size:.76rem;color:#abc4be;line-height:1.45;font-style:italic}
+@media(max-width:780px){
+  .check-grid{grid-template-columns:1fr}
+  .course-table{display:block;overflow-x:auto}
+}
+
+
+/* V5 - HUB DE CONTEÚDO E EXTENSÃO */
+.hub-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:16px}
+.hub-card{
+  position:relative;overflow:hidden;padding:20px;border-radius:20px;
+  background:rgba(255,255,255,.065);border:1px solid rgba(255,255,255,.10);
+  transition:.18s;box-shadow:0 5px 18px rgba(0,0,0,.07)
+}
+.hub-card:hover{transform:translateY(-3px);border-color:rgba(203,161,104,.44);background:rgba(255,255,255,.085)}
+.hub-card .hub-icon{font-size:2rem;margin-bottom:12px}
+.hub-card h3{margin:0 0 8px;color:var(--gold2);font-size:1.08rem}
+.hub-card p{margin:0;color:var(--muted);font-size:.89rem;line-height:1.52}
+.hub-card button{margin-top:14px;width:100%}
+.article-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.article{
+  padding:18px;border-radius:18px;background:rgba(255,255,255,.06);
+  border:1px solid rgba(255,255,255,.10)
+}
+.article .meta{font-size:.74rem;color:#b5cbc5;margin-bottom:8px}
+.article h4{margin:0 0 8px;color:var(--gold2);line-height:1.35}
+.article p{margin:0;color:var(--muted);font-size:.86rem;line-height:1.5}
+.interview{
+  display:grid;grid-template-columns:80px 1fr;gap:15px;align-items:start;padding:18px;
+  border-radius:18px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.10)
+}
+.interview-avatar{
+  width:68px;height:68px;border-radius:50%;display:flex;align-items:center;justify-content:center;
+  background:linear-gradient(135deg,var(--gold),var(--gold2));font-size:1.7rem
+}
+.interview h4{margin:0 0 5px;color:var(--gold2)}
+.interview p{margin:0;color:var(--muted);font-size:.88rem;line-height:1.5}
+.guide-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+.guide-item{
+  padding:18px;border-radius:18px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.10)
+}
+.guide-item strong{display:block;color:var(--gold2);margin-bottom:6px}
+.mentoring-flow{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.mentor-step{padding:16px;border-radius:17px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.10);text-align:center}
+.mentor-step strong{display:block;color:var(--gold2);margin-bottom:5px}
+.hs-banner{
+  padding:24px;border-radius:22px;background:
+    linear-gradient(135deg,rgba(203,161,104,.13),rgba(255,255,255,.05));
+  border:1px solid rgba(203,161,104,.30)
+}
+.hs-banner h2{margin-top:0;color:var(--gold2)}
+.workshop-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.workshop-item{padding:17px;border-radius:17px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.10)}
+.workshop-item strong{display:block;color:var(--gold2);margin-bottom:6px}
+.future-chip{
+  display:inline-flex;align-items:center;gap:7px;padding:8px 11px;border-radius:999px;
+  background:rgba(203,161,104,.09);border:1px solid rgba(203,161,104,.24);
+  color:var(--gold2);font-size:.78rem;font-weight:800;margin:4px
+}
+@media(max-width:900px){
+  .hub-grid,.article-grid,.workshop-grid{grid-template-columns:repeat(2,1fr)}
+  .mentoring-flow{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:620px){
+  .hub-grid,.article-grid,.workshop-grid,.guide-grid,.mentoring-flow{grid-template-columns:1fr}
+  .interview{grid-template-columns:1fr;text-align:center}
+  .interview-avatar{margin:auto}
+}
+
+
+/* V6 - INTERATIVIDADE, ARTIGOS COMPLETOS, EQUIPE COM FOTOS E ENSINO MÉDIO */
+.media-card{
+  overflow:hidden;border-radius:19px;background:rgba(255,255,255,.065);
+  border:1px solid rgba(255,255,255,.10)
+}
+.media-card img{width:100%;height:190px;object-fit:cover;display:block;filter:saturate(.85) contrast(1.02)}
+.media-card .media-body{padding:17px}
+.media-card h4{margin:0 0 7px;color:var(--gold2);line-height:1.35}
+.media-card p{margin:0;color:var(--muted);font-size:.88rem;line-height:1.5}
+
+.class-interaction{
+  margin-top:16px;padding:20px;border-radius:20px;
+  background:linear-gradient(135deg,rgba(203,161,104,.12),rgba(255,255,255,.045));
+  border:1px solid rgba(203,161,104,.30)
+}
+.class-interaction h3{margin-top:0;color:var(--gold2)}
+.poll-options{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin-top:12px}
+.poll-btn{
+  padding:12px;border-radius:14px;border:1px solid rgba(255,255,255,.13);
+  background:rgba(255,255,255,.07);color:#fff;font-weight:800
+}
+.poll-btn:hover{border-color:var(--gold)}
+.poll-result{margin-top:12px;color:var(--gold2);font-weight:800}
+
+.reveal-card{
+  margin-top:12px;padding:15px;border-radius:16px;background:rgba(255,255,255,.06);
+  border:1px solid rgba(255,255,255,.10)
+}
+.reveal-answer{display:none;margin-top:10px;color:#edf5f2;line-height:1.55}
+.reveal-answer.show{display:block}
+
+.article-modal-content{line-height:1.72;color:#edf5f2}
+.article-modal-content h4{color:var(--gold2);margin-top:22px;margin-bottom:8px}
+.article-modal-content ul{padding-left:20px}
+.article-modal-content li{margin:7px 0}
+.article-modal-content .article-lead{font-size:1.03rem;color:#fff}
+.article-modal-content .article-box{
+  padding:15px;margin:15px 0;border-radius:15px;background:rgba(203,161,104,.08);
+  border:1px solid rgba(203,161,104,.24)
+}
+
+.team-grid-v6{display:grid;grid-template-columns:repeat(5,1fr);gap:13px}
+.team-photo{
+  overflow:hidden;border-radius:20px;background:rgba(255,255,255,.06);
+  border:1px solid rgba(255,255,255,.10);text-align:center
+}
+.team-photo img{
+  width:100%;aspect-ratio:1/1;object-fit:cover;display:block;
+  background:linear-gradient(135deg,#0b6b61,#034740)
+}
+.team-photo .team-body{padding:15px 11px 17px}
+.team-photo strong{display:block;color:var(--gold2);font-size:.92rem;line-height:1.35}
+.team-course{display:block;margin-top:7px;color:#fff;font-size:.78rem;font-weight:750}
+.team-role{display:block;margin-top:5px;color:var(--muted);font-size:.75rem;line-height:1.4}
+
+.school-hero{
+  position:relative;overflow:hidden;padding:34px;border-radius:25px;
+  background:
+    linear-gradient(90deg,rgba(3,71,64,.92),rgba(3,71,64,.62)),
+    url("https://images.unsplash.com/photo-1523240795612-9a054b0db644?q=80&w=1600&auto=format&fit=crop") center/cover;
+  border:1px solid rgba(255,255,255,.12)
+}
+.school-hero h1{font-size:clamp(2.4rem,6vw,4.7rem);margin:8px 0 12px;max-width:820px}
+.school-slide{
+  margin-top:18px;padding:25px;border-radius:22px;background:rgba(255,255,255,.055);
+  border:1px solid rgba(255,255,255,.10);scroll-margin-top:100px
+}
+.school-slide h2{color:var(--gold2)}
+.school-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.school-card{
+  padding:18px;border-radius:18px;background:rgba(255,255,255,.07);
+  border:1px solid rgba(255,255,255,.10);text-align:center
+}
+.school-card .big{font-size:2.2rem;margin-bottom:8px}
+.school-card strong{display:block;color:var(--gold2);margin-bottom:6px}
+.school-card p{margin:0;color:var(--muted);font-size:.86rem;line-height:1.48}
+
+.school-quiz{
+  padding:22px;border-radius:22px;background:rgba(2,59,53,.72);
+  border:1px solid rgba(203,161,104,.27)
+}
+.school-q{margin-bottom:18px}
+.school-q h4{color:var(--gold2);margin:0 0 9px}
+.school-answer{
+  width:100%;margin:6px 0;padding:11px 12px;border-radius:13px;
+  background:rgba(255,255,255,.07);color:#fff;border:1px solid rgba(255,255,255,.11);
+  text-align:left;font-weight:700
+}
+.school-answer.selected{background:rgba(203,161,104,.18);border-color:var(--gold)}
+.school-result{
+  margin-top:18px;padding:18px;border-radius:17px;background:rgba(203,161,104,.10);
+  border:1px solid rgba(203,161,104,.26)
+}
+
+@media(max-width:1000px){.team-grid-v6{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:800px){
+  .poll-options,.school-cards{grid-template-columns:1fr}
+  .media-card img{height:160px}
+}
+@media(max-width:520px){.team-grid-v6{grid-template-columns:1fr}}
+
+</style>
+</head>
+<body>
+<div class="app">
+
+<nav class="global-nav">
+  <div class="nav-logo">
+    <img src="./logo-ulbra.png" alt="ULBRA">
+    <span>Engenharia 360<br>Profissão e Carreira</span>
+  </div>
+  <div class="nav-links">
+    <button onclick="go('home')">Início</button>
+    <button onclick="go('participant')">Fazer teste</button>
+    <button onclick="go('presentation')">Apresentação</button>
+    <button onclick="go('extensionHub')">Conteúdo & Extensão</button>
+    <button onclick="go('schoolPresentation')">Ensino Médio</button>
+    <button onclick="go('about')">Projeto & Equipe</button>
+    <button class="accent" onclick="go('participant')">Começar →</button>
+  </div>
+</nav>
+
+<!-- HOME -->
+<section id="home" class="hero">
+  <div class="hero-logo"><img src="./logo-ulbra.png" alt="ULBRA"></div>
+  <div class="hero-inner">
+    <div class="badge">🚀 ENGENHARIA 360 • ORIENTAÇÃO PROFISSIONAL</div>
+    <h1>Descubra seu perfil.<br><span class="gold">Explore seu futuro.</span></h1>
+    <p class="hero-lead">
+      Uma experiência acadêmica interativa da disciplina <strong>Profissão e Carreira</strong>
+      que conecta autoconhecimento, áreas da engenharia, competências, tecnologias
+      e possibilidades reais de desenvolvimento profissional.
+    </p>
+
+    <div class="quick">
+      <div class="pill">⏱️ <strong>4–5 minutos</strong></div>
+      <div class="pill">🧠 <strong>18 perguntas</strong></div>
+      <div class="pill">🎯 <strong>6 perfis</strong></div>
+      <div class="pill">💼 <strong>Carreiras explicadas</strong></div>
+    </div>
+
+    <div class="hero-actions">
+      <button class="btn btn-primary" onclick="go('participant')">FAZER O TESTE →</button>
+      <button class="btn btn-secondary" onclick="go('presentation')">🎤 VER APRESENTAÇÃO</button>
+      <button class="btn btn-secondary" onclick="go('extensionHub')">🌎 CONTEÚDO & EXTENSÃO</button>
+    </div>
+  </div>
+</section>
+
+<!-- PARTICIPANT -->
+<section id="participant" class="screen hidden">
+  <div class="badge">ETAPA 1 DE 2</div>
+  <h2>Antes de começar 👋</h2>
+  <p class="small">Essas informações ajudam a contextualizar o resultado. O nome é opcional.</p>
+
+  <label>Nome ou apelido <span style="color:var(--gold2)">(opcional)</span></label>
+  <input id="name" maxlength="50" placeholder="Como podemos chamar você?">
+
+  <div class="grid2">
+    <div>
+      <label>Qual engenharia você cursa?</label>
+      <select id="course">
+        <option value="">Selecione</option>
+        <option>Engenharia Civil</option>
+        <option>Engenharia Elétrica</option>
+        <option>Engenharia Mecânica</option>
+        <option>Engenharia Química</option>
+        <option>Engenharia de Produção</option>
+        <option>Engenharia Ambiental</option>
+        <option>Engenharia de Computação</option>
+        <option>Outra Engenharia</option>
+        <option>Ainda estou escolhendo</option>
+      </select>
+    </div>
+    <div>
+      <label>Período / semestre</label>
+      <select id="semester">
+        <option value="">Selecione</option>
+        <option>1º</option><option>2º</option><option>3º</option><option>4º</option><option>5º</option>
+        <option>6º</option><option>7º</option><option>8º</option><option>9º</option><option>10º</option>
+        <option>Não se aplica</option>
+      </select>
+    </div>
+  </div>
+
+  <label>Você já trabalha ou estagia em área relacionada à engenharia?</label>
+  <select id="works">
+    <option value="">Selecione</option>
+    <option>Sim</option>
+    <option>Não</option>
+    <option>Já trabalhei ou estagiei anteriormente</option>
+  </select>
+
+  <button class="btn btn-primary full" style="margin-top:20px" onclick="startQuiz()">COMEÇAR AS 18 PERGUNTAS →</button>
+  <button class="btn btn-ghost full" style="margin-top:9px" onclick="go('home')">Voltar</button>
+</section>
+
+<!-- QUIZ -->
+<section id="quiz" class="screen hidden">
+  <div class="quiz-head">
+    <div id="counter" class="small"></div>
+    <div id="percentage" class="small"></div>
+  </div>
+  <div class="progress"><div id="progressBar"></div></div>
+  <h2 id="question" class="question"></h2>
+  <div id="options"></div>
+</section>
+
+<!-- LOADING -->
+<section id="loading" class="screen hidden">
+  <div class="loading">
+    <div class="spinner"></div>
+    <h2>Analisando seu perfil...</h2>
+    <p id="loadingText" class="small">Identificando habilidades e interesses</p>
+  </div>
+</section>
+
+<!-- RESULT -->
+<section id="result" class="screen hidden">
+  <div class="badge">SEU RESULTADO</div>
+  <div id="hello" class="small"></div>
+  <h1 id="profileName" class="profile-title"></h1>
+  <p id="profilePhrase" class="quote"></p>
+  <div id="courseNote" class="course-note"></div>
+
+  <h3 class="section-title">🏆 Seus 3 perfis mais fortes</h3>
+  <div id="top3" class="top3"></div>
+
+  <h3 class="section-title">🎓 Afinidade com áreas da engenharia</h3>
+  <div id="engineeringAffinity"></div>
+
+  <h3 class="section-title">💼 Possíveis caminhos profissionais</h3>
+  <p class="small">Clique em cada opção para entender o que esse profissional faz, onde atua e como começar a explorar essa carreira.</p>
+  <div id="careers" class="result-grid"></div>
+
+  <h3 class="section-title">🎯 Áreas indicadas</h3>
+  <p class="small">Veja por que essas áreas combinam com seu perfil e quais atividades aparecem nelas.</p>
+  <div id="areas" class="result-grid"></div>
+
+  <h3 class="section-title">🧠 Competências para desenvolver</h3>
+  <p class="small">Clique para ver por que cada competência é importante e sugestões práticas para desenvolvê-la.</p>
+  <div id="skills" class="result-grid"></div>
+
+  <h3 class="section-title">🚀 Tecnologias para acompanhar</h3>
+  <div id="techs" class="result-grid"></div>
+
+  <h3 class="section-title">🗺️ Sua trilha de carreira</h3>
+  <div class="roadmap">
+    <div class="road">🎓<br><strong>Graduação</strong><br><span class="small">Base técnica</span></div>
+    <div class="arrow">→</div>
+    <div class="road">💻<br><strong>Ferramentas</strong><br><span class="small">Cursos e softwares</span></div>
+    <div class="arrow">→</div>
+    <div class="road">🏢<br><strong>Experiência</strong><br><span class="small">Estágio e projetos</span></div>
+    <div class="arrow">→</div>
+    <div class="road">📚<br><strong>Especialização</strong><br><span class="small">Foco profissional</span></div>
+    <div class="arrow">→</div>
+    <div class="road">🚀<br><strong>Mercado</strong><br><span class="small">Atuação</span></div>
+  </div>
+
+  <div class="callout">
+    <strong>💬 Seu perfil em uma frase</strong>
+    <p id="oneLiner" style="margin:8px 0 0"></p>
+  </div>
+
+  <div class="result-actions">
+    <button class="btn btn-primary" onclick="go('presentation')">🎤 CONHECER O PROJETO</button>
+    <button class="btn btn-secondary" onclick="shareResult()">📲 COMPARTILHAR</button>
+    <button class="btn btn-secondary" onclick="go('feedback')">⭐ AVALIAR <span style="opacity:.7">(opcional)</span></button>
+  </div>
+  <button class="btn btn-ghost full" style="margin-top:10px" onclick="restart()">Refazer teste</button>
+</section>
+
+<!-- FEEDBACK OPTIONAL -->
+<section id="feedback" class="screen hidden">
+  <div class="badge">⭐ AVALIAÇÃO OPCIONAL</div>
+  <h2>Quer contar como foi sua experiência?</h2>
+  <p class="small">Esta etapa é opcional. Se preferir, você pode ir direto para a apresentação do projeto.</p>
+
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:20px">
+    <button class="btn btn-primary" onclick="go('presentation')">PULAR E CONHECER O PROJETO →</button>
+    <button class="btn btn-ghost" onclick="go('result')">Voltar ao resultado</button>
+  </div>
+
+  <label>Quanto o resultado combina com você?</label>
+  <div class="stars">
+    <button class="star" onclick="rate(1,this)">⭐ 1</button>
+    <button class="star" onclick="rate(2,this)">⭐ 2</button>
+    <button class="star" onclick="rate(3,this)">⭐ 3</button>
+    <button class="star" onclick="rate(4,this)">⭐ 4</button>
+    <button class="star" onclick="rate(5,this)">⭐ 5</button>
+  </div>
+  <div id="ratingText" class="small">Nenhuma nota selecionada.</div>
+
+  <label>A plataforma foi fácil de usar?</label>
+  <select id="easy">
+    <option value="">Selecione</option><option value="5">Muito fácil</option><option value="4">Fácil</option>
+    <option value="3">Razoável</option><option value="2">Difícil</option><option value="1">Muito difícil</option>
+  </select>
+
+  <label>Você descobriu alguma possibilidade profissional nova?</label>
+  <select id="discover">
+    <option value="">Selecione</option><option>Sim</option><option>Não</option><option>Talvez</option>
+  </select>
+
+  <label>Comentário ou sugestão</label>
+  <textarea id="comment" rows="4" placeholder="O que você gostou? O que melhorar?"></textarea>
+
+  <button class="btn btn-primary full" style="margin-top:18px" onclick="saveFeedback()">ENVIAR E CONHECER O PROJETO →</button>
+</section>
+
+<!-- PRESENTATION -->
+<section id="presentation" class="screen hidden">
+  <div class="presentation-hero">
+    <div class="presentation-main">
+      <div class="badge">🎤 APRESENTAÇÃO DO TRABALHO</div>
+      <h1>Engenharia 360</h1>
+      <p class="quote">
+        Uma plataforma acadêmica de orientação profissional que transforma conteúdos de
+        <strong>Profissão e Carreira</strong> em uma experiência interativa.
+      </p>
+      <button class="btn btn-primary" onclick="go('participant')">EXPERIMENTAR O TESTE →</button>
+    </div>
+    <div class="presentation-side">
+      <strong style="color:var(--gold2);font-size:1.1rem">Apresentação em um só lugar</strong>
+      <p class="small">Use esta página durante a apresentação em sala. Role a tela ou escolha uma seção abaixo.</p>
+    </div>
+  </div>
+
+  <div class="presentation-menu">
+    <button onclick="jump('p1')">1. Contexto</button>
+    <button onclick="jump('p2')">2. Problema</button>
+    <button onclick="jump('p3')">3. Objetivos</button>
+    <button onclick="jump('p13')">Projeto 1</button>
+    <button onclick="jump('p14')">Projeto 4</button>
+    <button onclick="jump('p4')">4. Solução</button>
+    <button onclick="jump('p5')">5. Metodologia</button>
+    <button onclick="jump('p6')">6. Funcionamento</button>
+    <button onclick="jump('p7')">7. Diferenciais</button>
+    <button onclick="jump('p8')">8. Engenharias</button>
+    <button onclick="jump('p9')">9. Tecnologias</button>
+    <button onclick="jump('p10')">10. Cronograma</button>
+    <button onclick="jump('p11')">11. Resultados</button>
+    <button onclick="jump('p12')">12. Conclusão</button>
+    <button onclick="jump('p15')">Profissão x Carreira</button>
+    <button onclick="jump('p16')">Mercado & Tendências</button>
+    <button onclick="jump('p17')">CONFEA / Res. 218</button>
+    <button onclick="jump('p18')">Metodologias</button>
+    <button onclick="jump('p19')">Requisitos & Avaliação</button>
+    <button onclick="jump('p20')">Checklist da Professora</button>
+    <button onclick="jump('p21')">Continuidade & Extensão</button>
+  </div>
+
+  <div id="p1" class="pres-section">
+    <span class="pres-number">1</span><h2>Contexto</h2>
+    <p>
+      A formação em engenharia não envolve apenas domínio técnico. O estudante também precisa compreender
+      possibilidades de carreira, competências exigidas pelo mercado, novas tecnologias e como seu próprio perfil
+      pode se conectar a diferentes áreas de atuação.
+    </p>
+    <div class="speaker-note"><strong>💬 Sugestão de fala:</strong> “Nosso projeto parte de uma pergunta simples: o estudante conhece realmente todas as possibilidades que existem dentro da engenharia?”</div>
+  </div>
+
+  <div id="p2" class="pres-section">
+    <span class="pres-number">2</span><h2>Problema identificado</h2>
+    <p>
+      Muitos estudantes escolhem a graduação conhecendo apenas as áreas mais tradicionais da profissão.
+      Ao longo do curso, podem surgir dúvidas sobre especializações, mercado, perfil profissional e quais
+      competências desenvolver.
+    </p>
+    <div class="pres-points">
+      <div class="pres-point"><strong>🧭 Falta de direção</strong><br><span class="small">Dificuldade para visualizar caminhos de carreira.</span></div>
+      <div class="pres-point"><strong>🔎 Pouca exploração</strong><br><span class="small">Desconhecimento de áreas emergentes e interdisciplinares.</span></div>
+      <div class="pres-point"><strong>🚀 Mercado em mudança</strong><br><span class="small">IA, automação, BIM, energia limpa e dados transformam profissões.</span></div>
+    </div>
+    </div>
+
+    <div class="class-interaction">
+      <h3>🙋 Interação com a turma</h3>
+      <p>Antes de mostrar nossa solução, queremos ouvir vocês:</p>
+      <strong>Qual é a maior dificuldade ao pensar na carreira hoje?</strong>
+
+      <div class="poll-options">
+        <button class="poll-btn" onclick="classVote('direcao')">🧭 Não sei qual área seguir</button>
+        <button class="poll-btn" onclick="classVote('mercado')">💼 Não conheço bem o mercado</button>
+        <button class="poll-btn" onclick="classVote('competencias')">🧠 Não sei o que preciso desenvolver</button>
+      </div>
+
+      <div id="classPollResult" class="poll-result">
+        Vote com a turma e veja qual opção aparece mais.
+      </div>
+    </div>
+
+    <div class="reveal-card">
+      <strong>💭 Pergunta rápida:</strong>
+      “Quem aqui consegue citar 5 áreas diferentes em que um engenheiro pode trabalhar?”
+      <button class="btn btn-secondary full" style="margin-top:10px" onclick="reveal('revealCareers')">
+        MOSTRAR EXEMPLOS
+      </button>
+      <div id="revealCareers" class="reveal-answer">
+        Estruturas • BIM • Energia • Automação • Robótica • Manufatura • Gestão de Projetos •
+        Saneamento • Sustentabilidade • IA aplicada à Engenharia • Digital Twins • Smart Buildings.
+      </div>
+    </div>
+  </div>
+
+  <div id="p3" class="pres-section">
+    <span class="pres-number">3</span><h2>Objetivos</h2>
+    <div class="pres-points">
+      <div class="pres-point"><strong>🎯 Objetivo geral</strong><br><span class="small">Criar uma experiência de orientação profissional voltada a estudantes de engenharia.</span></div>
+      <div class="pres-point"><strong>🧠 Autoconhecimento</strong><br><span class="small">Estimular reflexão sobre interesses, preferências e competências.</span></div>
+      <div class="pres-point"><strong>💼 Exploração de carreira</strong><br><span class="small">Apresentar áreas, profissões, habilidades e tecnologias relacionadas ao perfil.</span></div>
+      <div class="pres-point"><strong>🪪 Identidade profissional</strong><br><span class="small">Ajudar o estudante a compreender quais competências pode desenvolver para fortalecer currículo, LinkedIn e portfólio.</span></div>
+      <div class="pres-point"><strong>📊 Mapeamento</strong><br><span class="small">Relacionar perfis a especialidades, oportunidades e tendências da engenharia.</span></div>
+      <div class="pres-point"><strong>🌎 Impacto educacional</strong><br><span class="small">Criar uma ferramenta que também pode ser utilizada com estudantes em fase de escolha profissional.</span></div>
+    </div>
+  </div>
+
+
+  <div id="p13" class="pres-section">
+    <span class="pres-number">1</span><h2>Projeto 1 • Mapeamento de Carreiras em Engenharia</h2>
+
+    <p>
+      Uma das propostas trabalhadas na disciplina é o
+      <strong>Mapeamento de Carreiras em Engenharia</strong>.
+      Esse projeto busca ampliar o conhecimento dos estudantes sobre as diferentes
+      especialidades da engenharia, tendências do mercado, salários,
+      oportunidades e desafios profissionais.
+    </p>
+
+    <div class="pres-points">
+      <div class="pres-point">
+        <strong>❓ O que é?</strong><br>
+        <span class="small">
+          Pesquisa sobre as diferentes especialidades em engenharia,
+          tendências do mercado, salários, oportunidades e desafios profissionais.
+        </span>
+      </div>
+
+      <div class="pres-point">
+        <strong>🌎 Aplicação & Impacto Social</strong><br>
+        <span class="small">
+          Entrevistas com profissionais, visitas a empresas,
+          criação de guia de carreiras e apresentação para alunos do ensino médio.
+        </span>
+      </div>
+
+      <div class="pres-point">
+        <strong>🧩 Abordagens</strong><br>
+        <span class="small">
+          Profissão e Identidade • Análise de Dados • Empregabilidade.
+        </span>
+      </div>
+    </div>
+
+    <div class="callout">
+      <strong>📦 Resultados esperados</strong>
+      <p style="margin:8px 0 0">
+        Relatório, vídeos e guia digital de carreiras.
+      </p>
+    </div>
+
+    <div class="speaker-note">
+      <strong>💬 Relação com o Engenharia 360:</strong>
+      “Nosso projeto aproveita essa proposta de mapeamento de carreiras,
+      mas transforma o guia em uma experiência interativa.
+      Em vez de apenas consultar profissões, o estudante responde ao teste,
+      identifica afinidades e recebe caminhos profissionais explicados.”
+    </div>
+  </div>
+
+
+  <div id="p14" class="pres-section">
+    <span class="pres-number">4</span><h2>Projeto 4 • Portfólio Profissional e Personal Branding</h2>
+
+    <p>
+      Outra proposta trabalhada na disciplina é o desenvolvimento de
+      <strong>Portfólio Profissional e Personal Branding</strong>.
+      Ela amplia a discussão para a construção da identidade profissional
+      e para a forma como o estudante apresenta suas competências ao mercado.
+    </p>
+
+    <div class="pres-points">
+      <div class="pres-point">
+        <strong>❓ O que é?</strong><br>
+        <span class="small">
+          Desenvolvimento de portfólio digital, presença online,
+          LinkedIn otimizado, currículo impactante e conteúdo técnico pessoal.
+        </span>
+      </div>
+
+      <div class="pres-point">
+        <strong>🌎 Aplicação & Impacto Social</strong><br>
+        <span class="small">
+          Criação de portfólio online, publicação de artigos técnicos,
+          mentoria para alunos com menor experiência e workshop comunitário.
+        </span>
+      </div>
+
+      <div class="pres-point">
+        <strong>🧩 Abordagens</strong><br>
+        <span class="small">
+          Empregabilidade • Comunicação • Identidade Profissional.
+        </span>
+      </div>
+    </div>
+
+    <div class="callout">
+      <strong>📦 Resultados esperados</strong>
+      <p style="margin:8px 0 0">
+        Portfólio digital, publicação de 3 a 5 artigos e material de workshop.
+      </p>
+    </div>
+
+    <div class="speaker-note">
+      <strong>💬 Relação com o Engenharia 360:</strong>
+      “Depois de descobrir áreas e competências compatíveis com seu perfil,
+      o estudante precisa saber como desenvolver e apresentar essa identidade profissional.
+      Por isso, o Engenharia 360 também aponta competências, tecnologias
+      e próximos passos que podem alimentar currículo, LinkedIn e portfólio.”
+    </div>
+  </div>
+
+
+  <div class="pres-section">
+    <div class="badge">🔗 INTEGRAÇÃO DAS PROPOSTAS</div>
+    <h2 style="margin:0;color:var(--gold2)">Como o Engenharia 360 conecta os dois projetos?</h2>
+
+    <p>
+      O Engenharia 360 funciona como uma ponte entre
+      <strong>explorar possibilidades profissionais</strong> e
+      <strong>construir uma identidade profissional</strong>.
+      Primeiro o estudante entende onde pode atuar; depois identifica o que
+      precisa desenvolver e como pode começar a se posicionar profissionalmente.
+    </p>
+
+    <div class="roadmap">
+      <div class="road">
+        🔎<br>
+        <strong>Mapear</strong><br>
+        <span class="small">Carreiras e oportunidades</span>
+      </div>
+
+      <div class="arrow">→</div>
+
+      <div class="road">
+        🧠<br>
+        <strong>Reconhecer</strong><br>
+        <span class="small">Interesses e perfil</span>
+      </div>
+
+      <div class="arrow">→</div>
+
+      <div class="road">
+        🎯<br>
+        <strong>Desenvolver</strong><br>
+        <span class="small">Competências</span>
+      </div>
+
+      <div class="arrow">→</div>
+
+      <div class="road">
+        💼<br>
+        <strong>Construir</strong><br>
+        <span class="small">Portfólio e experiência</span>
+      </div>
+
+      <div class="arrow">→</div>
+
+      <div class="road">
+        🚀<br>
+        <strong>Posicionar</strong><br>
+        <span class="small">Identidade profissional</span>
+      </div>
+    </div>
+  </div>
+
+
+  <div id="p4" class="pres-section">
+    <span class="pres-number">4</span><h2>A solução: Engenharia 360</h2>
+    <p>
+      Desenvolvemos uma plataforma web responsiva que combina questionário interativo,
+      análise por pontuação ponderada e apresentação personalizada de possibilidades profissionais.
+      O mesmo ambiente também reúne a apresentação acadêmica do projeto.
+    </p>
+
+    <div class="cards" style="margin-top:16px">
+      <div class="media-card">
+        <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=1000&auto=format&fit=crop" alt="Projeto e construção">
+        <div class="media-body"><h4>Problema → Projeto</h4><p>Engenharia transforma necessidades em soluções planejadas e executáveis.</p></div>
+      </div>
+      <div class="media-card">
+        <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=1000&auto=format&fit=crop" alt="Tecnologia e eletrônica">
+        <div class="media-body"><h4>Tecnologia → Integração</h4><p>Automação, sensores, dados e IA ampliam o alcance da atuação profissional.</p></div>
+      </div>
+    </div>
+
+    <div class="pres-points">
+      <div class="pres-point"><strong>🧠 18 perguntas</strong><br><span class="small">Interesses, ambiente, tecnologia, trabalho em equipe e futuro.</span></div>
+      <div class="pres-point"><strong>🧬 6 perfis</strong><br><span class="small">Construção, energia, mecânica, inovação, gestão e sustentabilidade.</span></div>
+      <div class="pres-point"><strong>📚 Resultado explicado</strong><br><span class="small">Cada carreira, área e competência possui explicação clicável.</span></div>
+    </div>
+  </div>
+
+  <div id="p5" class="pres-section">
+    <span class="pres-number">5</span><h2>Metodologia</h2>
+    <p>
+      As alternativas do questionário atribuem pesos a diferentes perfis. Ao final, o sistema ordena
+      os perfis, calcula índices relativos de afinidade e cruza os resultados com áreas da engenharia.
+      O resultado é exploratório e educativo, não um teste psicológico validado.
+    </p>
+    <div class="speaker-note"><strong>Importante na apresentação:</strong> use a expressão <em>índice de afinidade</em>, e não “probabilidade de profissão”.</div>
+  </div>
+
+  <div id="p6" class="pres-section">
+    <span class="pres-number">6</span><h2>Como a plataforma funciona</h2>
+    <div class="roadmap">
+      <div class="road">👤<br><strong>Identificação</strong><br><span class="small">Curso e período</span></div><div class="arrow">→</div>
+      <div class="road">🧠<br><strong>Questionário</strong><br><span class="small">18 perguntas</span></div><div class="arrow">→</div>
+      <div class="road">📊<br><strong>Análise</strong><br><span class="small">Pesos e ranking</span></div><div class="arrow">→</div>
+      <div class="road">🎯<br><strong>Resultado</strong><br><span class="small">Perfil e afinidades</span></div><div class="arrow">→</div>
+      <div class="road">💼<br><strong>Exploração</strong><br><span class="small">Carreira e competências</span></div>
+    </div>
+  </div>
+
+  <div id="p7" class="pres-section">
+    <span class="pres-number">7</span><h2>Diferenciais</h2>
+    <div class="pres-points">
+      <div class="pres-point"><strong>💡 Não termina no perfil</strong><br><span class="small">Explica o que fazer com o resultado.</span></div>
+      <div class="pres-point"><strong>📱 Responsivo</strong><br><span class="small">Pode ser usado por QR Code em celular, tablet ou computador.</span></div>
+      <div class="pres-point"><strong>🎤 Apresentação integrada</strong><br><span class="small">O próprio projeto é apresentado dentro da plataforma.</span></div>
+      <div class="pres-point"><strong>🔍 Conteúdo clicável</strong><br><span class="small">Carreiras, áreas, competências e tecnologias ganham explicações.</span></div>
+      <div class="pres-point"><strong>🤝 Interdisciplinar</strong><br><span class="small">Relaciona diferentes engenharias em vez de tratá-las isoladamente.</span></div>
+      <div class="pres-point"><strong>⭐ Feedback opcional</strong><br><span class="small">O usuário escolhe se quer avaliar a experiência.</span></div>
+    </div>
+  </div>
+
+  <div id="p8" class="pres-section">
+    <span class="pres-number">8</span><h2>Engenharias contempladas</h2>
+    <div class="pres-points">
+      <div class="pres-point"><strong>🏗️ Civil</strong><br><span class="small">Infraestrutura, BIM, construção, gestão e sustentabilidade.</span></div>
+      <div class="pres-point"><strong>⚡ Elétrica</strong><br><span class="small">Energia, automação, Smart Grids e sistemas inteligentes.</span></div>
+      <div class="pres-point"><strong>⚙️ Mecânica</strong><br><span class="small">Máquinas, manufatura, simulação, robótica e manutenção.</span></div>
+      <div class="pres-point"><strong>🧪 Química</strong><br><span class="small">Processos, indústria, energia, controle e sustentabilidade.</span></div>
+      <div class="pres-point"><strong>📊 Produção</strong><br><span class="small">Projetos, processos, dados, logística e gestão.</span></div>
+      <div class="pres-point"><strong>🌱 Ambiental</strong><br><span class="small">Saneamento, recursos, energia limpa e gestão ambiental.</span></div>
+    </div>
+  </div>
+
+  <div id="p9" class="pres-section">
+    <span class="pres-number">9</span><h2>Tecnologias e futuro da profissão</h2>
+    <div class="pres-points">
+      <div class="pres-point"><strong>🤖 Inteligência Artificial</strong><br><span class="small">Apoio à análise, automação, previsão e tomada de decisão.</span></div>
+      <div class="pres-point"><strong>🌐 IoT</strong><br><span class="small">Sensores conectados para monitoramento de sistemas e infraestrutura.</span></div>
+      <div class="pres-point"><strong>🏢 BIM / Digital Twins</strong><br><span class="small">Modelos digitais para projeto, operação e gestão do ciclo de vida.</span></div>
+      <div class="pres-point"><strong>🦾 Robótica</strong><br><span class="small">Automação de processos industriais, manutenção e construção.</span></div>
+      <div class="pres-point"><strong>☀️ Energia limpa</strong><br><span class="small">Transição energética e eficiência de recursos.</span></div>
+      <div class="pres-point"><strong>📈 Dados</strong><br><span class="small">Indicadores, BI e análise aplicada à engenharia.</span></div>
+    </div>
+  </div>
+
+  <div id="p10" class="pres-section">
+    <span class="pres-number">10</span><h2>Cronograma de desenvolvimento</h2>
+    <div class="timeline">
+      <div class="week"><span>SEMANA 1</span><strong>Pesquisa</strong><p class="small">Problema, público, carreiras e definição dos perfis.</p>
+
+    <div class="cards" style="margin-top:16px">
+      <div class="media-card">
+        <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=1000&auto=format&fit=crop" alt="Dados e tecnologia">
+        <div class="media-body"><h4>Engenharia orientada por dados</h4><p>Decisões técnicas cada vez mais usam dados, simulação e inteligência computacional.</p></div>
+      </div>
+      <div class="media-card">
+        <img src="https://images.unsplash.com/photo-1497435334941-8c899ee9e8e9?q=80&w=1000&auto=format&fit=crop" alt="Energia renovável">
+        <div class="media-body"><h4>Transição energética</h4><p>Renováveis e eficiência criam novos desafios e novas carreiras.</p></div>
+      </div>
+    </div>
+</div>
+      <div class="week"><span>SEMANA 2</span><strong>Protótipo</strong><p class="small">Perguntas, algoritmo, identidade visual e estrutura da plataforma.</p></div>
+      <div class="week"><span>SEMANA 3</span><strong>Testes</strong><p class="small">Aplicação piloto, correções, conteúdo e experiência do usuário.</p></div>
+      <div class="week"><span>SEMANA 4</span><strong>Entrega</strong><p class="small">Publicação, coleta de feedback e apresentação final.</p></div>
+    </div>
+  </div>
+
+  <div id="p11" class="pres-section">
+    <span class="pres-number">11</span><h2>Resultados esperados</h2>
+    <p>
+      Esperamos que o participante termine a experiência entendendo melhor seus interesses,
+      conhecendo novas possibilidades profissionais e identificando competências e tecnologias
+      que pode começar a desenvolver ainda durante a graduação.
+    </p>
+    <div class="pres-points">
+      <div class="pres-point"><strong>✅ Mais clareza</strong><br><span class="small">Sobre possibilidades de atuação.</span></div>
+      <div class="pres-point"><strong>✅ Mais curiosidade</strong><br><span class="small">Por áreas e tecnologias ainda desconhecidas.</span></div>
+      <div class="pres-point"><strong>✅ Mais planejamento</strong><br><span class="small">Para cursos, estágio, projetos e especializações.</span></div>
+    </div>
+  </div>
+
+  <div id="p12" class="pres-section">
+    <span class="pres-number">12</span><h2>Conclusão</h2>
+    <p>
+      O Engenharia 360 mostra que orientação profissional pode ser mais interativa, visual e conectada
+      à realidade das engenharias. Em vez de apenas listar profissões, a plataforma convida o estudante
+      a refletir, explorar e construir sua própria trajetória.
+    </p>
+    <div class="callout">
+      <strong>Mensagem final:</strong>
+      <p style="margin:8px 0 0;font-size:1.1rem">“A engenharia possui muitos caminhos. Conhecer o próprio perfil é um dos primeiros passos para escolher quais deles queremos explorar.”</p>
+    </div>
+  </div>
+
+
+  <div id="p15" class="pres-section">
+    <div class="badge">📘 CONTEÚDO DA AULA 1</div>
+    <h2 style="margin:0;color:var(--gold2)">Profissão x Carreira</h2>
+
+    <p>
+      A disciplina diferencia <strong>profissão</strong> de <strong>carreira</strong>.
+      Profissão é o exercício especializado de uma atividade, baseado em conhecimento,
+      prática, formação e competências técnicas. Carreira é a trajetória construída
+      ao longo da vida, envolvendo crescimento, desenvolvimento e escolhas pessoais.
+    </p>
+
+    <div class="pres-points">
+      <div class="pres-point">
+        <strong>🛠️ Profissão</strong><br>
+        <span class="small">
+          Conhecimento + prática. Exige formação específica, competências técnicas
+          e reconhecimento social.
+        </span>
+      </div>
+
+      <div class="pres-point">
+        <strong>🧭 Carreira</strong><br>
+        <span class="small">
+          Sequência de experiências e posições profissionais ao longo da vida.
+          É pessoal, dinâmica e envolve planejamento.
+        </span>
+      </div>
+
+      <div class="pres-point">
+        <strong>🌎 Por que importa?</strong><br>
+        <span class="small">
+          Influencia renda, satisfação, oportunidades de crescimento
+          e o impacto que o profissional produz na sociedade.
+        </span>
+      </div>
+    </div>
+
+    <div class="speaker-note">
+      <strong>💬 Relação com o Engenharia 360:</strong>
+      o teste não tenta escolher uma profissão pelo usuário.
+      Ele ajuda o estudante a refletir sobre <em>como construir sua carreira</em>
+      dentro de uma profissão que possui diversos caminhos.
+    </div>
+  </div>
+
+
+  <div id="p16" class="pres-section">
+    <div class="badge">📊 CONTEÚDO DA AULA 2</div>
+    <h2 style="margin:0;color:var(--gold2)">Áreas de atuação, mercado, salários e tendências</h2>
+
+    <p>
+      A professora trabalhou a comparação entre especialidades, empregadores,
+      faixas salariais, tendências tecnológicas e certificações.
+      No Engenharia 360, esses temas aparecem nas afinidades,
+      caminhos profissionais, tecnologias e competências sugeridas.
+    </p>
+
+    <div class="pres-points">
+      <div class="pres-point">
+        <strong>🏢 Mercado</strong><br>
+        <span class="small">
+          Construção e infraestrutura, energia, tecnologia,
+          indústria, órgãos públicos, concessionárias,
+          consultoria e planejamento.
+        </span>
+      </div>
+
+      <div class="pres-point">
+        <strong>🚀 Tendências</strong><br>
+        <span class="small">
+          IA, IoT, sensores, transformação digital,
+          energias renováveis, automação, BIM,
+          Indústria 4.0 e sustentabilidade.
+        </span>
+      </div>
+
+      <div class="pres-point">
+        <strong>🎓 Desenvolvimento</strong><br>
+        <span class="small">
+          Escolher áreas de interesse, pesquisar mercado,
+          buscar certificações, fortalecer LinkedIn
+          e criar networking profissional.
+        </span>
+      </div>
+    </div>
+
+    <h3 class="section-title">Exemplos apresentados nos slides da disciplina</h3>
+
+    <table class="course-table">
+      <thead>
+        <tr>
+          <th>Formação</th>
+          <th>Áreas / tendências destacadas</th>
+          <th>Faixas apresentadas em aula — Mercado BR (2025)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Eng. Elétrica</strong></td>
+          <td>Energia, eletrônica, telecom, automação, renováveis; Smart Grids, IA, IoT e armazenamento.</td>
+          <td>Júnior R$ 7–10 mil • Pleno R$ 12–18 mil • Sênior R$ 20–35 mil.</td>
+        </tr>
+        <tr>
+          <td><strong>Eng. Mecânica</strong></td>
+          <td>Manufatura, máquinas, petróleo e gás, automotiva, aeronáutica; Indústria 4.0, mobilidade elétrica, economia circular e impressão 3D.</td>
+          <td>Júnior R$ 6–9 mil • Pleno R$ 11–16 mil • Sênior R$ 18–30 mil.</td>
+        </tr>
+        <tr>
+          <td><strong>Eng. Química</strong></td>
+          <td>Indústria química, alimentos, petróleo e gás, farmacêutica e polímeros; biotecnologia, química verde, ML e biomateriais.</td>
+          <td>Júnior R$ 6,5–10 mil • Pleno R$ 12–18 mil • Sênior R$ 20–32 mil.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p class="note-source">
+      Os valores acima são reproduzidos como conteúdo apresentado nos slides da disciplina
+      e devem ser tratados como referência de aula, não como cotação salarial atualizada.
+    </p>
+
+    <h3 class="section-title">🏅 Certificações e qualificações citadas</h3>
+
+    <div class="check-grid">
+      <div class="check-item"><strong>CREA / CAU</strong><p>Registro profissional e compreensão das responsabilidades legais da atuação.</p></div>
+      <div class="check-item"><strong>PMP / PRINCE2</strong><p>Qualificações relacionadas à gestão de projetos.</p></div>
+      <div class="check-item"><strong>Six Sigma</strong><p>Qualidade, melhoria contínua e análise de processos.</p></div>
+      <div class="check-item"><strong>Engenharia Elétrica</strong><p>NR-10, referências IEC e IEEE.</p></div>
+      <div class="check-item"><strong>Engenharia Mecânica</strong><p>Autodesk, CATIA e SAP como exemplos citados.</p></div>
+      <div class="check-item"><strong>Ambiental / Sustentabilidade</strong><p>ISO 14001 e LEED.</p></div>
+      <div class="check-item"><strong>Química</strong><p>Engenharia de Processos e ISO 9001.</p></div>
+      <div class="check-item"><strong>BIM / Arquitetura</strong><p>Revit, AutoCAD e LEED como referências apresentadas.</p></div>
+    </div>
+
+    <h3 class="section-title">⚠️ Pontos sensíveis discutidos em aula</h3>
+
+    <div class="cards">
+      <div class="card"><strong>Tecnologia transforma o mercado</strong><p class="small">Algumas funções diminuem, enquanto novas oportunidades surgem.</p></div>
+      <div class="card"><strong>Diferenças regionais</strong><p class="small">Faixas e oportunidades variam entre regiões; o contexto amazônico precisa ser considerado.</p></div>
+      <div class="card"><strong>Inclusão na engenharia</strong><p class="small">A discussão de gênero e diversidade também faz parte do mercado profissional.</p></div>
+      <div class="card"><strong>Startups x mercado tradicional</strong><p class="small">Ambos oferecem oportunidades e riscos diferentes.</p></div>
+    </div>
+
+    <div class="speaker-note">
+      <strong>Atividade de especialização ideal:</strong>
+      o conteúdo da aula orienta escolher uma profissão,
+      identificar três áreas de atuação, pesquisar empresas da região amazônica,
+      levantar requisitos, salários e certificações e apresentar os achados.
+      O Engenharia 360 ajuda justamente na etapa inicial: descobrir quais áreas vale a pena investigar.
+    </div>
+  </div>
+
+
+  <div id="p17" class="pres-section">
+    <div class="badge">⚖️ CONTEÚDO DA AULA 3</div>
+    <h2 style="margin:0;color:var(--gold2)">Resolução 218 do CONFEA e atribuições profissionais</h2>
+
+    <p>
+      A disciplina também aborda que escolher uma carreira não significa apenas
+      descobrir o que se gosta de fazer: é necessário compreender
+      <strong>atribuições, limites de atuação e responsabilidade profissional</strong>.
+    </p>
+
+    <div class="callout">
+      <strong>Por que isso entra no Engenharia 360?</strong>
+      <p style="margin:8px 0 0">
+        As sugestões de carreira do site servem para exploração.
+        A atuação profissional efetiva depende da formação,
+        das atribuições concedidas e das normas do sistema profissional.
+      </p>
+    </div>
+
+    <h3 class="section-title">18 atividades profissionais apresentadas em aula</h3>
+
+    <div class="check-grid">
+      <div class="check-item"><strong>1. Supervisão e Coordenação Técnica</strong><p>Coordenação técnica de atividades e equipes.</p></div>
+      <div class="check-item"><strong>2. Estudo, Planejamento e Projeto</strong><p>Concepção e planejamento de soluções técnicas.</p></div>
+      <div class="check-item"><strong>3. Viabilidade Técnico-Econômica</strong><p>Análise técnica e econômica de alternativas.</p></div>
+      <div class="check-item"><strong>4. Assistência e Consultoria</strong><p>Apoio e orientação especializada.</p></div>
+      <div class="check-item"><strong>5. Direção de Obra</strong><p>Responsabilidade pela condução técnica da execução.</p></div>
+      <div class="check-item"><strong>6. Vistoria e Perícia</strong><p>Inspeção, análise e produção de parecer técnico.</p></div>
+      <div class="check-item"><strong>7. Desempenho de Cargo Técnico</strong><p>Exercício de função técnica compatível com atribuições.</p></div>
+      <div class="check-item"><strong>8. Ensino e Pesquisa</strong><p>Produção e transmissão de conhecimento técnico.</p></div>
+      <div class="check-item"><strong>9. Elaboração de Orçamento</strong><p>Quantificação e estimativa de custos.</p></div>
+      <div class="check-item"><strong>10. Controle de Qualidade</strong><p>Acompanhamento de padrões e desempenho.</p></div>
+      <div class="check-item"><strong>11. Execução de Obra</strong><p>Implementação física de projetos.</p></div>
+      <div class="check-item"><strong>12. Fiscalização</strong><p>Verificação de conformidade da execução.</p></div>
+      <div class="check-item"><strong>13. Produção Técnica Especializada</strong><p>Desenvolvimento de produto ou atividade técnica específica.</p></div>
+      <div class="check-item"><strong>14. Condução de Trabalho Técnico</strong><p>Responsabilidade pela realização de atividade técnica.</p></div>
+      <div class="check-item"><strong>15. Condução de Equipe de Instalação</strong><p>Coordenação da execução de instalações.</p></div>
+      <div class="check-item"><strong>16. Execução de Instalação</strong><p>Implementação de sistemas e instalações.</p></div>
+      <div class="check-item"><strong>17. Operação e Manutenção</strong><p>Operação, conservação e confiabilidade.</p></div>
+      <div class="check-item"><strong>18. Execução de Desenho Técnico</strong><p>Representação técnica de soluções e projetos.</p></div>
+    </div>
+
+    <div class="speaker-note">
+      <strong>Exemplo da Engenharia Civil mostrado em aula:</strong>
+      edificações e construções, água e saneamento, estradas e aeroportos,
+      portos e barragens, sistemas de transportes, pontes e estruturas.
+    </div>
+  </div>
+
+
+  <div id="p18" class="pres-section">
+    <div class="badge">🧠 CONTEÚDO DA AULA 4</div>
+    <h2 style="margin:0;color:var(--gold2)">Resolução de problemas e metodologias</h2>
+
+    <p>
+      O Engenharia 360 também incorpora a lógica das metodologias estudadas:
+      compreender um problema, olhar o sistema, ouvir o usuário,
+      criar uma solução, testar e aprender com os resultados.
+    </p>
+
+    <h3 class="section-title">1. Raciocínio Lógico</h3>
+    <div class="pres-points">
+      <div class="pres-point"><strong>Dedutivo</strong><br><span class="small">Do geral para o específico.</span></div>
+      <div class="pres-point"><strong>Indutivo</strong><br><span class="small">Do específico para o geral.</span></div>
+      <div class="pres-point"><strong>Abdutivo</strong><br><span class="small">Busca a explicação mais provável a partir dos indícios.</span></div>
+    </div>
+
+    <h3 class="section-title">2. Pensamento Sistêmico</h3>
+    <div class="pres-points">
+      <div class="pres-point"><strong>Interdependência</strong><br><span class="small">Uma mudança em uma parte afeta outras partes do sistema.</span></div>
+      <div class="pres-point"><strong>Retroalimentação</strong><br><span class="small">Resultados podem voltar e influenciar o próprio sistema.</span></div>
+      <div class="pres-point"><strong>Emergência</strong><br><span class="small">O todo pode apresentar características que não aparecem nas partes isoladas.</span></div>
+      <div class="pres-point"><strong>Causalidade circular</strong><br><span class="small">Causa e efeito podem alimentar ciclos.</span></div>
+    </div>
+
+    <h3 class="section-title">3. Design Thinking</h3>
+    <div class="method-flow">
+      <div class="method-step"><strong>1</strong>Empatizar</div><div class="method-arrow">→</div>
+      <div class="method-step"><strong>2</strong>Definir</div><div class="method-arrow">→</div>
+      <div class="method-step"><strong>3</strong>Idear</div><div class="method-arrow">→</div>
+      <div class="method-step"><strong>4</strong>Prototipar</div><div class="method-arrow">→</div>
+      <div class="method-step"><strong>5</strong>Testar</div>
+    </div>
+
+    <div class="speaker-note">
+      <strong>Aplicação no Engenharia 360:</strong>
+      <em>Empatizar</em> com estudantes que têm dúvidas sobre carreira →
+      <em>Definir</em> a necessidade de orientação acessível →
+      <em>Idear</em> uma plataforma interativa →
+      <em>Prototipar</em> o site →
+      <em>Testar</em> com usuários e ajustar conforme o feedback.
+    </div>
+
+    <h3 class="section-title">4. Método Científico</h3>
+    <div class="method-flow">
+      <div class="method-step"><strong>1</strong>Observação</div><div class="method-arrow">→</div>
+      <div class="method-step"><strong>2</strong>Pergunta</div><div class="method-arrow">→</div>
+      <div class="method-step"><strong>3</strong>Hipótese</div><div class="method-arrow">→</div>
+      <div class="method-step"><strong>4</strong>Experimento</div><div class="method-arrow">→</div>
+      <div class="method-step"><strong>5</strong>Análise</div><div class="method-arrow">→</div>
+      <div class="method-step"><strong>6</strong>Conclusão</div>
+    </div>
+
+    <h3 class="section-title">5. Árvore de Causas e Efeitos — Fishbone</h3>
+    <div class="pres-points">
+      <div class="pres-point"><strong>👥 Pessoas</strong><br><span class="small">Conhecimento, comportamento, capacitação.</span></div>
+      <div class="pres-point"><strong>⚙️ Processo</strong><br><span class="small">Fluxos, padronização, manutenção e gestão.</span></div>
+      <div class="pres-point"><strong>🧱 Materiais</strong><br><span class="small">Disponibilidade, custo e adequação.</span></div>
+      <div class="pres-point"><strong>💻 Tecnologia</strong><br><span class="small">Ferramentas, equipamentos e monitoramento.</span></div>
+      <div class="pres-point"><strong>🌎 Ambiente</strong><br><span class="small">Condições externas e contexto local.</span></div>
+    </div>
+
+    <h3 class="section-title">6. Metodologia Ágil</h3>
+    <p>
+      Para execução, o projeto pode ser dividido em ciclos curtos:
+      priorizar o essencial, desenvolver uma versão funcional,
+      testar, coletar feedback e melhorar o produto.
+      Isso permite manter um MVP viável e evoluir sem tentar construir tudo de uma vez.
+    </p>
+
+    <div class="callout">
+      <strong>Princípio final trabalhado em aula</strong>
+      <p style="margin:8px 0 0">
+        Problema real → metodologia adequada → validação com usuários →
+        iteração a partir do feedback → compartilhamento do aprendizado.
+      </p>
+    </div>
+  </div>
+
+
+  <div id="p19" class="pres-section">
+    <div class="badge">📋 ORIENTAÇÕES DO PROJETO DE EXTENSÃO</div>
+    <h2 style="margin:0;color:var(--gold2)">O que a professora pediu para o projeto</h2>
+
+    <p>
+      O projeto de extensão é o fio condutor da disciplina:
+      ele deve transformar o conteúdo estudado em uma ação
+      aplicável a uma necessidade real da comunidade ou de uma organização.
+    </p>
+
+    <h3 class="section-title">Passos indicados</h3>
+    <div class="method-flow">
+      <div class="method-step"><strong>1</strong>Equipe</div><div class="method-arrow">→</div>
+      <div class="method-step"><strong>2</strong>Pesquisa & diagnóstico</div><div class="method-arrow">→</div>
+      <div class="method-step"><strong>3</strong>Planejamento</div><div class="method-arrow">→</div>
+      <div class="method-step"><strong>4</strong>Execução</div><div class="method-arrow">→</div>
+      <div class="method-step"><strong>5</strong>Relatório & apresentação</div>
+    </div>
+
+    <h3 class="section-title">Como começar — orientações dos slides</h3>
+    <div class="check-grid">
+      <div class="check-item"><strong>1. Afinidade e interesse</strong><p>Escolher um projeto que faça sentido para a equipe.</p></div>
+      <div class="check-item"><strong>2. Equipe multidisciplinar</strong><p>Grupo de 3 a 5 pessoas.</p></div>
+      <div class="check-item"><strong>3. Necessidade real</strong><p>Fazer levantamento antes de definir a solução.</p></div>
+      <div class="check-item"><strong>4. Design Thinking</strong><p>Usar a metodologia para planejar centrado no usuário.</p></div>
+      <div class="check-item"><strong>5. Metodologia Ágil</strong><p>Executar em etapas curtas, priorizando valor e validação.</p></div>
+      <div class="check-item"><strong>6. Documentar e comunicar</strong><p>Registrar processo, resultados e aprendizados.</p></div>
+    </div>
+
+    <h3 class="section-title">Critérios de avaliação apresentados</h3>
+    <div class="pres-points">
+      <div class="pres-point"><strong>🤝 Engajamento do grupo</strong><br><span class="small">Participação e colaboração.</span></div>
+      <div class="pres-point"><strong>🔎 Qualidade da pesquisa</strong><br><span class="small">Coerência e profundidade do diagnóstico.</span></div>
+      <div class="pres-point"><strong>🛠️ Aplicabilidade</strong><br><span class="small">Solução possível e útil.</span></div>
+      <div class="pres-point"><strong>🌎 Impacto social</strong><br><span class="small">Contribuição para comunidade, estudantes ou organizações.</span></div>
+      <div class="pres-point"><strong>🎤 Apresentação final</strong><br><span class="small">Clareza ao comunicar problema, solução e aprendizado.</span></div>
+    </div>
+
+    <h3 class="section-title">Cronograma</h3>
+    <p>
+      O cronograma geral apresentado na disciplina percorre formação,
+      pesquisa, planejamento, execução, relatório e apresentação.
+      Para tornar o desenvolvimento técnico do <strong>MVP do Engenharia 360</strong>
+      mais controlável, a equipe organiza a construção da plataforma em um ciclo interno de quatro semanas:
+    </p>
+
+    <div class="timeline">
+      <div class="week"><span>SEMANA 1</span><strong>Diagnóstico</strong><p class="small">Pesquisa, público, necessidade real e estrutura do conteúdo.</p></div>
+      <div class="week"><span>SEMANA 2</span><strong>Protótipo</strong><p class="small">Questionário, perfis, algoritmo e interface.</p></div>
+      <div class="week"><span>SEMANA 3</span><strong>Validação</strong><p class="small">Teste piloto, feedback e correções.</p></div>
+      <div class="week"><span>SEMANA 4</span><strong>Entrega</strong><p class="small">Versão final, documentação e preparação da apresentação.</p></div>
+    </div>
+  </div>
+
+
+
+  <div id="p21" class="pres-section">
+    <div class="badge">🌎 CONTINUIDADE & IMPACTO SOCIAL</div>
+    <h2 style="margin:0;color:var(--gold2)">Como o projeto pode continuar depois da disciplina</h2>
+
+    <p>
+      O Engenharia 360 foi pensado para não terminar com a apresentação.
+      A estrutura permite evoluir para um ecossistema de conteúdo e orientação,
+      com produção de artigos, entrevistas, guia de carreiras,
+      portfólio, mentoria e ações presenciais.
+    </p>
+
+    <div class="pres-points">
+      <div class="pres-point"><strong>📰 Artigos</strong><br><span class="small">Conteúdo técnico e profissional produzido continuamente.</span></div>
+      <div class="pres-point"><strong>🎙️ Entrevistas</strong><br><span class="small">Conexão entre estudantes e profissionais reais.</span></div>
+      <div class="pres-point"><strong>🧭 Guia de Carreiras</strong><br><span class="small">Base consultável de profissões, competências e caminhos.</span></div>
+      <div class="pres-point"><strong>💼 Portfólio</strong><br><span class="small">Transformação de experiências acadêmicas em evidências profissionais.</span></div>
+      <div class="pres-point"><strong>🤝 Mentoria</strong><br><span class="small">Apoio a alunos em fases iniciais da graduação.</span></div>
+      <div class="pres-point"><strong>🎒 Ensino Médio</strong><br><span class="small">Versão futura para escolas, feiras e ações comunitárias.</span></div>
+    </div>
+
+    <div class="callout">
+      <strong>Visão futura</strong>
+      <p style="margin:8px 0 0">
+        Transformar o Engenharia 360 em uma plataforma de extensão permanente,
+        conectando universidade, estudantes, profissionais, escolas e comunidade.
+      </p>
+    </div>
+  </div>
+
+  <div id="p20" class="pres-section">
+    <div class="badge">✅ CHECKLIST FINAL</div>
+    <h2 style="margin:0;color:var(--gold2)">Como o Engenharia 360 atende ao que foi pedido</h2>
+
+    <div class="check-grid">
+      <div class="check-item"><strong class="status-good">✓ Profissão e carreira</strong><p>O projeto diferencia trajetória profissional de simples escolha de cargo.</p></div>
+      <div class="check-item"><strong class="status-good">✓ Panorama das engenharias</strong><p>Relaciona diferentes modalidades, áreas e afinidades.</p></div>
+      <div class="check-item"><strong class="status-good">✓ Mercado de trabalho</strong><p>Apresenta caminhos profissionais e conteúdos de mercado trabalhados em aula.</p></div>
+      <div class="check-item"><strong class="status-good">✓ Tendências tecnológicas</strong><p>IA, IoT, BIM, Digital Twins, automação, energia limpa e Indústria 4.0.</p></div>
+      <div class="check-item"><strong class="status-good">✓ Certificações</strong><p>Inclui referências citadas nos slides e relaciona desenvolvimento profissional.</p></div>
+      <div class="check-item"><strong class="status-good">✓ Resolução 218 / atribuições</strong><p>Explica responsabilidade e limites profissionais.</p></div>
+      <div class="check-item"><strong class="status-good">✓ Projeto de extensão</strong><p>A plataforma é um produto aplicável ao público estudantil.</p></div>
+      <div class="check-item"><strong class="status-good">✓ Necessidade real</strong><p>Ataca a dificuldade de estudantes em visualizar caminhos de carreira.</p></div>
+      <div class="check-item"><strong class="status-good">✓ Design Thinking</strong><p>Empatizar → Definir → Idear → Prototipar → Testar.</p></div>
+      <div class="check-item"><strong class="status-good">✓ Metodologia Ágil</strong><p>MVP em ciclos curtos com priorização, teste e melhoria.</p></div>
+      <div class="check-item"><strong class="status-good">✓ Raciocínio lógico</strong><p>Estrutura perguntas, relações e análise do problema.</p></div>
+      <div class="check-item"><strong class="status-good">✓ Pensamento sistêmico</strong><p>Conecta perfil, competências, mercado, tecnologia e formação.</p></div>
+      <div class="check-item"><strong class="status-good">✓ Método Científico</strong><p>Prevê hipótese, teste piloto, análise de resultados e aprendizado.</p></div>
+      <div class="check-item"><strong class="status-good">✓ Fishbone / causa-raiz</strong><p>Pode ser usado para diagnosticar por que estudantes têm dificuldade de orientação profissional.</p></div>
+      <div class="check-item"><strong class="status-good">✓ Aplicabilidade</strong><p>Funciona por navegador e pode ser acessado por QR Code.</p></div>
+      <div class="check-item"><strong class="status-good">✓ Impacto social</strong><p>Pode apoiar estudantes universitários e, em ações de extensão, alunos do ensino médio.</p></div>
+      <div class="check-item"><strong class="status-good">✓ Documentação</strong><p>A própria plataforma reúne problema, metodologia, processo, equipe e resultados esperados.</p></div>
+      <div class="check-item"><strong class="status-good">✓ Comunicação final</strong><p>A apresentação completa acontece dentro do próprio site.</p></div>
+      <div class="check-item"><strong class="status-good">✓ Projeto 1</strong><p>Mapeamento de carreiras, empregabilidade, oportunidades e guia digital.</p></div>
+      <div class="check-item"><strong class="status-good">✓ Projeto 4</strong><p>Identidade profissional, currículo, LinkedIn, portfólio e comunicação.</p></div>
+    </div>
+
+    <div class="callout">
+      <strong>🎯 Síntese</strong>
+      <p style="margin:8px 0 0">
+        O Engenharia 360 não é apenas um quiz. Ele funciona como
+        ferramenta de orientação, guia de exploração profissional,
+        produto de extensão, protótipo tecnológico e suporte
+        para a apresentação acadêmica da disciplina.
+      </p>
+    </div>
+  </div>
+
+  <button class="btn btn-primary full" style="margin-top:20px" onclick="go('about')">VER EQUIPE E INFORMAÇÕES DO PROJETO →</button>
+</section>
+
+
+<!-- CONTENT & EXTENSION HUB -->
+<section id="extensionHub" class="screen hidden">
+  <div class="badge">🌎 CONTEÚDO, CARREIRA & EXTENSÃO</div>
+
+  <h1 class="profile-title">Engenharia 360 além do teste</h1>
+
+  <p class="quote">
+    A proposta é evoluir o Engenharia 360 para uma plataforma contínua de
+    <strong>orientação profissional, conteúdo técnico, aproximação com o mercado
+    e impacto educacional</strong>.
+  </p>
+
+  <div class="hub-grid">
+    <div class="hub-card">
+      <div class="hub-icon">📰</div>
+      <h3>Artigos Técnicos</h3>
+      <p>Conteúdos curtos sobre carreira, tecnologia, mercado, soft skills e tendências da engenharia.</p>
+      <button class="btn btn-secondary" onclick="jumpHub('articlesSection')">VER ARTIGOS</button>
+    </div>
+
+    <div class="hub-card">
+      <div class="hub-icon">🎙️</div>
+      <h3>Entrevistas com Profissionais</h3>
+      <p>Conversas com engenheiros sobre trajetória, rotina, desafios, mercado e conselhos para estudantes.</p>
+      <button class="btn btn-secondary" onclick="jumpHub('interviewsSection')">VER ENTREVISTAS</button>
+    </div>
+
+    <div class="hub-card">
+      <div class="hub-icon">🧭</div>
+      <h3>Guia de Carreiras</h3>
+      <p>Mapa organizado de áreas, competências, ferramentas, certificações e próximos passos.</p>
+      <button class="btn btn-secondary" onclick="jumpHub('guideSection')">ABRIR GUIA</button>
+    </div>
+
+    <div class="hub-card">
+      <div class="hub-icon">🎒</div>
+      <h3>Modo Ensino Médio</h3>
+      <p>Versão futura simplificada para feiras, escolas e ações de orientação vocacional.</p>
+      <button class="btn btn-secondary" onclick="jumpHub('highSchoolSection')">CONHECER IDEIA</button>
+    </div>
+
+    <div class="hub-card">
+      <div class="hub-icon">💼</div>
+      <h3>Portfólio Profissional</h3>
+      <p>Orientações para transformar experiências acadêmicas em evidências de competência.</p>
+      <button class="btn btn-secondary" onclick="jumpHub('portfolioSection')">VER PORTFÓLIO</button>
+    </div>
+
+    <div class="hub-card">
+      <div class="hub-icon">🤝</div>
+      <h3>Mentoria & Workshop</h3>
+      <p>Ações de extensão para apoiar estudantes com menor experiência e compartilhar conhecimento com a comunidade.</p>
+      <button class="btn btn-secondary" onclick="jumpHub('mentoringSection')">VER PROPOSTA</button>
+    </div>
+  </div>
+
+  <div id="articlesSection" class="pres-section">
+    <div class="badge">📰 ARTIGOS TÉCNICOS</div>
+    <h2 style="margin:0;color:var(--gold2)">Biblioteca Engenharia 360</h2>
+
+    <p>
+      A plataforma pode manter uma biblioteca de artigos escritos pela equipe,
+      convidados e futuramente pelos próprios estudantes.
+      Os textos ajudam a transformar pesquisa de carreira em conteúdo público e reutilizável.
+    </p>
+
+    <div class="article-grid">
+<div class="article">
+        <div class="meta">CARREIRA • LEITURA 4 MIN</div>
+        <h4>Como escolher uma área da engenharia sem se limitar cedo demais</h4>
+        <p>Exploração, autoconhecimento, experiências práticas e critérios para comparar possibilidades.</p>
+        <button class="btn btn-secondary full" style="margin-top:12px" onclick="openArticle('career-choice')">LER ARTIGO →</button>
+      </div>
+<div class="article">
+        <div class="meta">TECNOLOGIA • LEITURA 5 MIN</div>
+        <h4>IA na Engenharia: ferramenta, diferencial ou nova competência básica?</h4>
+        <p>Como inteligência artificial pode apoiar projetos, análise de dados, automação e tomada de decisão.</p>
+        <button class="btn btn-secondary full" style="margin-top:12px" onclick="openArticle('ai-engineering')">LER ARTIGO →</button>
+      </div>
+<div class="article">
+        <div class="meta">EMPREGABILIDADE • LEITURA 4 MIN</div>
+        <h4>O que colocar no LinkedIn enquanto você ainda está na graduação</h4>
+        <p>Projetos, atividades acadêmicas, cursos, competências e experiências que já podem fortalecer o perfil.</p>
+        <button class="btn btn-secondary full" style="margin-top:12px" onclick="openArticle('linkedin-student')">LER ARTIGO →</button>
+      </div>
+<div class="article">
+        <div class="meta">PORTFÓLIO • LEITURA 6 MIN</div>
+        <h4>Como transformar um trabalho da faculdade em projeto de portfólio</h4>
+        <p>Problema, processo, ferramentas, decisões, resultado e aprendizados: a estrutura de um bom case.</p>
+        <button class="btn btn-secondary full" style="margin-top:12px" onclick="openArticle('portfolio-project')">LER ARTIGO →</button>
+      </div>
+<div class="article">
+        <div class="meta">MERCADO • LEITURA 5 MIN</div>
+        <h4>Engenharia tradicional x carreiras emergentes</h4>
+        <p>Como BIM, energia limpa, dados, automação e sustentabilidade estão criando novas interseções profissionais.</p>
+        <button class="btn btn-secondary full" style="margin-top:12px" onclick="openArticle('emerging-careers')">LER ARTIGO →</button>
+      </div>
+<div class="article">
+        <div class="meta">SOFT SKILLS • LEITURA 4 MIN</div>
+        <h4>Competências que nenhum software substitui</h4>
+        <p>Comunicação, liderança, pensamento crítico, colaboração e capacidade de resolver problemas.</p>
+        <button class="btn btn-secondary full" style="margin-top:12px" onclick="openArticle('soft-skills')">LER ARTIGO →</button>
+      </div>
+</div>
+
+    <div class="callout">
+      <strong>📌 Meta de extensão</strong>
+      <p style="margin:8px 0 0">
+        Publicar inicialmente de 3 a 5 artigos técnicos e continuar ampliando a biblioteca
+        ao longo do projeto.
+      </p>
+    </div>
+  </div>
+
+  <div id="interviewsSection" class="pres-section">
+    <div class="badge">🎙️ ENTREVISTAS COM PROFISSIONAIS</div>
+    <h2 style="margin:0;color:var(--gold2)">Carreira contada por quem vive a profissão</h2>
+
+    <p>
+      Uma seção de entrevistas aproxima estudantes da realidade do mercado.
+      O objetivo não é mostrar apenas cargos, mas trajetórias reais:
+      como começou, quais escolhas funcionaram, quais erros aconteceram
+      e quais competências fazem diferença.
+    </p>
+
+    <div class="cards">
+      <div class="interview" onclick="openResource('interview-civil')" style="cursor:pointer">
+        <div class="interview-avatar">🏗️</div>
+        <div>
+          <h4>Engenharia Civil</h4>
+          <p><strong>Roteiro:</strong> primeiro estágio, rotina de obra/projeto, BIM, desafios, competências e conselho para quem está começando.</p>
+        </div>
+      </div>
+
+      <div class="interview" onclick="openResource('interview-electric')" style="cursor:pointer">
+        <div class="interview-avatar">⚡</div>
+        <div>
+          <h4>Engenharia Elétrica / Energia</h4>
+          <p><strong>Roteiro:</strong> transição energética, automação, especializações, segurança e oportunidades futuras.</p>
+        </div>
+      </div>
+
+      <div class="interview" onclick="openResource('interview-mech')" style="cursor:pointer">
+        <div class="interview-avatar">⚙️</div>
+        <div>
+          <h4>Engenharia Mecânica / Indústria</h4>
+          <p><strong>Roteiro:</strong> projetos, manutenção, manufatura, Indústria 4.0 e experiência de campo.</p>
+        </div>
+      </div>
+
+      <div class="interview" onclick="openResource('interview-management')" style="cursor:pointer">
+        <div class="interview-avatar">📊</div>
+        <div>
+          <h4>Gestão e Projetos</h4>
+          <p><strong>Roteiro:</strong> liderança, cronograma, custos, certificações, comunicação e transição para cargos de gestão.</p>
+        </div>
+      </div>
+    </div>
+
+    <h3 class="section-title">Perguntas-base para todas as entrevistas</h3>
+    <div class="guide-grid">
+      <div class="guide-item"><strong>1. Como começou?</strong><span class="small">Formação, estágio e primeiro emprego.</span></div>
+      <div class="guide-item"><strong>2. Como é a rotina?</strong><span class="small">Atividades que realmente ocupam o dia a dia.</span></div>
+      <div class="guide-item"><strong>3. O que ninguém conta?</strong><span class="small">Desafios, dificuldades e expectativas irreais.</span></div>
+      <div class="guide-item"><strong>4. Quais competências importam?</strong><span class="small">Técnicas e comportamentais.</span></div>
+      <div class="guide-item"><strong>5. Quais ferramentas usa?</strong><span class="small">Softwares, metodologias e tecnologias.</span></div>
+      <div class="guide-item"><strong>6. Conselho para estudantes</strong><span class="small">O que faria diferente se estivesse na graduação hoje.</span></div>
+    </div>
+
+    <div class="callout">
+      <strong>🎥 Formatos possíveis</strong>
+      <p style="margin:8px 0 0">
+        Vídeo curto • entrevista escrita • podcast • reels • resumo em artigo • QR Code durante workshops.
+      </p>
+    </div>
+  </div>
+
+  <div id="guideSection" class="pres-section">
+    <div class="badge">🧭 GUIA DIGITAL DE CARREIRAS</div>
+    <h2 style="margin:0;color:var(--gold2)">Um mapa para explorar possibilidades</h2>
+
+    <p>
+      O guia transforma as informações coletadas pelo projeto em uma base consultável,
+      mesmo por quem não quiser fazer o teste.
+    </p>
+
+    <div class="guide-grid">
+      <div class="guide-item">
+        <strong>🏗️ Áreas de atuação</strong>
+        <span class="small">O que cada área faz e em que tipos de projeto aparece.</span>
+      </div>
+      <div class="guide-item">
+        <strong>💼 Cargos e caminhos</strong>
+        <span class="small">Possíveis funções profissionais e como elas se conectam.</span>
+      </div>
+      <div class="guide-item">
+        <strong>🧠 Competências</strong>
+        <span class="small">Conhecimentos técnicos e habilidades comportamentais importantes.</span>
+      </div>
+      <div class="guide-item">
+        <strong>💻 Ferramentas</strong>
+        <span class="small">Softwares, metodologias e tecnologias relevantes.</span>
+      </div>
+      <div class="guide-item">
+        <strong>🏅 Certificações</strong>
+        <span class="small">Referências de qualificações e registro profissional.</span>
+      </div>
+      <div class="guide-item">
+        <strong>🎙️ Profissionais reais</strong>
+        <span class="small">Entrevistas conectadas a cada área do guia.</span>
+      </div>
+      <div class="guide-item">
+        <strong>📰 Artigos relacionados</strong>
+        <span class="small">Conteúdo para aprofundar cada tema.</span>
+      </div>
+      <div class="guide-item">
+        <strong>🗺️ Próximos passos</strong>
+        <span class="small">Cursos, estágio, projetos, portfólio e networking.</span>
+      </div>
+    </div>
+  </div>
+
+  <div id="highSchoolSection" class="pres-section">
+    <div class="badge">🎒 FUTURO • ENSINO MÉDIO</div>
+
+    <div class="hs-banner">
+      <h2>Engenharia 360 Escolas</h2>
+
+      <p>
+        Uma evolução futura do projeto pode adaptar a ferramenta para estudantes
+        do ensino médio, especialmente em feiras de profissões,
+        escolas públicas e particulares, eventos comunitários e ações de extensão.
+      </p>
+
+      <div>
+        <span class="future-chip">linguagem mais simples</span>
+        <span class="future-chip">quiz reduzido</span>
+        <span class="future-chip">vídeos curtos</span>
+        <span class="future-chip">profissões explicadas</span>
+        <span class="future-chip">QR Code</span>
+        <span class="future-chip">atividades em sala</span>
+      </div>
+    </div>
+
+    <h3 class="section-title">Como seria a experiência para alunos do ensino médio?</h3>
+
+    <div class="mentoring-flow">
+      <div class="mentor-step"><strong>1. Descobrir</strong><span class="small">“O que um engenheiro realmente faz?”</span></div>
+      <div class="mentor-step"><strong>2. Experimentar</strong><span class="small">Quiz curto e exemplos de projetos.</span></div>
+      <div class="mentor-step"><strong>3. Explorar</strong><span class="small">Carreiras, cursos e tecnologias.</span></div>
+      <div class="mentor-step"><strong>4. Conversar</strong><span class="small">Workshop ou bate-papo com universitários/profissionais.</span></div>
+    </div>
+
+    <h3 class="section-title">Possíveis ações de extensão</h3>
+
+    <div class="workshop-grid">
+      <div class="workshop-item"><strong>🏫 Visita a escolas</strong><span class="small">Apresentar o Engenharia 360 em turmas do 2º e 3º ano.</span></div>
+      <div class="workshop-item"><strong>🎪 Feira de Profissões</strong><span class="small">Totem ou QR Code para testar a plataforma durante eventos.</span></div>
+      <div class="workshop-item"><strong>🎤 Mini palestra</strong><span class="small">“O que ninguém conta sobre escolher uma engenharia”.</span></div>
+      <div class="workshop-item"><strong>🧪 Oficina prática</strong><span class="small">Pequenos desafios de Civil, Elétrica, Mecânica, Química e Ambiental.</span></div>
+      <div class="workshop-item"><strong>📘 Guia para escolas</strong><span class="small">Material resumido de carreiras e possibilidades acadêmicas.</span></div>
+      <div class="workshop-item"><strong>📊 Pesquisa de impacto</strong><span class="small">Antes/depois para medir aumento de conhecimento sobre profissões.</span></div>
+    </div>
+
+    <div class="callout">
+      <strong>🌎 Impacto social futuro</strong>
+      <p style="margin:8px 0 0">
+        A ferramenta pode democratizar acesso à informação profissional,
+        principalmente para jovens que não convivem com engenheiros
+        ou possuem pouco contato com diferentes carreiras.
+      </p>
+    </div>
+  </div>
+
+  <div id="portfolioSection" class="pres-section">
+    <div class="badge">💼 PORTFÓLIO & PERSONAL BRANDING</div>
+    <h2 style="margin:0;color:var(--gold2)">Transformar experiência em evidência profissional</h2>
+
+    <p>
+      O portfólio online pode ser uma extensão natural do resultado do Engenharia 360.
+      Depois de identificar áreas e competências, o estudante passa a registrar
+      projetos que comprovem seu desenvolvimento.
+    </p>
+
+    <div class="guide-grid">
+      <div class="guide-item"><strong>👤 Apresentação</strong><span class="small">Quem sou, área de interesse e objetivos profissionais.</span></div>
+      <div class="guide-item"><strong>🏗️ Projetos acadêmicos</strong><span class="small">Problema, solução, ferramentas utilizadas e resultado.</span></div>
+      <div class="guide-item"><strong>🧠 Competências</strong><span class="small">Exemplos concretos de onde cada habilidade foi aplicada.</span></div>
+      <div class="guide-item"><strong>🏅 Cursos & certificações</strong><span class="small">Formações complementares relevantes.</span></div>
+      <div class="guide-item"><strong>📰 Artigos publicados</strong><span class="small">Conteúdo técnico produzido pelo estudante.</span></div>
+      <div class="guide-item"><strong>🔗 LinkedIn</strong><span class="small">Perfil profissional alinhado ao portfólio.</span></div>
+      <div class="guide-item"><strong>📄 Currículo</strong><span class="small">Versão objetiva e coerente com a área de interesse.</span></div>
+      <div class="guide-item"><strong>📬 Contato</strong><span class="small">Facilitar networking e oportunidades.</span></div>
+    </div>
+
+    <div class="speaker-note">
+      <strong>Exemplo:</strong>
+      um estudante com perfil “Inovador Tecnológico” pode usar o próprio
+      Engenharia 360 como case de portfólio, descrevendo problema,
+      pesquisa, interface, algoritmo, testes e aprendizados.
+    </div>
+  </div>
+
+  <div id="mentoringSection" class="pres-section">
+    <div class="badge">🤝 MENTORIA & WORKSHOP COMUNITÁRIO</div>
+    <h2 style="margin:0;color:var(--gold2)">Compartilhar experiência para gerar impacto</h2>
+
+    <h3 class="section-title">Mentoria para alunos com menor experiência</h3>
+
+    <div class="mentoring-flow">
+      <div class="mentor-step"><strong>1. Diagnóstico</strong><span class="small">Dúvidas, área de interesse e estágio atual.</span></div>
+      <div class="mentor-step"><strong>2. Direcionamento</strong><span class="small">Competências e próximos passos.</span></div>
+      <div class="mentor-step"><strong>3. Ação</strong><span class="small">Curso, projeto, LinkedIn ou portfólio.</span></div>
+      <div class="mentor-step"><strong>4. Retorno</strong><span class="small">Revisão e acompanhamento curto.</span></div>
+    </div>
+
+    <h3 class="section-title">Workshop comunitário</h3>
+
+    <div class="workshop-grid">
+      <div class="workshop-item"><strong>🧭 Descobrindo Carreiras</strong><span class="small">Áreas, profissões e tendências da engenharia.</span></div>
+      <div class="workshop-item"><strong>💼 Seu Primeiro Portfólio</strong><span class="small">Como documentar projetos acadêmicos.</span></div>
+      <div class="workshop-item"><strong>🔗 LinkedIn para Estudantes</strong><span class="small">Perfil, projetos, networking e posicionamento.</span></div>
+      <div class="workshop-item"><strong>🤖 Engenharia do Futuro</strong><span class="small">IA, BIM, IoT, automação, energia limpa e dados.</span></div>
+      <div class="workshop-item"><strong>🎤 Profissional Convidado</strong><span class="small">Entrevista ao vivo ou roda de conversa.</span></div>
+      <div class="workshop-item"><strong>🎒 Escolhendo uma Engenharia</strong><span class="small">Versão voltada a alunos do ensino médio.</span></div>
+    </div>
+
+    <div class="callout">
+      <strong>📦 Produtos de extensão</strong>
+      <p style="margin:8px 0 0">
+        Plataforma • artigos • entrevistas • guia de carreiras • portfólio •
+        mentoria • workshop • material educativo • apresentação em escolas.
+      </p>
+    </div>
+  </div>
+
+  <button class="btn btn-primary full" style="margin-top:20px" onclick="go('presentation')">
+    VER COMO TUDO ISSO ENTRA NA APRESENTAÇÃO →
+  </button>
+</section>
+
+
+<!-- HIGH SCHOOL PRESENTATION -->
+<section id="schoolPresentation" class="screen hidden">
+  <div class="school-hero">
+    <div class="badge">🎒 ENGENHARIA 360 • ESCOLAS</div>
+    <h1>Você já imaginou quantas coisas um engenheiro pode criar?</h1>
+    <p class="hero-lead" style="margin:0;max-width:760px">
+      Uma apresentação curta para estudantes do ensino médio conhecerem
+      diferentes engenharias, descobrirem interesses e perderem o medo
+      de escolher uma profissão.
+    </p>
+  </div>
+
+  <div class="school-slide">
+    <h2>1. Engenharia não é uma profissão só</h2>
+    <p>
+      Quando alguém fala “engenheiro”, muita gente pensa apenas em prédio ou cálculo.
+      Mas engenharia também está em energia solar, celulares, robôs, alimentos,
+      tratamento de água, fábricas, estradas, aplicativos e cidades inteligentes.
+    </p>
+
+    <div class="school-cards">
+      <div class="school-card"><div class="big">🏗️</div><strong>Civil</strong><p>Casas, prédios, pontes, estradas, saneamento e cidades.</p></div>
+      <div class="school-card"><div class="big">⚡</div><strong>Elétrica</strong><p>Energia, eletrônica, automação, telecom e sistemas conectados.</p></div>
+      <div class="school-card"><div class="big">⚙️</div><strong>Mecânica</strong><p>Máquinas, motores, robótica, veículos e fabricação.</p></div>
+      <div class="school-card"><div class="big">🧪</div><strong>Química</strong><p>Alimentos, medicamentos, combustíveis, materiais e processos.</p></div>
+      <div class="school-card"><div class="big">🌱</div><strong>Ambiental</strong><p>Água, resíduos, sustentabilidade, recursos naturais e impacto.</p></div>
+      <div class="school-card"><div class="big">💻</div><strong>Computação</strong><p>Software, hardware, IA, robótica, dados e sistemas inteligentes.</p></div>
+    </div>
+  </div>
+
+  <div class="school-slide">
+    <h2>2. Qual problema você gostaria de ajudar a resolver?</h2>
+    <div class="class-interaction">
+      <div class="poll-options">
+        <button class="poll-btn" onclick="schoolPoll('cidade')">🏙️ Melhorar cidades</button>
+        <button class="poll-btn" onclick="schoolPoll('energia')">☀️ Criar energia limpa</button>
+        <button class="poll-btn" onclick="schoolPoll('tecnologia')">🤖 Criar tecnologias</button>
+        <button class="poll-btn" onclick="schoolPoll('ambiente')">🌱 Proteger o ambiente</button>
+        <button class="poll-btn" onclick="schoolPoll('industria')">⚙️ Criar máquinas</button>
+        <button class="poll-btn" onclick="schoolPoll('pessoas')">💧 Melhorar a vida das pessoas</button>
+      </div>
+      <div id="schoolPollResult" class="poll-result">Escolha uma opção.</div>
+    </div>
+  </div>
+
+  <div class="school-slide">
+    <h2>3. O que um engenheiro precisa saber além de matemática?</h2>
+
+    <div class="school-cards">
+      <div class="school-card"><div class="big">🧠</div><strong>Resolver problemas</strong><p>Entender o que está acontecendo e criar alternativas.</p></div>
+      <div class="school-card"><div class="big">🤝</div><strong>Trabalhar em equipe</strong><p>Grandes projetos quase nunca são feitos sozinhos.</p></div>
+      <div class="school-card"><div class="big">💬</div><strong>Comunicar ideias</strong><p>Explicar decisões técnicas para pessoas diferentes.</p></div>
+      <div class="school-card"><div class="big">💻</div><strong>Usar tecnologia</strong><p>Software, dados, IA, sensores e ferramentas digitais.</p></div>
+      <div class="school-card"><div class="big">🌎</div><strong>Entender impacto</strong><p>Soluções precisam funcionar para pessoas e para o ambiente.</p></div>
+      <div class="school-card"><div class="big">🔁</div><strong>Aprender sempre</strong><p>A tecnologia muda e a carreira também.</p></div>
+    </div>
+  </div>
+
+  <div class="school-slide">
+    <h2>4. Mini teste: qual universo da engenharia mais combina com você?</h2>
+
+    <div class="school-quiz">
+      <div class="school-q">
+        <h4>1. Qual projeto parece mais divertido?</h4>
+        <button class="school-answer" onclick="schoolAnswer('construir',this)">🏗️ Construir uma ponte</button>
+        <button class="school-answer" onclick="schoolAnswer('energia',this)">☀️ Criar um sistema de energia solar</button>
+        <button class="school-answer" onclick="schoolAnswer('tecnologia',this)">🤖 Programar um robô</button>
+        <button class="school-answer" onclick="schoolAnswer('ambiente',this)">🌱 Recuperar um rio poluído</button>
+      </div>
+
+      <div class="school-q">
+        <h4>2. Em um trabalho de grupo, o que você mais gosta de fazer?</h4>
+        <button class="school-answer" onclick="schoolAnswer('construir',this)">📐 Planejar como tudo vai ficar</button>
+        <button class="school-answer" onclick="schoolAnswer('gestao',this)">📊 Organizar tarefas e pessoas</button>
+        <button class="school-answer" onclick="schoolAnswer('tecnologia',this)">💻 Procurar ferramentas e tecnologia</button>
+        <button class="school-answer" onclick="schoolAnswer('ambiente',this)">🌎 Pensar no impacto da solução</button>
+      </div>
+
+      <div class="school-q">
+        <h4>3. Qual assunto desperta mais curiosidade?</h4>
+        <button class="school-answer" onclick="schoolAnswer('construir',this)">🏙️ Cidades e construções</button>
+        <button class="school-answer" onclick="schoolAnswer('energia',this)">⚡ Eletricidade e energia</button>
+        <button class="school-answer" onclick="schoolAnswer('tecnologia',this)">🧠 IA, computadores e robótica</button>
+        <button class="school-answer" onclick="schoolAnswer('ambiente',this)">💧 Água, clima e sustentabilidade</button>
+      </div>
+
+      <div class="school-q">
+        <h4>4. O que seria mais legal dizer no futuro?</h4>
+        <button class="school-answer" onclick="schoolAnswer('construir',this)">“Eu ajudei a construir isso.”</button>
+        <button class="school-answer" onclick="schoolAnswer('energia',this)">“Eu ajudei a gerar energia de forma melhor.”</button>
+        <button class="school-answer" onclick="schoolAnswer('tecnologia',this)">“Eu criei uma tecnologia nova.”</button>
+        <button class="school-answer" onclick="schoolAnswer('gestao',this)">“Eu liderei um grande projeto.”</button>
+      </div>
+
+      <button class="btn btn-primary full" onclick="finishSchoolQuiz()">VER MEU RESULTADO →</button>
+
+      <div id="schoolQuizResult" class="school-result hidden"></div>
+    </div>
+  </div>
+
+  <div class="school-slide">
+    <h2>5. Como começar a explorar antes da faculdade?</h2>
+    <div class="school-cards">
+      <div class="school-card"><div class="big">🔎</div><strong>Pesquisar</strong><p>Veja vídeos, cursos e projetos de várias engenharias.</p></div>
+      <div class="school-card"><div class="big">🧪</div><strong>Experimentar</strong><p>Feiras, robótica, programação, maquetes, química ou projetos ambientais.</p></div>
+      <div class="school-card"><div class="big">🎙️</div><strong>Conversar</strong><p>Pergunte a estudantes e profissionais como é a rotina real.</p></div>
+    </div>
+
+    <div class="callout">
+      <strong>Mensagem final para a turma</strong>
+      <p style="margin:8px 0 0">
+        Você não precisa decidir toda a sua vida agora.
+        O objetivo é começar a explorar, descobrir o que desperta sua curiosidade
+        e entender quais problemas você gostaria de ajudar a resolver.
+      </p>
+    </div>
+  </div>
+
+  <button class="btn btn-primary full" style="margin-top:20px" onclick="go('home')">VOLTAR AO ENGENHARIA 360</button>
+</section>
+
+<!-- ABOUT -->
+<section id="about" class="screen hidden">
+  <div class="badge">🎓 PROJETO & EQUIPE</div>
+  <h1 class="profile-title">Engenharia 360</h1>
+  <p class="small"><strong>Disciplina:</strong> Profissão e Carreira • <strong>Professora:</strong> Karina Kida</p>
+  <p class="quote">
+    Projeto acadêmico desenvolvido na disciplina <strong>Profissão e Carreira</strong>,
+    reunindo pesquisa sobre mercado, competências, inovação e caminhos profissionais na engenharia.
+  </p>
+
+  <h3 class="section-title">👥 Integrantes</h3>
+  <div class="team-grid-v6">
+    <div class="team-photo">
+      <img src="./equipe/jhessica.jpg" alt="Jhessica Ellen de Souza Nakano" onerror="this.src='https://placehold.co/500x500/0b6b61/e7c89c?text=Jhessica'">
+      <div class="team-body">
+        <strong>Jhessica Ellen de Souza Nakano</strong>
+        <span class="team-course">Engenharia Civil</span>
+        <span class="team-role">Coordenação, desenvolvimento e organização</span>
+      </div>
+    </div>
+
+    <div class="team-photo">
+      <img src="./equipe/aghata.jpg" alt="Aghata Wanessa Lacerda Leite" onerror="this.src='https://placehold.co/500x500/0b6b61/e7c89c?text=Aghata'">
+      <div class="team-body">
+        <strong>Aghata Wanessa Lacerda Leite</strong>
+        <span class="team-course">Curso: informar</span>
+        <span class="team-role">Pesquisa e desenvolvimento</span>
+      </div>
+    </div>
+
+    <div class="team-photo">
+      <img src="./equipe/richard.jpg" alt="Richard Gil Ferreira Brito" onerror="this.src='https://placehold.co/500x500/0b6b61/e7c89c?text=Richard'">
+      <div class="team-body">
+        <strong>Richard Gil Ferreira Brito</strong>
+        <span class="team-course">Curso: informar</span>
+        <span class="team-role">Pesquisa, conteúdo e estruturação</span>
+      </div>
+    </div>
+
+    <div class="team-photo">
+      <img src="./equipe/mauro.jpg" alt="Mauro César Oliveira Venâncio" onerror="this.src='https://placehold.co/500x500/0b6b61/e7c89c?text=Mauro'">
+      <div class="team-body">
+        <strong>Mauro César Oliveira Venâncio</strong>
+        <span class="team-course">Curso: informar</span>
+        <span class="team-role">Carreiras, engenharia e tendências</span>
+      </div>
+    </div>
+
+    <div class="team-photo">
+      <img src="./equipe/andre.jpg" alt="Andre Luiz Andrade de Oliveira" onerror="this.src='https://placehold.co/500x500/0b6b61/e7c89c?text=Andre'">
+      <div class="team-body">
+        <strong>Andre Luiz Andrade de Oliveira</strong>
+        <span class="team-course">Curso: informar</span>
+        <span class="team-role">Organização, análise e desenvolvimento</span>
+      </div>
+    </div>
+  </div>
+
+  <h3 class="section-title">📚 O que estamos estudando?</h3>
+  <div class="cards">
+    <div class="card"><strong>Identidade profissional</strong><p class="small">Como interesses, competências e valores influenciam escolhas de carreira.</p></div>
+    <div class="card"><strong>Mercado de trabalho</strong><p class="small">Áreas tradicionais, novas oportunidades e transformação das profissões.</p></div>
+    <div class="card"><strong>Competências</strong><p class="small">Conhecimentos técnicos, comunicação, liderança, tecnologia e capacidade de resolver problemas.</p></div>
+    <div class="card"><strong>Planejamento de carreira</strong><p class="small">Como transformar interesses em ações: cursos, projetos, estágio, networking e especialização.</p></div>
+    <div class="card"><strong>🔎 Projeto 1 • Mapeamento de Carreiras</strong><p class="small">Especialidades em engenharia, tendências, salários, oportunidades, desafios, entrevistas, visitas e guia digital de carreiras.</p></div>
+    <div class="card"><strong>🪪 Projeto 4 • Portfólio & Personal Branding</strong><p class="small">Portfólio digital, presença online, LinkedIn, currículo, conteúdo técnico, mentoria e empregabilidade.</p></div>
+  </div>
+
+
+  <h3 class="section-title">📚 Propostas da disciplina incorporadas</h3>
+
+  <div class="cards">
+    <div class="card">
+      <strong>Projeto 1 • Mapeamento de Carreiras em Engenharia</strong>
+      <p class="small">
+        <b>Aplicação & Impacto Social:</b> entrevistas com profissionais,
+        visitas a empresas, guia de carreiras e apresentação para alunos do ensino médio.
+        <br><br>
+        <b>Abordagens:</b> Profissão e Identidade • Análise de Dados • Empregabilidade.
+        <br><br>
+        <b>Resultados:</b> relatório, vídeos e guia digital de carreiras.
+      </p>
+    </div>
+
+    <div class="card">
+      <strong>Projeto 4 • Portfólio Profissional e Personal Branding</strong>
+      <p class="small">
+        <b>Aplicação & Impacto Social:</b> portfólio online, artigos técnicos,
+        mentoria para alunos com menor experiência e workshop comunitário.
+        <br><br>
+        <b>Abordagens:</b> Empregabilidade • Comunicação • Identidade Profissional.
+        <br><br>
+        <b>Resultados:</b> portfólio digital, 3–5 artigos publicados
+        e material de workshop.
+      </p>
+    </div>
+  </div>
+
+  <div class="callout">
+    <strong>💡 Síntese do Engenharia 360</strong>
+    <p style="margin:8px 0 0">
+      A plataforma reúne elementos das duas propostas:
+      primeiro ajuda o estudante a mapear possibilidades profissionais;
+      depois mostra competências, tecnologias e próximos passos que podem
+      fortalecer sua identidade profissional e servir de base para
+      currículo, LinkedIn e portfólio.
+    </p>
+  </div>
+
+
+  <h3 class="section-title">✅ Conteúdos da disciplina incorporados</h3>
+  <div class="cards">
+    <div class="card"><strong>Profissão x Carreira</strong><p class="small">Conhecimento e prática profissional x trajetória de desenvolvimento ao longo da vida.</p></div>
+    <div class="card"><strong>Mercado & Tendências</strong><p class="small">Áreas de atuação, empregabilidade, tecnologias, salários apresentados em aula e certificações.</p></div>
+    <div class="card"><strong>Resolução 218 / CONFEA</strong><p class="small">Atribuições, responsabilidades e limites de atuação profissional.</p></div>
+    <div class="card"><strong>Resolução de Problemas</strong><p class="small">Raciocínio lógico, pensamento sistêmico, Design Thinking, Método Científico e Fishbone.</p></div>
+    <div class="card"><strong>Projeto de Extensão</strong><p class="small">Necessidade real, impacto social, trabalho em equipe, aplicabilidade e comunicação dos resultados.</p></div>
+    <div class="card"><strong>Empregabilidade & Identidade</strong><p class="small">LinkedIn, currículo, portfólio, competências, networking e planejamento de carreira.</p></div>
+  </div>
+
+
+  <h3 class="section-title">🌎 Produtos e ações de continuidade</h3>
+  <div class="cards">
+    <div class="card"><strong>📰 Artigos técnicos</strong><p class="small">Biblioteca de conteúdo sobre carreira, tecnologia, mercado e competências.</p></div>
+    <div class="card"><strong>🎙️ Entrevistas</strong><p class="small">Profissionais compartilhando trajetória, rotina e conselhos.</p></div>
+    <div class="card"><strong>🧭 Guia digital de carreiras</strong><p class="small">Áreas, cargos, competências, certificações, ferramentas e próximos passos.</p></div>
+    <div class="card"><strong>💼 Portfólio online</strong><p class="small">Projetos acadêmicos transformados em evidências de desenvolvimento profissional.</p></div>
+    <div class="card"><strong>🤝 Mentoria</strong><p class="small">Orientação para estudantes com menor experiência acadêmica ou profissional.</p></div>
+    <div class="card"><strong>🎒 Ensino Médio & Workshop</strong><p class="small">Ações futuras em escolas, feiras de profissões e eventos comunitários.</p></div>
+  </div>
+
+  <h3 class="section-title">ℹ️ Caráter acadêmico</h3>
+  <div class="callout">
+    <strong>Importante</strong>
+    <p style="margin:8px 0 0">
+      O Engenharia 360 é uma ferramenta acadêmica, educativa e exploratória.
+      Seus resultados não constituem avaliação psicológica ou vocacional validada
+      e não determinam a escolha de uma profissão.
+    </p>
+  </div>
+
+  <div class="cards" style="margin-top:18px">
+    <div class="card"><strong>🎓 Instituição</strong><p class="small">ULBRA Manaus</p></div>
+    <div class="card"><strong>📘 Disciplina</strong><p class="small">Profissão e Carreira</p></div>
+  </div>
+
+  <button class="btn btn-primary full" style="margin-top:20px" onclick="go('presentation')">ABRIR APRESENTAÇÃO COMPLETA →</button>
+</section>
+
+
+<!-- ARTICLE / RESOURCE MODAL -->
+<div id="articleModal" class="modal hidden" onclick="articleBackdrop(event)">
+  <div class="modal-box">
+    <div class="modal-top">
+      <div>
+        <div id="articleModalType" class="badge">CONTEÚDO</div>
+        <h3 id="articleModalTitle" class="modal-title"></h3>
+      </div>
+      <button class="close" onclick="closeArticle()">×</button>
+    </div>
+    <div id="articleModalBody" class="article-modal-content"></div>
+  </div>
+</div>
+
+<!-- DETAIL MODAL -->
+<div id="detailModal" class="modal hidden" onclick="modalBackdrop(event)">
+  <div class="modal-box">
+    <div class="modal-top">
+      <div>
+        <div id="modalType" class="badge"></div>
+        <h3 id="modalTitle" class="modal-title"></h3>
+      </div>
+      <button class="close" onclick="closeModal()">×</button>
+    </div>
+    <div class="modal-section"><h4>O que é?</h4><p id="modalDescription"></p></div>
+    <div class="modal-section"><h4>Na prática</h4><p id="modalPractice"></p></div>
+    <div class="modal-section"><h4>Como começar a desenvolver</h4><p id="modalStart"></p></div>
+    <div class="modal-section"><h4>Palavras-chave</h4><div id="modalTags" class="tags"></div></div>
+  </div>
+</div>
+
+<div class="footer">
+  Engenharia 360 • ULBRA • Profissão e Carreira • Professora Karina Kida<br>
+  Descubra seu perfil. Explore seu futuro.
+</div>
+
+</div>
+
+<script>
+const PROFILE_KEYS=["construtor","energia","mecanico","inovador","gestor","sustentavel"];
+
+const profiles={
+construtor:{
+ name:"🏗️ Construtor Estratégico",short:"Construtor Estratégico",
+ phrase:"Você combina visão prática, planejamento e execução. Tende a gostar de transformar ideias em estruturas, obras e soluções concretas.",
+ one:"Você tende a se destacar onde planejamento técnico, execução e impacto físico se encontram.",
+ careers:["Engenheiro de Obras","Engenheiro Estrutural","Coordenador BIM","Engenheiro de Infraestrutura","Planejador de Obras","Especialista em Construção Digital"],
+ areas:["Estruturas e Infraestrutura","Planejamento de Obras","BIM e Coordenação","Construção Inteligente"],
+ skills:["BIM e CAD","Orçamento e planejamento","Gestão de obras","Compatibilização de projetos"],
+ techs:["BIM","Digital Twins","Drones","Construção 4.0"],
+ eng:{"Engenharia Civil":5,"Engenharia Mecânica":2,"Engenharia Elétrica":1,"Engenharia de Produção":3,"Engenharia Ambiental":2,"Engenharia Química":1,"Engenharia de Computação":1}
+},
+energia:{
+ name:"⚡ Especialista em Energia",short:"Especialista em Energia",
+ phrase:"Seu perfil valoriza precisão, eficiência e funcionamento de sistemas. Você tende a se interessar por energia, eletricidade e integração tecnológica.",
+ one:"Você tende a se destacar em sistemas que exigem precisão, eficiência energética e visão técnica.",
+ careers:["Engenheiro de Energia","Especialista em Energias Renováveis","Engenheiro de Automação","Especialista em Smart Grids","Engenheiro de Eficiência Energética","Projetista de Sistemas Elétricos"],
+ areas:["Sistemas Elétricos","Energias Renováveis","Eficiência Energética","Smart Grids"],
+ skills:["Circuitos e sistemas","Automação","Análise de dados","Segurança e eficiência"],
+ techs:["Smart Grids","Energia Solar","Armazenamento","IoT"],
+ eng:{"Engenharia Elétrica":5,"Engenharia Mecânica":2,"Engenharia Civil":2,"Engenharia de Produção":2,"Engenharia Ambiental":3,"Engenharia Química":2,"Engenharia de Computação":3}
+},
+mecanico:{
+ name:"⚙️ Criador Mecânico",short:"Criador Mecânico",
+ phrase:"Você demonstra afinidade com máquinas, movimento, materiais e criação de soluções físicas eficientes.",
+ one:"Você tende a se destacar projetando, melhorando e entendendo como sistemas físicos funcionam.",
+ careers:["Engenheiro de Projetos Mecânicos","Especialista em Robótica","Engenheiro de Manufatura","Engenheiro de Automação Industrial","Especialista em Simulação","Engenheiro de Manutenção"],
+ areas:["Projeto Mecânico","Robótica","Manufatura Avançada","Manutenção e Confiabilidade"],
+ skills:["CAD 3D","Materiais","Simulação","Prototipagem"],
+ techs:["Robótica","Impressão 3D","CAE","Indústria 4.0"],
+ eng:{"Engenharia Mecânica":5,"Engenharia Elétrica":2,"Engenharia Civil":2,"Engenharia de Produção":3,"Engenharia Química":2,"Engenharia Ambiental":1,"Engenharia de Computação":2}
+},
+inovador:{
+ name:"🤖 Inovador Tecnológico",short:"Inovador Tecnológico",
+ phrase:"Você demonstra forte interesse por tecnologia, automação, criatividade e resolução de problemas complexos.",
+ one:"Você tende a se destacar em ambientes onde tecnologia, criatividade e solução de problemas trabalham juntas.",
+ careers:["Especialista em Automação","Engenheiro de Inovação","Especialista em Digital Twins","Engenheiro de Smart Buildings","Especialista em IA aplicada à Engenharia","Engenheiro de Sistemas Inteligentes"],
+ areas:["Automação e Controle","Robótica","Sistemas Inteligentes","Smart Buildings"],
+ skills:["Programação","Lógica","Análise de dados","Integração de sistemas"],
+ techs:["Inteligência Artificial","IoT","Digital Twins","Automação"],
+ eng:{"Engenharia Elétrica":4,"Engenharia Mecânica":4,"Engenharia Civil":3,"Engenharia de Produção":3,"Engenharia Química":2,"Engenharia Ambiental":2,"Engenharia de Computação":5}
+},
+gestor:{
+ name:"📊 Gestor de Projetos",short:"Gestor de Projetos",
+ phrase:"Seu perfil aponta para organização, liderança e tomada de decisão. Você tende a enxergar o projeto como um sistema inteiro.",
+ one:"Você tende a se destacar conectando pessoas, recursos, prazos e decisões para fazer projetos acontecerem.",
+ careers:["Gerente de Projetos","Engenheiro de Planejamento","Coordenador de Projetos","Especialista em Gestão de Riscos","Engenheiro de Custos","Consultor de Processos"],
+ areas:["Gestão de Projetos","Planejamento e Controle","Orçamento","Processos e Operações"],
+ skills:["Liderança","Comunicação","Gestão de riscos","Indicadores e análise"],
+ techs:["Business Intelligence","IA aplicada à gestão","ERP","BIM 4D e 5D"],
+ eng:{"Engenharia de Produção":5,"Engenharia Civil":4,"Engenharia Mecânica":3,"Engenharia Elétrica":3,"Engenharia Química":3,"Engenharia Ambiental":3,"Engenharia de Computação":3}
+},
+sustentavel:{
+ name:"🌱 Engenheiro Sustentável",short:"Engenheiro Sustentável",
+ phrase:"Você tende a buscar soluções que conciliem desempenho técnico, responsabilidade ambiental e benefício social.",
+ one:"Você tende a se destacar criando soluções eficientes que usam melhor os recursos e reduzem impactos.",
+ careers:["Engenheiro Ambiental","Especialista em Saneamento","Consultor de Sustentabilidade","Especialista ESG","Engenheiro de Energia Limpa","Especialista em Infraestrutura Sustentável"],
+ areas:["Saneamento","Eficiência de Recursos","Energia Limpa","Gestão Ambiental"],
+ skills:["Análise ambiental","Indicadores ESG","Eficiência de recursos","Projetos sustentáveis"],
+ techs:["Energia Limpa","Sensoriamento","IoT Ambiental","Materiais Sustentáveis"],
+ eng:{"Engenharia Ambiental":5,"Engenharia Civil":4,"Engenharia Química":4,"Engenharia Elétrica":3,"Engenharia Mecânica":2,"Engenharia de Produção":3,"Engenharia de Computação":2}
+}
+};
+
+const questions=[
+{q:"Qual dessas atividades mais chama sua atenção?",a:[["🏗️ Planejar e executar uma grande obra",{construtor:3,gestor:1}],["⚡ Desenvolver sistemas de energia",{energia:3,inovador:1}],["⚙️ Projetar máquinas e equipamentos",{mecanico:3,inovador:1}],["🤖 Automatizar processos usando tecnologia",{inovador:3,energia:1,mecanico:1}],["📊 Liderar equipes e coordenar projetos",{gestor:3,construtor:1}],["🌱 Criar soluções com menor impacto ambiental",{sustentavel:3,gestor:1}]]},
+{q:"Em um projeto em grupo, qual papel você assume naturalmente?",a:[["🏗️ Organizo como a solução será construída",{construtor:3,gestor:1}],["⚡ Cuido do funcionamento técnico dos sistemas",{energia:2,mecanico:2}],["⚙️ Penso em mecanismos, materiais e componentes",{mecanico:3,construtor:1}],["🤖 Procuro uma solução tecnológica diferente",{inovador:3,mecanico:1}],["📊 Divido tarefas e acompanho prazos",{gestor:3,construtor:1}],["🌱 Questiono consumo, impacto e sustentabilidade",{sustentavel:3,energia:1}]]},
+{q:"Qual problema você teria mais vontade de resolver?",a:[["🏙️ Mobilidade e infraestrutura urbana",{construtor:3,sustentavel:1}],["⚡ Desperdício e distribuição de energia",{energia:3,sustentavel:1}],["⚙️ Baixa eficiência de uma máquina",{mecanico:3,inovador:1}],["🤖 Processos repetitivos que poderiam ser automatizados",{inovador:3,gestor:1}],["📊 Projetos atrasados e mal organizados",{gestor:3,construtor:1}],["🌱 Poluição e uso inadequado de recursos",{sustentavel:3,energia:1}]]},
+{q:"Qual ambiente profissional parece mais interessante?",a:[["🏗️ Obras, canteiros e grandes projetos",{construtor:3,gestor:1}],["⚡ Centrais, instalações e sistemas elétricos",{energia:3,inovador:1}],["⚙️ Indústrias e laboratórios mecânicos",{mecanico:3,gestor:1}],["🤖 Laboratórios de inovação e tecnologia",{inovador:3,mecanico:1}],["📊 Escritórios de projetos e gestão",{gestor:3,construtor:1}],["🌱 Projetos ambientais e cidades sustentáveis",{sustentavel:3,construtor:1}]]},
+{q:"Qual ferramenta você teria mais curiosidade de dominar?",a:[["🏗️ BIM e modelagem de projetos",{construtor:3,inovador:1}],["⚡ Software de análise de sistemas elétricos",{energia:3,inovador:1}],["⚙️ CAD 3D e simulação mecânica",{mecanico:3,inovador:1}],["🤖 Python, sensores e inteligência artificial",{inovador:3,energia:1}],["📊 Power BI e gestão de projetos",{gestor:3,inovador:1}],["🌱 Ferramentas de análise ambiental",{sustentavel:3,gestor:1}]]},
+{q:"O que mais te motiva ao ver um projeto pronto?",a:[["🏗️ Ver algo físico construído",{construtor:3,mecanico:1}],["⚡ Ver um sistema funcionando com eficiência",{energia:3,mecanico:1}],["⚙️ Ver mecanismos trabalhando perfeitamente",{mecanico:3,energia:1}],["🤖 Ver uma ideia inovadora funcionando",{inovador:3,mecanico:1}],["📊 Ver equipe, prazo e orçamento alinhados",{gestor:3,construtor:1}],["🌱 Ver benefícios para pessoas e meio ambiente",{sustentavel:3,gestor:1}]]},
+{q:"Qual palavra combina mais com sua forma de trabalhar?",a:[["🏗️ Execução",{construtor:3,mecanico:1}],["⚡ Precisão",{energia:3,mecanico:1}],["⚙️ Criação",{mecanico:2,inovador:2}],["🤖 Inovação",{inovador:3,energia:1}],["📊 Liderança",{gestor:3,construtor:1}],["🌱 Responsabilidade",{sustentavel:3,gestor:1}]]},
+{q:"Se pudesse escolher um projeto agora, qual seria?",a:[["🌉 Uma ponte inteligente",{construtor:3,inovador:1}],["☀️ Um sistema de energia solar",{energia:3,sustentavel:1}],["🦾 Um braço robótico",{mecanico:2,inovador:2}],["🏙️ Uma cidade conectada por sensores",{inovador:3,construtor:1}],["📊 Um grande projeto multidisciplinar",{gestor:3,inovador:1}],["🌱 Um sistema de saneamento sustentável",{sustentavel:3,construtor:1}]]},
+{q:"Qual desafio parece mais interessante?",a:[["🏗️ Resolver problemas de execução em campo",{construtor:3,gestor:1}],["⚡ Descobrir falhas em um sistema elétrico",{energia:3,inovador:1}],["⚙️ Melhorar o desempenho de uma máquina",{mecanico:3,inovador:1}],["🤖 Criar um protótipo usando sensores e software",{inovador:3,mecanico:1}],["📊 Fazer um projeto complexo caber no prazo",{gestor:3,construtor:1}],["🌱 Reduzir consumo de água, energia ou materiais",{sustentavel:3,energia:1}]]},
+{q:"Em relação à tecnologia, você prefere:",a:[["🏗️ Aplicá-la à construção",{construtor:3,inovador:1}],["⚡ Aplicá-la à energia",{energia:3,inovador:1}],["⚙️ Integrá-la a máquinas",{mecanico:3,inovador:1}],["🤖 Criar soluções digitais e automatizadas",{inovador:3,energia:1}],["📊 Usá-la para tomar melhores decisões",{gestor:3,inovador:1}],["🌱 Usá-la para aumentar a sustentabilidade",{sustentavel:3,inovador:1}]]},
+{q:"Qual resultado profissional te daria mais satisfação?",a:[["🏗️ Construir algo que dure décadas",{construtor:3,gestor:1}],["⚡ Tornar sistemas mais seguros e eficientes",{energia:3,gestor:1}],["⚙️ Criar equipamentos melhores",{mecanico:3,inovador:1}],["🤖 Desenvolver algo que ainda não existe",{inovador:3,mecanico:1}],["📊 Conduzir projetos de alto impacto",{gestor:3,construtor:1}],["🌱 Gerar impacto positivo com menos recursos",{sustentavel:3,gestor:1}]]},
+{q:"Qual futuro da engenharia mais te interessa?",a:[["🏙️ Construção digital e cidades inteligentes",{construtor:2,inovador:2}],["⚡ Transição energética",{energia:3,sustentavel:1}],["⚙️ Manufatura avançada",{mecanico:3,inovador:1}],["🤖 IA, robótica e automação",{inovador:3,mecanico:1}],["📊 Gestão orientada por dados",{gestor:3,inovador:1}],["🌱 Infraestrutura sustentável",{sustentavel:3,construtor:1}]]},
+{q:"Quando surge um problema inesperado em um projeto, qual é sua primeira reação?",a:[["🏗️ Avalio o que precisa ser ajustado na execução",{construtor:3,gestor:1}],["⚡ Procuro identificar onde o sistema está falhando",{energia:3,mecanico:1}],["⚙️ Analiso componentes, funcionamento e possíveis causas",{mecanico:3,inovador:1}],["🤖 Penso em uma solução diferente usando tecnologia",{inovador:3,gestor:1}],["📊 Organizo prioridades, pessoas e próximos passos",{gestor:3,construtor:1}],["🌱 Busco uma solução eficiente com menor desperdício",{sustentavel:3,gestor:1}]]},
+{q:"Qual dessas conquistas profissionais mais chamaria sua atenção?",a:[["🏗️ Participar da construção de uma grande infraestrutura",{construtor:3,gestor:1}],["⚡ Desenvolver um sistema energético mais eficiente",{energia:3,sustentavel:1}],["⚙️ Projetar uma máquina ou equipamento inovador",{mecanico:3,inovador:1}],["🤖 Criar uma tecnologia capaz de automatizar tarefas",{inovador:3,mecanico:1}],["📊 Liderar um projeto complexo do início ao fim",{gestor:3,construtor:1}],["🌱 Desenvolver uma solução que reduza impactos ambientais",{sustentavel:3,energia:1}]]},
+{q:"Qual tipo de conhecimento você gostaria de aprofundar nos próximos anos?",a:[["🏗️ Estruturas, materiais e técnicas construtivas",{construtor:3,mecanico:1}],["⚡ Eletricidade, energia e sistemas de potência",{energia:3,inovador:1}],["⚙️ Mecânica, máquinas e processos industriais",{mecanico:3,energia:1}],["🤖 Inteligência artificial, programação e automação",{inovador:3,energia:1}],["📊 Gestão, planejamento, custos e liderança",{gestor:3,construtor:1}],["🌱 Sustentabilidade, saneamento e recursos naturais",{sustentavel:3,construtor:1}]]},
+{q:"Imagine a engenharia daqui a 20 anos. O que mais desperta sua curiosidade?",a:[["🏙️ Prédios e cidades construídos de forma inteligente",{construtor:3,inovador:1}],["⚡ Sistemas totalmente baseados em energia limpa",{energia:3,sustentavel:1}],["🦾 Fábricas altamente robotizadas",{mecanico:2,inovador:2}],["🤖 Engenheiros trabalhando lado a lado com inteligência artificial",{inovador:3,gestor:1}],["📊 Projetos globais gerenciados por dados em tempo real",{gestor:3,inovador:1}],["🌱 Cidades capazes de produzir com impacto ambiental mínimo",{sustentavel:3,construtor:1}]]},
+{q:"Em uma equipe multidisciplinar, qual contribuição mais combina com você?",a:[["🏗️ Transformar ideias em soluções executáveis",{construtor:3,gestor:1}],["⚡ Garantir que sistemas técnicos funcionem corretamente",{energia:3,mecanico:1}],["⚙️ Projetar e aperfeiçoar componentes e equipamentos",{mecanico:3,inovador:1}],["🤖 Introduzir novas tecnologias e automações",{inovador:3,energia:1}],["📊 Conectar pessoas, tarefas, custos e prazos",{gestor:3,construtor:1}],["🌱 Avaliar impactos e propor alternativas mais sustentáveis",{sustentavel:3,gestor:1}]]},
+{q:"Se você pudesse deixar uma marca por meio da engenharia, qual seria?",a:[["🏗️ Uma obra ou infraestrutura importante para milhares de pessoas",{construtor:3,gestor:1}],["⚡ Uma solução que transforme a forma como produzimos energia",{energia:3,sustentavel:1}],["⚙️ Uma máquina ou tecnologia industrial inovadora",{mecanico:3,inovador:1}],["🤖 Uma inovação tecnológica que mude a maneira como trabalhamos",{inovador:3,mecanico:1}],["📊 Projetos importantes conduzidos com excelência",{gestor:3,construtor:1}],["🌱 Uma solução que melhore a vida das pessoas preservando recursos",{sustentavel:3,gestor:1}]]}
+];
+
+/* EXPLANATIONS */
+const detailInfo={
+"Engenheiro de Obras":{d:"Profissional responsável por acompanhar e coordenar a execução de uma obra, garantindo que projeto, prazo, custo, qualidade e segurança caminhem juntos.",p:"No dia a dia acompanha equipes, cronograma, medições, materiais, fornecedores, qualidade de serviços e solução de imprevistos em campo.",s:"Busque estágio em obra, aprenda leitura de projetos, Excel, planejamento, orçamento, normas de segurança e fundamentos de BIM.",t:["obra","planejamento","execução","qualidade"]},
+"Engenheiro Estrutural":{d:"Atua no dimensionamento e análise de estruturas para que edificações e obras de infraestrutura sejam seguras, estáveis e eficientes.",p:"Calcula esforços, define elementos estruturais, interpreta normas e utiliza softwares de análise para concreto, aço, madeira e outros materiais.",s:"Fortaleça resistência dos materiais, análise estrutural e concreto/aço; depois explore softwares de cálculo e modelagem.",t:["estruturas","cálculo","segurança","modelagem"]},
+"Coordenador BIM":{d:"Integra modelos digitais de diferentes disciplinas e coordena informações de projeto usando metodologia BIM.",p:"Compatibiliza arquitetura, estrutura e instalações, identifica interferências, organiza padrões e acompanha o fluxo digital do projeto.",s:"Aprenda Revit ou software BIM equivalente, conceitos de interoperabilidade, clash detection e processos colaborativos.",t:["BIM","coordenação","modelagem","compatibilização"]},
+"Engenheiro de Infraestrutura":{d:"Planeja, projeta ou acompanha sistemas essenciais como vias, pontes, saneamento, drenagem e infraestrutura urbana.",p:"Pode atuar em projetos, fiscalização, obras públicas, concessões ou consultorias, combinando análise técnica e impacto urbano.",s:"Explore transportes, geotecnia, saneamento e planejamento urbano; participe de projetos acadêmicos e visitas técnicas.",t:["infraestrutura","cidades","obras","planejamento"]},
+"Planejador de Obras":{d:"Organiza a sequência, duração, recursos e custos das atividades necessárias para entregar uma obra dentro dos objetivos.",p:"Cria cronogramas, acompanha avanço físico, compara previsto x realizado e apoia decisões para recuperar atrasos.",s:"Domine Excel, MS Project/Primavera, orçamento, produtividade, indicadores e conceitos de BIM 4D.",t:["cronograma","custos","indicadores","BIM 4D"]},
+"Especialista em Construção Digital":{d:"Aplica tecnologia digital para tornar projeto e execução mais integrados, previsíveis e produtivos.",p:"Trabalha com BIM, drones, captura da realidade, Digital Twins, automação, análise de dados e gestão digital de obras.",s:"Combine conhecimentos de construção com BIM, dados, programação básica e ferramentas de captura/modelagem.",t:["construção 4.0","BIM","dados","automação"]},
+
+"Engenheiro de Energia":{d:"Atua na geração, distribuição, uso e otimização de energia em sistemas residenciais, industriais ou de infraestrutura.",p:"Analisa consumo, dimensiona soluções, avalia eficiência e participa de projetos de geração ou gestão energética.",s:"Estude circuitos, sistemas elétricos, eficiência energética e fundamentos de energias renováveis.",t:["energia","eficiência","sistemas","projetos"]},
+"Especialista em Energias Renováveis":{d:"Desenvolve e avalia soluções de geração por fontes como solar, eólica, biomassa e outras alternativas de baixo carbono.",p:"Realiza estudos de viabilidade, dimensionamento, estimativa de geração e integração dos sistemas.",s:"Comece por energia solar fotovoltaica, conceitos de geração distribuída, análise econômica e softwares de dimensionamento.",t:["solar","eólica","renováveis","transição energética"]},
+"Engenheiro de Automação":{d:"Projeta sistemas capazes de monitorar e controlar processos com sensores, controladores e software.",p:"Integra sensores, CLPs, redes industriais e sistemas de controle para aumentar produtividade, segurança e precisão.",s:"Aprenda lógica, eletrônica, sensores, CLP, programação e fundamentos de controle.",t:["automação","sensores","CLP","controle"]},
+"Especialista em Smart Grids":{d:"Trabalha com redes elétricas inteligentes que usam comunicação, sensores e dados para melhorar operação e distribuição de energia.",p:"Pode atuar com medição inteligente, integração de renováveis, armazenamento, resposta da demanda e análise de redes.",s:"Estude sistemas de potência, redes elétricas, comunicação, IoT e análise de dados.",t:["smart grid","IoT","energia","dados"]},
+"Engenheiro de Eficiência Energética":{d:"Busca reduzir consumo de energia mantendo ou melhorando o desempenho de instalações e processos.",p:"Realiza diagnósticos, identifica desperdícios, propõe melhorias e calcula retorno dos investimentos.",s:"Aprenda auditoria energética, motores, iluminação, climatização, indicadores de consumo e análise econômica.",t:["eficiência","consumo","auditoria","economia"]},
+"Projetista de Sistemas Elétricos":{d:"Desenvolve projetos de instalações e sistemas elétricos, considerando capacidade, proteção, segurança e normas.",p:"Dimensiona circuitos, quadros, cabos, proteções e documentação técnica.",s:"Fortaleça circuitos elétricos, instalações, normas técnicas e softwares de projeto.",t:["projeto elétrico","circuitos","proteção","normas"]},
+
+"Engenheiro de Projetos Mecânicos":{d:"Cria e dimensiona componentes, equipamentos e sistemas mecânicos.",p:"Modela peças, seleciona materiais, verifica esforços, realiza simulações e acompanha protótipos.",s:"Aprenda CAD 3D, resistência dos materiais, desenho técnico, elementos de máquinas e simulação.",t:["CAD","projeto","materiais","mecânica"]},
+"Especialista em Robótica":{d:"Desenvolve ou integra sistemas robotizados para executar tarefas de forma programada ou autônoma.",p:"Trabalha com atuadores, sensores, programação, controle e integração eletromecânica.",s:"Explore Arduino, programação, eletrônica básica, controle, CAD e projetos de robótica.",t:["robótica","sensores","programação","controle"]},
+"Engenheiro de Manufatura":{d:"Planeja e melhora processos usados para fabricar produtos com qualidade, produtividade e menor desperdício.",p:"Analisa processos, máquinas, layout, tempos, qualidade e tecnologias de produção.",s:"Estude processos de fabricação, qualidade, lean manufacturing, CAD/CAM e Indústria 4.0.",t:["manufatura","processos","qualidade","indústria"]},
+"Engenheiro de Automação Industrial":{d:"Integra máquinas, sensores e sistemas de controle para automatizar linhas e processos industriais.",p:"Programa controladores, acompanha instalações e melhora desempenho e confiabilidade.",s:"Aprenda CLP, redes industriais, sensores, elétrica e lógica de programação.",t:["indústria","automação","CLP","integração"]},
+"Especialista em Simulação":{d:"Usa modelos computacionais para prever comportamento de peças, sistemas e processos antes da fabricação.",p:"Executa análises estruturais, térmicas, fluidodinâmicas ou multifísicas e interpreta resultados.",s:"Fortaleça matemática, física, elementos finitos e use ferramentas CAE em projetos pequenos.",t:["CAE","simulação","modelagem","análise"]},
+"Engenheiro de Manutenção":{d:"Garante disponibilidade e confiabilidade de máquinas e equipamentos.",p:"Planeja manutenção preventiva e preditiva, analisa falhas e acompanha indicadores.",s:"Estude manutenção, confiabilidade, análise de falhas, vibração e planejamento.",t:["manutenção","confiabilidade","falhas","indústria"]},
+
+"Especialista em Automação":{d:"Cria soluções que reduzem tarefas manuais e aumentam precisão por meio de software, sensores e sistemas de controle.",p:"Mapeia processos, escolhe tecnologias, integra sistemas e acompanha resultados.",s:"Aprenda lógica, programação, sensores e desenvolva pequenos protótipos.",t:["automação","programação","sensores","processos"]},
+"Engenheiro de Inovação":{d:"Transforma problemas e oportunidades em novos produtos, serviços, processos ou soluções tecnológicas.",p:"Pesquisa tendências, testa ideias, cria protótipos e conecta áreas técnicas e de negócio.",s:"Pratique Design Thinking, prototipagem, análise de problemas, tecnologia e comunicação de projetos.",t:["inovação","prototipagem","tecnologia","criatividade"]},
+"Especialista em Digital Twins":{d:"Cria representações digitais de ativos ou sistemas reais conectadas a dados para monitoramento e simulação.",p:"Integra modelos, sensores, dados operacionais e simulações para prever comportamento e melhorar decisões.",s:"Combine modelagem 3D/BIM/CAE, IoT, dados e programação.",t:["Digital Twin","IoT","dados","simulação"]},
+"Engenheiro de Smart Buildings":{d:"Integra automação, energia, segurança, conforto e dados em edificações inteligentes.",p:"Trabalha com sensores, sistemas prediais, eficiência energética, controle e integração de plataformas.",s:"Estude instalações, automação predial, IoT, BIM e eficiência energética.",t:["smart building","IoT","automação","edificações"]},
+"Especialista em IA aplicada à Engenharia":{d:"Usa inteligência artificial para analisar dados, prever falhas, otimizar projetos e automatizar decisões técnicas.",p:"Cria modelos, trata dados e integra algoritmos a problemas de engenharia.",s:"Aprenda Python, estatística, análise de dados e fundamentos de machine learning.",t:["IA","Python","dados","machine learning"]},
+"Engenheiro de Sistemas Inteligentes":{d:"Integra hardware, software, sensores e algoritmos para criar sistemas capazes de perceber, decidir e agir.",p:"Desenvolve soluções conectadas e automatizadas em indústria, cidades, energia ou infraestrutura.",s:"Combine programação, eletrônica, IoT, controle e projetos multidisciplinares.",t:["sistemas","IoT","IA","integração"]},
+
+"Gerente de Projetos":{d:"Coordena escopo, prazo, custo, pessoas, riscos e comunicação para que um projeto alcance seus objetivos.",p:"Organiza planos, reuniões, indicadores, decisões e integração entre equipes.",s:"Pratique planejamento, comunicação, gestão de riscos, cronogramas e metodologias de projetos.",t:["gestão","liderança","prazo","escopo"]},
+"Engenheiro de Planejamento":{d:"Transforma objetivos técnicos em planos executáveis de prazo, recursos e acompanhamento.",p:"Elabora cronogramas, curvas de avanço, indicadores e análises de desvios.",s:"Domine Excel, Power BI, MS Project/Primavera e fundamentos de custos.",t:["planejamento","cronograma","indicadores","dados"]},
+"Coordenador de Projetos":{d:"Integra diferentes disciplinas e equipes para garantir coerência técnica e cumprimento das entregas.",p:"Acompanha interfaces, revisões, pendências, documentação e comunicação entre especialidades.",s:"Fortaleça comunicação, organização, leitura técnica, gestão de documentos e ferramentas colaborativas.",t:["coordenação","integração","comunicação","projetos"]},
+"Especialista em Gestão de Riscos":{d:"Identifica eventos que podem afetar prazo, custo, segurança ou desempenho e planeja respostas.",p:"Cria matrizes de risco, acompanha indicadores e apoia decisões preventivas.",s:"Aprenda análise de riscos, probabilidade, planejamento e ferramentas de decisão.",t:["riscos","planejamento","decisão","prevenção"]},
+"Engenheiro de Custos":{d:"Estima, controla e analisa custos de projetos, obras ou operações.",p:"Desenvolve orçamentos, composições, previsões e análises de variação.",s:"Aprofunde orçamento, Excel, produtividade, bancos de custos e análise financeira.",t:["custos","orçamento","controle","estimativa"]},
+"Consultor de Processos":{d:"Analisa como atividades são realizadas e propõe formas mais eficientes, padronizadas e mensuráveis de executá-las.",p:"Mapeia fluxos, identifica gargalos e mede resultados após melhorias.",s:"Aprenda mapeamento de processos, Lean, indicadores, dados e facilitação de equipes.",t:["processos","Lean","melhoria","indicadores"]},
+
+"Engenheiro Ambiental":{d:"Desenvolve soluções para prevenir, controlar e recuperar impactos ambientais.",p:"Atua com resíduos, água, licenciamento, saneamento, recuperação de áreas e gestão ambiental.",s:"Estude legislação ambiental, saneamento, recursos hídricos, resíduos e geoprocessamento.",t:["ambiente","saneamento","licenciamento","recursos"]},
+"Especialista em Saneamento":{d:"Projeta e acompanha sistemas de abastecimento de água, esgotamento sanitário, drenagem e resíduos.",p:"Dimensiona redes e unidades de tratamento e avalia qualidade e operação.",s:"Aprofunde hidráulica, tratamento de água/esgoto, desenho técnico e infraestrutura urbana.",t:["água","esgoto","drenagem","saúde pública"]},
+"Consultor de Sustentabilidade":{d:"Ajuda organizações e projetos a reduzir impactos e melhorar desempenho ambiental e social.",p:"Avalia práticas, indicadores, metas e oportunidades de eficiência e responsabilidade.",s:"Estude sustentabilidade, indicadores, inventários, economia circular e comunicação técnica.",t:["sustentabilidade","indicadores","ESG","eficiência"]},
+"Especialista ESG":{d:"Trabalha com indicadores e estratégias ambientais, sociais e de governança em organizações.",p:"Coleta dados, acompanha metas, riscos, relatórios e iniciativas de responsabilidade corporativa.",s:"Aprenda indicadores ESG, sustentabilidade corporativa, riscos e análise de dados.",t:["ESG","indicadores","governança","impacto"]},
+"Engenheiro de Energia Limpa":{d:"Desenvolve projetos energéticos de menor impacto ambiental e maior eficiência.",p:"Pode atuar com solar, eólica, armazenamento, eficiência e integração de sistemas.",s:"Estude renováveis, sistemas energéticos, análise econômica e sustentabilidade.",t:["energia limpa","renováveis","eficiência","transição"]},
+"Especialista em Infraestrutura Sustentável":{d:"Integra desempenho técnico, resiliência, eficiência de recursos e redução de impactos em obras e cidades.",p:"Analisa materiais, água, energia, mobilidade, durabilidade e ciclo de vida.",s:"Aprofunde infraestrutura, sustentabilidade, análise de ciclo de vida e certificações.",t:["infraestrutura","resiliência","materiais","sustentabilidade"]},
+
+/* AREAS */
+"Estruturas e Infraestrutura":{d:"Área ligada ao projeto e execução de sistemas físicos essenciais, de edificações a pontes, vias e redes urbanas.",p:"Envolve análise, dimensionamento, planejamento, segurança e acompanhamento de obras.",s:"Explore disciplinas estruturais, infraestrutura urbana, projetos e visitas técnicas.",t:["estruturas","infraestrutura","projeto","obras"]},
+"Planejamento de Obras":{d:"Área que organiza prazo, recursos, produtividade e custos de uma obra.",p:"Transforma o projeto em sequência executável e acompanha se o planejado está acontecendo.",s:"Aprenda cronogramas, orçamento, Excel e indicadores de avanço.",t:["planejamento","cronograma","custos","obra"]},
+"BIM e Coordenação":{d:"Área de integração digital de projetos e informações ao longo do ciclo de vida de um empreendimento.",p:"Usa modelos compartilhados para compatibilização, planejamento, orçamento e gestão.",s:"Comece por modelagem BIM e depois avance para coordenação e interoperabilidade.",t:["BIM","coordenação","modelos","integração"]},
+"Construção Inteligente":{d:"Uso de tecnologia para tornar construção e operação mais conectadas, produtivas e previsíveis.",p:"Pode envolver sensores, drones, IA, automação, BIM e análise de dados.",s:"Combine fundamentos de construção com tecnologia e dados.",t:["construção 4.0","sensores","IA","dados"]},
+"Sistemas Elétricos":{d:"Área que envolve geração, transmissão, distribuição, instalações e uso seguro da energia elétrica.",p:"Requer análise de circuitos, proteção, dimensionamento e confiabilidade.",s:"Fortaleça circuitos, instalações e sistemas de potência.",t:["eletricidade","potência","proteção","instalações"]},
+"Energias Renováveis":{d:"Área focada em fontes de energia de menor impacto, como solar, eólica e biomassa.",p:"Envolve projeto, dimensionamento, viabilidade e integração à rede.",s:"Comece por solar fotovoltaica e fundamentos de sistemas energéticos.",t:["solar","eólica","renováveis","energia"]},
+"Eficiência Energética":{d:"Busca entregar o mesmo ou maior desempenho consumindo menos energia.",p:"Analisa equipamentos, instalações e processos para identificar desperdícios.",s:"Estude consumo, auditoria energética, motores e climatização.",t:["eficiência","consumo","auditoria","economia"]},
+"Smart Grids":{d:"Redes elétricas inteligentes que usam comunicação e dados para operar de forma mais flexível.",p:"Integram medição inteligente, renováveis, armazenamento e gestão da demanda.",s:"Combine sistemas elétricos, IoT, comunicação e dados.",t:["smart grid","energia","IoT","dados"]},
+"Projeto Mecânico":{d:"Área de criação e dimensionamento de componentes e sistemas mecânicos.",p:"Usa desenho, CAD, materiais e cálculos para transformar requisitos em soluções.",s:"Aprenda CAD 3D e elementos de máquinas.",t:["CAD","projeto","mecânica","materiais"]},
+"Robótica":{d:"Integra mecânica, eletrônica e programação em sistemas automatizados.",p:"Robôs industriais, móveis, braços, veículos autônomos e outros sistemas.",s:"Faça pequenos projetos com sensores, microcontroladores e programação.",t:["robôs","sensores","controle","programação"]},
+"Manufatura Avançada":{d:"Área que combina processos de fabricação tradicionais com automação, dados e novas tecnologias.",p:"Inclui impressão 3D, células robotizadas, integração digital e otimização.",s:"Explore processos de fabricação e Indústria 4.0.",t:["manufatura","indústria 4.0","automação","produção"]},
+"Manutenção e Confiabilidade":{d:"Área voltada a manter equipamentos disponíveis, seguros e produtivos.",p:"Usa manutenção preventiva, preditiva e análise de falhas.",s:"Aprenda indicadores, confiabilidade e diagnóstico de falhas.",t:["manutenção","confiabilidade","falhas","ativos"]},
+"Automação e Controle":{d:"Área que faz sistemas monitorarem variáveis e executarem ações automaticamente.",p:"Combina sensores, controladores, software e lógica de controle.",s:"Aprenda programação, sensores, CLP e teoria de controle.",t:["automação","controle","sensores","CLP"]},
+"Sistemas Inteligentes":{d:"Sistemas capazes de usar dados, sensores e algoritmos para tomar decisões ou adaptar seu comportamento.",p:"Aparecem em indústria, cidades, energia, transporte e edificações.",s:"Combine programação, IA, IoT e projetos práticos.",t:["IA","IoT","sistemas","dados"]},
+"Smart Buildings":{d:"Edificações com sistemas integrados de automação, energia, conforto e segurança.",p:"Sensores e plataformas monitoram e controlam a operação do prédio.",s:"Estude instalações, automação predial, IoT e eficiência energética.",t:["edificações","IoT","automação","energia"]},
+"Gestão de Projetos":{d:"Área que organiza pessoas, recursos e decisões para transformar objetivos em entregas.",p:"Envolve escopo, cronograma, custo, risco, qualidade e comunicação.",s:"Comece por planejamento, comunicação e ferramentas de gestão.",t:["gestão","escopo","prazo","liderança"]},
+"Planejamento e Controle":{d:"Transforma metas em planos mensuráveis e acompanha desvios durante a execução.",p:"Usa cronogramas, indicadores e previsões para apoiar decisões.",s:"Domine Excel, Power BI e software de planejamento.",t:["planejamento","controle","indicadores","dados"]},
+"Orçamento":{d:"Área que estima e controla recursos financeiros necessários para projetos e operações.",p:"Compara quantitativos, preços, produtividade e riscos.",s:"Pratique planilhas de custos, composição e levantamento quantitativo.",t:["custos","orçamento","estimativa","controle"]},
+"Processos e Operações":{d:"Área focada em como atividades e recursos se organizam para gerar resultados com eficiência.",p:"Mapeia fluxos, gargalos, capacidade e indicadores.",s:"Aprenda Lean, processos, indicadores e análise de dados.",t:["processos","operações","Lean","eficiência"]},
+"Saneamento":{d:"Área essencial à saúde pública e à qualidade ambiental, ligada a água, esgoto, drenagem e resíduos.",p:"Planeja, projeta e opera redes e sistemas de tratamento.",s:"Aprofunde hidráulica, tratamento e infraestrutura urbana.",t:["água","esgoto","drenagem","resíduos"]},
+"Eficiência de Recursos":{d:"Uso inteligente de água, energia e materiais para reduzir desperdícios e custos.",p:"Analisa consumo, processos e oportunidades de reaproveitamento.",s:"Aprenda indicadores ambientais, balanços e análise de processos.",t:["recursos","eficiência","economia circular","indicadores"]},
+"Energia Limpa":{d:"Área relacionada à produção e uso de energia com menor emissão e impacto ambiental.",p:"Abrange renováveis, armazenamento, eficiência e eletrificação.",s:"Explore sistemas energéticos, renováveis e análise de viabilidade.",t:["energia","renováveis","baixo carbono","eficiência"]},
+"Gestão Ambiental":{d:"Planeja e acompanha ações para prevenir impactos e atender requisitos ambientais.",p:"Pode envolver licenciamento, resíduos, indicadores, auditorias e sistemas de gestão.",s:"Estude legislação, indicadores, licenciamento e sistemas de gestão ambiental.",t:["gestão","licenciamento","impacto","indicadores"]},
+
+/* SKILLS */
+"BIM e CAD":{d:"Capacidade de criar, interpretar e coordenar modelos e desenhos técnicos digitais.",p:"Ajuda a comunicar soluções com precisão e reduzir erros entre projeto e execução.",s:"Pratique modelagem em projetos pequenos e monte um portfólio.",t:["modelagem","desenho","BIM","CAD"]},
+"Orçamento e planejamento":{d:"Capacidade de estimar custos, recursos e tempo necessários para executar um projeto.",p:"Permite transformar soluções técnicas em planos viáveis.",s:"Treine levantamento quantitativo, Excel, composições e cronogramas.",t:["custos","prazo","Excel","planejamento"]},
+"Gestão de obras":{d:"Competência para coordenar execução, equipes, fornecedores, segurança, qualidade e prazo.",p:"É essencial quando várias atividades precisam acontecer de forma sincronizada.",s:"Busque vivência de campo, aprenda indicadores e comunicação com equipes.",t:["obra","liderança","execução","qualidade"]},
+"Compatibilização de projetos":{d:"Capacidade de identificar conflitos entre diferentes disciplinas antes da execução.",p:"Reduz retrabalho e melhora coordenação técnica.",s:"Pratique leitura integrada de projetos e ferramentas de clash detection.",t:["compatibilização","BIM","coordenação","projeto"]},
+"Circuitos e sistemas":{d:"Compreensão de como componentes elétricos interagem em sistemas.",p:"Base para instalações, automação, potência e eletrônica.",s:"Resolva problemas, faça simulações e experiências práticas.",t:["circuitos","eletricidade","sistemas","análise"]},
+"Automação":{d:"Competência para transformar processos manuais em sistemas monitorados e controlados.",p:"Exige lógica, sensores, integração e compreensão do processo.",s:"Comece com microcontroladores, sensores e pequenos projetos.",t:["automação","sensores","controle","programação"]},
+"Análise de dados":{d:"Capacidade de transformar dados em informação útil para decisões.",p:"Serve para identificar padrões, prever falhas e medir desempenho.",s:"Aprenda Excel avançado, Power BI e depois Python/estatística.",t:["dados","BI","estatística","decisão"]},
+"Segurança e eficiência":{d:"Capacidade de projetar e operar sistemas buscando desempenho sem comprometer segurança.",p:"Envolve normas, avaliação de risco e redução de perdas.",s:"Estude normas, análise de riscos e indicadores de desempenho.",t:["segurança","eficiência","normas","riscos"]},
+"CAD 3D":{d:"Modelagem tridimensional de peças, conjuntos e produtos.",p:"Permite visualizar, detalhar e preparar soluções para fabricação.",s:"Escolha um software CAD e recrie peças reais como exercício.",t:["CAD","3D","modelagem","projeto"]},
+"Materiais":{d:"Conhecimento sobre propriedades, seleção e comportamento de materiais.",p:"Ajuda a equilibrar resistência, peso, custo, durabilidade e fabricação.",s:"Relacione teoria de materiais a casos e componentes reais.",t:["materiais","propriedades","seleção","durabilidade"]},
+"Simulação":{d:"Uso de modelos para prever comportamento antes de construir ou fabricar.",p:"Reduz incertezas e permite comparar alternativas.",s:"Comece com análises simples e aprenda a validar os resultados.",t:["CAE","modelagem","análise","previsão"]},
+"Prototipagem":{d:"Capacidade de transformar uma ideia em versão testável rapidamente.",p:"Ajuda a aprender cedo, corrigir falhas e validar conceitos.",s:"Use impressão 3D, eletrônica básica ou modelos físicos em projetos.",t:["protótipo","teste","iteração","inovação"]},
+"Programação":{d:"Capacidade de criar instruções e algoritmos para automatizar tarefas e tratar dados.",p:"Está cada vez mais presente em simulação, IA, automação e análise.",s:"Comece com Python e projetos ligados à engenharia.",t:["Python","algoritmos","automação","dados"]},
+"Lógica":{d:"Capacidade de estruturar problemas em etapas claras e relações de causa e efeito.",p:"Ajuda em programação, diagnóstico, projeto e tomada de decisão.",s:"Pratique problemas, fluxogramas, algoritmos e decomposição de tarefas.",t:["lógica","problemas","algoritmos","decisão"]},
+"Integração de sistemas":{d:"Capacidade de conectar tecnologias e disciplinas diferentes em uma solução única.",p:"É essencial em automação, IoT e sistemas inteligentes.",s:"Faça projetos que combinem sensores, software e uma aplicação física.",t:["integração","IoT","software","hardware"]},
+"Liderança":{d:"Capacidade de orientar pessoas, alinhar objetivos e criar condições para a equipe entregar.",p:"Não é apenas mandar: envolve decisão, responsabilidade, escuta e comunicação.",s:"Assuma pequenas responsabilidades em projetos e peça feedback sobre sua condução.",t:["liderança","equipe","decisão","responsabilidade"]},
+"Comunicação":{d:"Capacidade de explicar ideias técnicas com clareza para públicos diferentes.",p:"Reduz erros, melhora negociação e torna decisões mais rápidas.",s:"Pratique apresentações, escrita técnica e explicações curtas de projetos.",t:["comunicação","apresentação","clareza","equipe"]},
+"Gestão de riscos":{d:"Capacidade de antecipar problemas, avaliar impacto e planejar respostas.",p:"Ajuda a evitar surpresas em prazo, custo, segurança e desempenho.",s:"Use matrizes de risco em trabalhos e projetos acadêmicos.",t:["riscos","prevenção","planejamento","decisão"]},
+"Indicadores e análise":{d:"Capacidade de medir desempenho e interpretar resultados para apoiar decisões.",p:"Transforma acompanhamento subjetivo em gestão baseada em evidências.",s:"Crie dashboards simples e acompanhe indicadores de projetos.",t:["KPIs","dados","BI","gestão"]},
+"Análise ambiental":{d:"Capacidade de avaliar impactos, condições ambientais e alternativas de mitigação.",p:"Ajuda a decidir considerando solo, água, ar, biodiversidade e sociedade.",s:"Estude estudos de impacto, indicadores e casos reais.",t:["impacto","ambiente","indicadores","análise"]},
+"Indicadores ESG":{d:"Capacidade de acompanhar métricas ambientais, sociais e de governança.",p:"Ajuda organizações a transformar compromissos em metas mensuráveis.",s:"Conheça indicadores, relatórios e casos de sustentabilidade corporativa.",t:["ESG","indicadores","governança","dados"]},
+"Eficiência de recursos":{d:"Capacidade de reduzir desperdício de materiais, água e energia.",p:"Melhora custo, desempenho ambiental e produtividade.",s:"Faça balanços de consumo e proponha melhorias em processos simples.",t:["recursos","eficiência","desperdício","sustentabilidade"]},
+"Projetos sustentáveis":{d:"Capacidade de integrar desempenho técnico, impacto ambiental e ciclo de vida no projeto.",p:"Considera materiais, energia, água, durabilidade e uso futuro.",s:"Estude análise de ciclo de vida, certificações e soluções de baixo impacto.",t:["projeto","sustentabilidade","ciclo de vida","impacto"]},
+
+/* TECH */
+"BIM":{d:"Metodologia de gestão da informação baseada em modelos digitais de construção.",p:"Integra projeto, planejamento, orçamento e operação.",s:"Comece por modelagem e avance para coordenação e usos BIM.",t:["BIM","modelagem","coordenação","construção"]},
+"Digital Twins":{d:"Representações digitais conectadas a dados de ativos reais.",p:"Permitem monitorar, simular e prever comportamento.",s:"Aprenda modelagem, IoT e análise de dados.",t:["digital twin","IoT","dados","simulação"]},
+"Drones":{d:"Plataformas aéreas usadas para inspeção, levantamento e acompanhamento.",p:"Na engenharia apoiam mapeamento, medição, inspeção e registro.",s:"Estude fotogrametria, segurança operacional e processamento de imagens.",t:["drones","inspeção","mapeamento","imagem"]},
+"Construção 4.0":{d:"Transformação digital da construção por meio de automação, dados e integração.",p:"Reúne BIM, IoT, drones, IA, robótica e gestão digital.",s:"Explore tecnologias digitais aplicadas a casos de obra.",t:["construção 4.0","automação","dados","BIM"]},
+"Smart Grids":{d:"Redes elétricas inteligentes apoiadas por comunicação, automação e dados.",p:"Melhoram flexibilidade e integração de novas fontes.",s:"Combine potência, IoT e dados.",t:["smart grids","energia","IoT","rede"]},
+"Energia Solar":{d:"Tecnologia de conversão da energia do sol em eletricidade ou calor.",p:"Muito usada em geração distribuída e sistemas isolados.",s:"Aprenda fundamentos fotovoltaicos e dimensionamento.",t:["solar","fotovoltaica","energia","renovável"]},
+"Armazenamento":{d:"Tecnologias que guardam energia para uso posterior.",p:"Baterias ajudam a equilibrar geração, consumo e confiabilidade.",s:"Estude baterias, sistemas energéticos e gerenciamento.",t:["baterias","energia","armazenamento","rede"]},
+"IoT":{d:"Internet das Coisas conecta sensores e dispositivos para coletar dados e executar ações.",p:"Aplicável em indústria, edifícios, cidades, ambiente e energia.",s:"Faça projetos com sensores e microcontroladores.",t:["IoT","sensores","conectividade","dados"]},
+"Robótica":{d:"Integra mecânica, eletrônica e software em máquinas capazes de executar tarefas.",p:"Usada em indústria, inspeção, logística e pesquisa.",s:"Comece com projetos simples de controle e sensores.",t:["robótica","automação","sensores","controle"]},
+"Impressão 3D":{d:"Fabricação aditiva que cria objetos camada por camada.",p:"Facilita prototipagem e geometrias complexas.",s:"Aprenda modelagem 3D e parâmetros básicos de impressão.",t:["3D","prototipagem","fabricação","CAD"]},
+"CAE":{d:"Ferramentas computacionais de engenharia para simular comportamento físico.",p:"Incluem análises estruturais, térmicas e fluidodinâmicas.",s:"Fortaleça fundamentos físicos e pratique validação.",t:["CAE","simulação","engenharia","análise"]},
+"Indústria 4.0":{d:"Integração de automação, conectividade, dados e sistemas inteligentes na produção.",p:"Cria fábricas mais conectadas, flexíveis e mensuráveis.",s:"Explore IoT, automação, dados e processos de fabricação.",t:["indústria 4.0","dados","IoT","automação"]},
+"Inteligência Artificial":{d:"Conjunto de técnicas para sistemas aprenderem padrões e apoiarem decisões.",p:"Pode prever falhas, classificar dados, otimizar projetos e automatizar análises.",s:"Comece por Python, dados e machine learning básico.",t:["IA","machine learning","dados","Python"]},
+"Automação":{d:"Uso de tecnologia para executar processos com menor intervenção manual.",p:"Combina sensores, lógica, controladores e software.",s:"Crie pequenos projetos automatizados e avance para sistemas maiores.",t:["automação","sensores","controle","software"]},
+"Business Intelligence":{d:"Ferramentas e métodos para transformar dados em indicadores e painéis de decisão.",p:"Ajuda gestores a acompanhar desempenho e tendências.",s:"Comece com Excel e Power BI.",t:["BI","dashboards","dados","decisão"]},
+"IA aplicada à gestão":{d:"Uso de IA para previsão, priorização, análise de risco e apoio à decisão.",p:"Pode melhorar planejamento e leitura de grandes volumes de dados.",s:"Combine gestão, estatística e ferramentas de IA.",t:["IA","gestão","dados","decisão"]},
+"ERP":{d:"Sistema integrado de gestão que reúne informações de áreas como compras, estoque, financeiro e produção.",p:"Ajuda organizações a trabalhar com dados consistentes.",s:"Entenda processos empresariais e explore plataformas ERP em demonstrações.",t:["ERP","processos","gestão","integração"]},
+"BIM 4D e 5D":{d:"Aplicações BIM que integram modelo 3D ao tempo (4D) e ao custo (5D).",p:"Permitem simular sequência de obra e acompanhar orçamento.",s:"Aprenda BIM, planejamento e orçamento antes de integrá-los.",t:["BIM 4D","BIM 5D","prazo","custo"]},
+"Energia Limpa":{d:"Conjunto de soluções energéticas com menor impacto e emissão.",p:"Inclui renováveis, eficiência, armazenamento e eletrificação.",s:"Explore fundamentos energéticos e viabilidade.",t:["energia limpa","renováveis","baixo carbono","eficiência"]},
+"Sensoriamento":{d:"Coleta de informações do ambiente ou de sistemas por meio de sensores.",p:"Pode medir temperatura, vibração, qualidade da água, pressão e muito mais.",s:"Comece com sensores simples e análise dos dados coletados.",t:["sensores","monitoramento","dados","IoT"]},
+"IoT Ambiental":{d:"Uso de sensores conectados para monitorar variáveis ambientais.",p:"Permite acompanhar água, ar, solo, clima e recursos em tempo real.",s:"Combine sensores, IoT e análise ambiental.",t:["IoT","ambiente","sensores","monitoramento"]},
+"Materiais Sustentáveis":{d:"Materiais selecionados ou desenvolvidos para reduzir impactos ao longo do ciclo de vida.",p:"Consideram origem, desempenho, durabilidade, reutilização e emissões.",s:"Estude ciclo de vida e compare materiais em casos reais.",t:["materiais","ciclo de vida","sustentabilidade","desempenho"]}
+};
+
+const courseMessages={
+"Engenharia Civil":{construtor:"Seu perfil tem forte conexão com obras, infraestrutura, BIM, planejamento e coordenação.",energia:"Pode se conectar a instalações, eficiência energética e edificações de alto desempenho.",mecanico:"Pode se destacar na interface entre construção, equipamentos e sistemas industrializados.",inovador:"Pode explorar BIM, Digital Twins, Smart Buildings, sensores, automação e IA aplicada à construção.",gestor:"Pode se destacar em planejamento, custos, contratos, coordenação e BIM 4D/5D.",sustentavel:"Pode explorar saneamento, infraestrutura sustentável, eficiência e materiais de menor impacto."},
+"Engenharia Elétrica":{construtor:"Pode atuar na implantação e execução de infraestrutura e instalações elétricas.",energia:"Tem forte conexão com potência, renováveis, eficiência, proteção e Smart Grids.",mecanico:"Pode explorar eletromecânica, motores, manutenção e sistemas industriais.",inovador:"Pode se destacar em automação, IoT, robótica e sistemas inteligentes.",gestor:"Pode avançar em coordenação técnica, projetos, manutenção e contratos.",sustentavel:"Pode explorar energia solar, geração distribuída e transição energética."},
+"Engenharia Mecânica":{construtor:"Pode se destacar em montagem, fabricação e implantação de sistemas.",energia:"Pode explorar sistemas térmicos, eficiência e geração de energia.",mecanico:"Tem forte conexão com projetos, máquinas, manufatura, manutenção e simulação.",inovador:"Pode avançar em robótica, automação, manufatura avançada e Digital Twins.",gestor:"Pode explorar gestão industrial, manutenção, custos e projetos.",sustentavel:"Pode atuar com eficiência energética, materiais e mobilidade limpa."},
+"Engenharia Química":{construtor:"Pode se destacar na implantação de plantas e instalações industriais.",energia:"Pode explorar combustíveis, hidrogênio, biocombustíveis e processos energéticos.",mecanico:"Pode atuar na interface com equipamentos e operações unitárias.",inovador:"Pode se destacar em automação de processos, dados e IA.",gestor:"Pode avançar em produção, qualidade, planejamento e gestão industrial.",sustentavel:"Pode explorar química verde, resíduos, água e processos de menor impacto."},
+"Engenharia de Produção":{construtor:"Pode atuar na implantação de operações e sistemas produtivos.",energia:"Pode explorar eficiência energética e otimização de recursos.",mecanico:"Pode se destacar em manufatura, qualidade e manutenção.",inovador:"Pode avançar em transformação digital, dados, automação e Indústria 4.0.",gestor:"Tem forte conexão com projetos, processos, logística, custos e estratégia.",sustentavel:"Pode explorar economia circular, ESG e produção sustentável."},
+"Engenharia Ambiental":{construtor:"Pode atuar na implantação de saneamento e infraestrutura ambiental.",energia:"Pode explorar energia limpa e planejamento energético sustentável.",mecanico:"Pode atuar na interface com equipamentos e tecnologias de tratamento.",inovador:"Pode se destacar em sensores, IoT ambiental, geotecnologias e dados.",gestor:"Pode avançar em licenciamento, ESG e gestão ambiental.",sustentavel:"Tem forte conexão com saneamento, recursos hídricos, resíduos e sustentabilidade."},
+"Engenharia de Computação":{construtor:"Pode atuar na implantação de infraestrutura tecnológica e hardware.",energia:"Pode explorar sistemas embarcados e eficiência de dispositivos.",mecanico:"Pode se conectar a robótica, automação e integração hardware-software.",inovador:"Tem forte conexão com IA, IoT, software e sistemas inteligentes.",gestor:"Pode avançar em produtos digitais, projetos e transformação digital.",sustentavel:"Pode explorar monitoramento ambiental e otimização de recursos."}
+};
+
+let current=0,score={},participant={},feedbackRating=0,lastResult=null,answers=[];
+function resetScore(){score={};PROFILE_KEYS.forEach(k=>score[k]=0)} resetScore();
+
+function go(id){
+ ["home","participant","quiz","loading","result","feedback","presentation","extensionHub","schoolPresentation","about"].forEach(s=>document.getElementById(s)?.classList.add("hidden"));
+ document.getElementById(id).classList.remove("hidden");window.scrollTo({top:0,behavior:"smooth"});
+}
+function jump(id){document.getElementById(id)?.scrollIntoView({behavior:"smooth",block:"start"})}
+function jumpHub(id){
+  const hub=document.getElementById("extensionHub");
+  if(hub.classList.contains("hidden")) go("extensionHub");
+  setTimeout(()=>document.getElementById(id)?.scrollIntoView({behavior:"smooth",block:"start"}),120);
+}
+
+function startQuiz(){
+ const name=document.getElementById("name").value.trim();
+ const course=document.getElementById("course").value;
+ const semester=document.getElementById("semester").value;
+ const works=document.getElementById("works").value;
+ if(!course||!semester||!works){alert("Selecione curso, período e situação profissional para continuar.");return}
+ participant={name:name||"Participante",course,semester,works};
+ current=0;answers=[];resetScore();go("quiz");renderQuestion();
+}
+function renderQuestion(){
+ const item=questions[current],pct=Math.round(((current+1)/questions.length)*100);
+ document.getElementById("counter").textContent=`Pergunta ${current+1} de ${questions.length}`;
+ document.getElementById("percentage").textContent=`${pct}% concluído`;
+ document.getElementById("progressBar").style.width=`${pct}%`;
+ document.getElementById("question").textContent=item.q;
+ const box=document.getElementById("options");box.innerHTML="";
+ item.a.forEach(([text,weights],idx)=>{
+  const b=document.createElement("button");b.className="option";b.textContent=text;
+  b.onclick=()=>answer(weights,text,idx);box.appendChild(b)
+ });
+}
+function answer(weights,text,idx){
+ Object.entries(weights).forEach(([k,v])=>score[k]+=v);
+ answers.push({question:current+1,option:idx+1,text});current++;
+ current<questions.length?renderQuestion():analyze();
+}
+function analyze(){
+ go("loading");
+ const steps=["Identificando interesses","Comparando padrões","Calculando afinidades","Relacionando áreas","Mapeando carreiras","Criando sua trilha"];
+ let i=0,el=document.getElementById("loadingText");
+ const timer=setInterval(()=>{el.textContent=steps[i%steps.length];i++;if(i===8){clearInterval(timer);buildResult()}},390);
+}
+function engineeringAffinity(){
+ const raw={};Object.keys(profiles.construtor.eng).forEach(e=>raw[e]=0);
+ PROFILE_KEYS.forEach(k=>Object.entries(profiles[k].eng).forEach(([e,w])=>raw[e]+=score[k]*w));
+ const max=Math.max(...Object.values(raw),1),out={};
+ Object.entries(raw).forEach(([e,v])=>out[e]=Math.round(v/max*100));return out;
+}
+function buildResult(){
+ const ranking=Object.entries(score).sort((a,b)=>b[1]-a[1]),topKey=ranking[0][0],p=profiles[topKey],eng=engineeringAffinity();
+ lastResult={participant,score:{...score},ranking,topKey,engineering:eng,answers:[...answers],timestamp:new Date().toISOString()};
+ document.getElementById("hello").textContent=`${participant.name} • ${participant.course} • ${participant.semester} período`;
+ document.getElementById("profileName").textContent=p.name;document.getElementById("profilePhrase").textContent=p.phrase;document.getElementById("oneLiner").textContent=p.one;
+ const msg=courseMessages[participant.course]?.[topKey]||"Seu perfil pode ser explorado de maneira interdisciplinar em diferentes áreas da engenharia.";
+ document.getElementById("courseNote").innerHTML=`<strong>🎓 Como esse perfil aparece no seu curso?</strong><br>${msg}`;
+ document.getElementById("top3").innerHTML=ranking.slice(0,3).map(([k,v],i)=>`<div class="podium"><div class="small">${i+1}º perfil</div><strong>${profiles[k].short}</strong><div class="pct">${Math.round(v/ranking[0][1]*100)}%</div></div>`).join("");
+ document.getElementById("engineeringAffinity").innerHTML=Object.entries(eng).sort((a,b)=>b[1]-a[1]).map(([e,pct])=>`<div class="score-row"><div class="score-head"><span>${e}</span><span>${pct}%</span></div><div class="bar"><span style="width:${pct}%"></span></div></div>`).join("");
+ fillDetailed("careers",p.careers,"💼","Carreira");
+ fillDetailed("areas",p.areas,"🎯","Área");
+ fillDetailed("skills",p.skills,"🧠","Competência");
+ fillDetailed("techs",p.techs,"🚀","Tecnologia");
+ saveTest();go("result");
+}
+function fillDetailed(id,items,icon,type){
+ document.getElementById(id).innerHTML=items.map(item=>{
+  const d=detailInfo[item];
+  const preview=d?d.d:"Explore esta possibilidade e entenda como ela se relaciona ao seu perfil.";
+  return `<div class="detail-card"><h4>${icon} ${item}</h4><p>${preview}</p><button class="open-detail" onclick='openDetail(${JSON.stringify(item)},${JSON.stringify(type)})'>SAIBA MAIS →</button></div>`;
+ }).join("");
+}
+function openDetail(title,type){
+ const d=detailInfo[title]||{d:"Conteúdo relacionado ao seu perfil profissional.",p:"Esta possibilidade pode aparecer em diferentes contextos da engenharia.",s:"Pesquise projetos, disciplinas e experiências práticas ligadas ao tema.",t:["engenharia","carreira","desenvolvimento"]};
+ document.getElementById("modalType").textContent=type.toUpperCase();
+ document.getElementById("modalTitle").textContent=title;
+ document.getElementById("modalDescription").textContent=d.d;
+ document.getElementById("modalPractice").textContent=d.p;
+ document.getElementById("modalStart").textContent=d.s;
+ document.getElementById("modalTags").innerHTML=d.t.map(x=>`<span class="tagchip">${x}</span>`).join("");
+ document.getElementById("detailModal").classList.remove("hidden");
+ document.body.style.overflow="hidden";
+}
+function closeModal(){document.getElementById("detailModal").classList.add("hidden");document.body.style.overflow=""}
+function modalBackdrop(e){if(e.target.id==="detailModal")closeModal()}
+document.addEventListener("keydown",e=>{if(e.key==="Escape"){closeModal();closeArticle();}});
+
+function saveTest(){const s=JSON.parse(localStorage.getItem("engenharia360_tests")||"[]");s.push(lastResult);localStorage.setItem("engenharia360_tests",JSON.stringify(s))}
+async function shareResult(){
+ if(!lastResult)return;
+ const t=lastResult.ranking.slice(0,3).map(([k,v],i)=>`${i+1}º ${profiles[k].short}: ${Math.round(v/lastResult.ranking[0][1]*100)}%`).join("\n");
+ const text=`ENGENHARIA 360 — ULBRA\n\nMeu perfil: ${profiles[lastResult.topKey].name}\n${profiles[lastResult.topKey].one}\n\n${t}\n\nProfissão e Carreira`;
+ if(navigator.share){try{await navigator.share({title:"Meu resultado — Engenharia 360",text})}catch(e){}}
+ else{try{await navigator.clipboard.writeText(text);alert("Resultado copiado para compartilhar!")}catch(e){alert("Não foi possível copiar automaticamente.")}}
+}
+function rate(n,b){feedbackRating=n;document.querySelectorAll(".star").forEach(x=>x.classList.remove("selected"));b.classList.add("selected");document.getElementById("ratingText").textContent=`Nota selecionada: ${n}/5`}
+function saveFeedback(){
+ if(!feedbackRating){alert("Escolha uma nota para enviar a avaliação ou use o botão para pular.");return}
+ const easy=document.getElementById("easy").value,discover=document.getElementById("discover").value;
+ if(!easy||!discover){alert("Complete as perguntas da avaliação ou pule esta etapa.");return}
+ const f={rating:feedbackRating,easy:Number(easy),discover,comment:document.getElementById("comment").value.trim(),participant,profile:lastResult?.topKey||"",timestamp:new Date().toISOString()};
+ const arr=JSON.parse(localStorage.getItem("engenharia360_feedback")||"[]");arr.push(f);localStorage.setItem("engenharia360_feedback",JSON.stringify(arr));go("presentation");
+}
+function restart(){
+ current=0;score={};participant={};feedbackRating=0;lastResult=null;answers=[];resetScore();
+ ["name","course","semester","works","easy","discover","comment"].forEach(id=>{const e=document.getElementById(id);if(e)e.value=""});
+ document.getElementById("ratingText").textContent="Nenhuma nota selecionada.";
+ document.querySelectorAll(".star").forEach(x=>x.classList.remove("selected"));go("home");
+}
+
+const classVotes={direcao:0,mercado:0,competencias:0};
+function classVote(key){
+  classVotes[key]++;
+  const labels={direcao:"Não sei qual área seguir",mercado:"Não conheço bem o mercado",competencias:"Não sei o que preciso desenvolver"};
+  const top=Object.entries(classVotes).sort((a,b)=>b[1]-a[1])[0];
+  document.getElementById("classPollResult").textContent=
+    `Mais votado até agora: ${labels[top[0]]} (${top[1]} voto${top[1]===1?"":"s"})`;
+}
+function reveal(id){document.getElementById(id)?.classList.toggle("show")}
+
+const articles={
+"career-choice":{
+ type:"ARTIGO • CARREIRA",
+ title:"Como escolher uma área da engenharia sem se limitar cedo demais",
+ body:`<p class="article-lead">Escolher uma área não precisa significar fechar todas as outras portas.</p>
+ <p>Na graduação, o mais útil é tratar a escolha como uma sequência de experimentos: conhecer, testar, comparar e ajustar.</p>
+ <h4>1. Comece pelos problemas que chamam sua atenção</h4>
+ <p>Você prefere construir, automatizar, organizar, proteger recursos, projetar máquinas ou analisar sistemas? O tipo de problema costuma dizer mais do que o nome do cargo.</p>
+ <h4>2. Teste antes de decidir</h4>
+ <ul><li>participe de projetos acadêmicos;</li><li>faça cursos curtos;</li><li>converse com profissionais;</li><li>procure estágio ou iniciação;</li><li>visite empresas e eventos.</li></ul>
+ <div class="article-box"><strong>Ideia central:</strong> carreira é trajetória. Você pode mudar de direção conforme ganha experiência.</div>
+ <h4>3. Compare critérios reais</h4>
+ <p>Rotina, ambiente de trabalho, tecnologia utilizada, oportunidades regionais, competências exigidas e possibilidades de crescimento devem entrar na comparação.</p>`
+},
+"ai-engineering":{
+ type:"ARTIGO • TECNOLOGIA",
+ title:"IA na Engenharia: ferramenta, diferencial ou nova competência básica?",
+ body:`<p class="article-lead">A inteligência artificial já aparece como ferramenta transversal em diferentes engenharias.</p>
+ <p>Ela pode ajudar a analisar dados, prever falhas, automatizar tarefas repetitivas, explorar alternativas e apoiar decisões.</p>
+ <h4>Onde aparece?</h4>
+ <ul><li>Construção: análise de projetos, planejamento e monitoramento.</li><li>Elétrica: previsão de consumo e otimização.</li><li>Mecânica: manutenção preditiva e simulação.</li><li>Química: otimização de processos.</li><li>Ambiental: monitoramento e análise de dados.</li></ul>
+ <h4>O que o estudante pode aprender?</h4>
+ <p>Python, estatística, organização de dados, pensamento crítico e uso responsável de ferramentas de IA.</p>
+ <div class="article-box">O diferencial não é apenas “usar IA”, mas saber formular um bom problema e avaliar se a resposta faz sentido tecnicamente.</div>`
+},
+"linkedin-student":{
+ type:"ARTIGO • EMPREGABILIDADE",
+ title:"O que colocar no LinkedIn enquanto você ainda está na graduação",
+ body:`<p class="article-lead">Você não precisa esperar o primeiro emprego para construir presença profissional.</p>
+ <h4>O que já pode aparecer?</h4>
+ <ul><li>curso e período;</li><li>projetos acadêmicos relevantes;</li><li>eventos e competições;</li><li>softwares e ferramentas;</li><li>cursos complementares;</li><li>voluntariado e extensão;</li><li>artigos ou conteúdos produzidos.</li></ul>
+ <h4>Evite um perfil vazio de evidências</h4>
+ <p>Em vez de apenas escrever “liderança”, mostre um projeto no qual você coordenou pessoas ou entregas.</p>
+ <div class="article-box"><strong>Regra prática:</strong> competência + contexto + resultado é mais forte do que uma lista de adjetivos.</div>`
+},
+"portfolio-project":{
+ type:"ARTIGO • PORTFÓLIO",
+ title:"Como transformar um trabalho da faculdade em projeto de portfólio",
+ body:`<p class="article-lead">Um trabalho acadêmico pode virar um excelente case profissional quando você mostra o processo.</p>
+ <h4>Estrutura recomendada</h4>
+ <ul><li><strong>Problema:</strong> o que precisava ser resolvido?</li><li><strong>Contexto:</strong> disciplina, equipe e restrições.</li><li><strong>Processo:</strong> pesquisa, cálculos, protótipos e decisões.</li><li><strong>Ferramentas:</strong> softwares, métodos e tecnologias.</li><li><strong>Resultado:</strong> o que foi entregue?</li><li><strong>Aprendizado:</strong> o que você faria melhor hoje?</li></ul>
+ <div class="article-box">O próprio Engenharia 360 pode ser documentado como case: problema de orientação profissional → pesquisa → protótipo → teste → versão final.</div>`
+},
+"emerging-careers":{
+ type:"ARTIGO • MERCADO",
+ title:"Engenharia tradicional x carreiras emergentes",
+ body:`<p class="article-lead">As áreas tradicionais continuam importantes, mas novas tecnologias criam interseções entre disciplinas.</p>
+ <h4>Exemplos de interseção</h4>
+ <ul><li>Civil + dados → construção digital e Digital Twins.</li><li>Elétrica + software → Smart Grids e IoT.</li><li>Mecânica + automação → robótica e manufatura inteligente.</li><li>Ambiental + sensores → monitoramento conectado.</li><li>Produção + IA → decisão orientada por dados.</li></ul>
+ <p>Isso significa que o estudante pode construir uma carreira híbrida, combinando base de engenharia com tecnologia, gestão ou sustentabilidade.</p>`
+},
+"soft-skills":{
+ type:"ARTIGO • SOFT SKILLS",
+ title:"Competências que nenhum software substitui",
+ body:`<p class="article-lead">Ferramentas mudam rápido. Algumas competências permanecem úteis em praticamente qualquer área.</p>
+ <ul><li><strong>Comunicação:</strong> explicar decisões e ouvir necessidades.</li><li><strong>Pensamento crítico:</strong> avaliar informações antes de aceitar uma resposta.</li><li><strong>Colaboração:</strong> trabalhar com diferentes especialidades.</li><li><strong>Liderança:</strong> organizar decisões e responsabilidades.</li><li><strong>Aprendizagem contínua:</strong> atualizar-se conforme o mercado muda.</li><li><strong>Resolução de problemas:</strong> transformar situações complexas em ações possíveis.</li></ul>
+ <div class="article-box">Tecnologia aumenta a capacidade do profissional. Ela não elimina a necessidade de julgamento, responsabilidade e comunicação.</div>`
+}
+};
+
+const resources={
+"interview-civil":{
+ type:"ENTREVISTA • ROTEIRO",
+ title:"Engenharia Civil — conversa com profissional",
+ body:`<p class="article-lead">Esta entrevista será preenchida com um profissional convidado.</p>
+ <h4>Perguntas propostas</h4>
+ <ol><li>Como foi sua entrada no mercado?</li><li>Como é sua rotina hoje?</li><li>Quais áreas da Civil você considera mais promissoras?</li><li>Qual ferramenta deveria ter aprendido antes?</li><li>O que mais surpreende quem entra na profissão?</li><li>Que conselho daria para estudantes?</li></ol>
+ <div class="article-box"><strong>Produto futuro:</strong> vídeo + versão escrita + principais aprendizados.</div>`
+},
+"interview-electric":{
+ type:"ENTREVISTA • ROTEIRO",
+ title:"Engenharia Elétrica / Energia — conversa com profissional",
+ body:`<p>Foco em energia, automação, segurança, transição energética e oportunidades tecnológicas.</p>
+ <h4>Perguntas-chave</h4><p>Formação, primeiro emprego, rotina, tecnologias usadas, certificações, principais riscos e conselho para estudantes.</p>`
+},
+"interview-mech":{
+ type:"ENTREVISTA • ROTEIRO",
+ title:"Engenharia Mecânica / Indústria — conversa com profissional",
+ body:`<p>Foco em projetos, manutenção, manufatura, automação, Indústria 4.0 e experiência de campo.</p>
+ <h4>Perguntas-chave</h4><p>Rotina industrial, ferramentas, competências, erros comuns de iniciantes e tendências futuras.</p>`
+},
+"interview-management":{
+ type:"ENTREVISTA • ROTEIRO",
+ title:"Gestão e Projetos — conversa com profissional",
+ body:`<p>Foco em liderança, planejamento, custos, riscos, comunicação e certificações.</p>
+ <h4>Perguntas-chave</h4><p>Transição do técnico para gestão, principais responsabilidades, decisões difíceis e habilidades necessárias.</p>`
+}
+};
+
+function openArticle(key){
+ const a=articles[key]; if(!a)return;
+ document.getElementById("articleModalType").textContent=a.type;
+ document.getElementById("articleModalTitle").textContent=a.title;
+ document.getElementById("articleModalBody").innerHTML=a.body;
+ document.getElementById("articleModal").classList.remove("hidden");
+ document.body.style.overflow="hidden";
+}
+function openResource(key){
+ const a=resources[key]; if(!a)return;
+ document.getElementById("articleModalType").textContent=a.type;
+ document.getElementById("articleModalTitle").textContent=a.title;
+ document.getElementById("articleModalBody").innerHTML=a.body;
+ document.getElementById("articleModal").classList.remove("hidden");
+ document.body.style.overflow="hidden";
+}
+function closeArticle(){document.getElementById("articleModal").classList.add("hidden");document.body.style.overflow=""}
+function articleBackdrop(e){if(e.target.id==="articleModal")closeArticle()}
+
+let schoolVotes={cidade:0,energia:0,tecnologia:0,ambiente:0,industria:0,pessoas:0};
+function schoolPoll(key){
+ schoolVotes[key]++;
+ const labels={cidade:"Melhorar cidades",energia:"Criar energia limpa",tecnologia:"Criar tecnologias",ambiente:"Proteger o ambiente",industria:"Criar máquinas",pessoas:"Melhorar a vida das pessoas"};
+ document.getElementById("schoolPollResult").textContent=`Você escolheu: ${labels[key]}. Isso já é uma pista sobre os problemas que despertam sua curiosidade!`;
+}
+
+let schoolScore={construir:0,energia:0,tecnologia:0,ambiente:0,gestao:0};
+let schoolAnswered=0;
+function schoolAnswer(key,btn){
+ const q=btn.closest(".school-q");
+ if(q.dataset.answered==="1")return;
+ q.dataset.answered="1";
+ btn.classList.add("selected");
+ schoolScore[key]++;schoolAnswered++;
+}
+function finishSchoolQuiz(){
+ const box=document.getElementById("schoolQuizResult");
+ if(schoolAnswered<4){
+   box.classList.remove("hidden");
+   box.innerHTML="<strong>Responda as 4 perguntas primeiro 🙂</strong>";
+   return;
+ }
+ const top=Object.entries(schoolScore).sort((a,b)=>b[1]-a[1])[0][0];
+ const results={
+  construir:["🏗️ Universo Construção & Infraestrutura","Você parece gostar de transformar ideias em coisas concretas. Explore Engenharia Civil, infraestrutura, cidades e projetos."],
+  energia:["⚡ Universo Energia & Sistemas","Você demonstra curiosidade por energia e funcionamento de sistemas. Explore Elétrica, renováveis, automação e energia."],
+  tecnologia:["🤖 Universo Tecnologia & Inovação","Você parece se interessar por tecnologia e criação. Explore Computação, automação, robótica, IA e áreas híbridas."],
+  ambiente:["🌱 Universo Sustentabilidade & Ambiente","Você se conecta com problemas ambientais e impacto social. Explore Ambiental, saneamento, energia limpa e sustentabilidade."],
+  gestao:["📊 Universo Projetos & Liderança","Você demonstra interesse em organizar pessoas e fazer projetos acontecerem. Gestão, Produção e coordenação podem ser caminhos interessantes."]
+ };
+ box.classList.remove("hidden");
+ box.innerHTML=`<strong style="color:var(--gold2);font-size:1.15rem">${results[top][0]}</strong><p style="margin-bottom:0">${results[top][1]}</p><p class="small">Este mini teste é apenas exploratório. Use o resultado como ponto de partida para pesquisar e experimentar.</p>`;
+}
+
+</script>
+</body>
+</html>
