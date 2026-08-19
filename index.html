@@ -784,6 +784,33 @@ img{max-width:100%}
   .school-tabs{margin-top:12px}
 }
 
+
+/* V11 */
+.home-steps{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:18px}
+.home-step{padding:18px;border-radius:18px;background:rgba(255,255,255,.055);border:1px solid rgba(255,255,255,.09)}
+.home-step .step-num{width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;margin-bottom:10px;background:linear-gradient(135deg,var(--gold),var(--gold2));color:var(--deep);font-weight:950}
+.home-step strong{display:block;color:var(--gold2);margin-bottom:6px}.home-step p{margin:0;color:var(--muted);font-size:.82rem;line-height:1.45}
+.smart-shortcuts{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:18px}
+.smart-shortcut{padding:15px;border-radius:17px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.09);cursor:pointer;transition:.18s}
+.smart-shortcut:hover{transform:translateY(-2px);border-color:rgba(203,161,104,.35)}
+.smart-shortcut .ico{font-size:1.45rem;margin-bottom:7px}.smart-shortcut strong{display:block;color:#fff;font-size:.87rem}.smart-shortcut span{display:block;color:var(--muted);font-size:.72rem;margin-top:4px;line-height:1.35}
+.result-why{display:grid;grid-template-columns:1.15fr .85fr;gap:14px;margin-top:16px}
+.result-insight,.result-next{padding:18px;border-radius:18px;background:rgba(255,255,255,.055);border:1px solid rgba(255,255,255,.09)}
+.result-insight h3{margin:0 0 8px;color:var(--gold2)}.result-insight p,.result-next p{margin:0;color:#e6f0ed;line-height:1.6}
+.trait-list{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}.trait{padding:8px 10px;border-radius:999px;background:rgba(203,161,104,.09);border:1px solid rgba(203,161,104,.22);color:var(--gold2);font-size:.78rem;font-weight:800}
+.plan-90{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:14px}
+.plan-phase{padding:17px;border-radius:18px;background:rgba(255,255,255,.055);border:1px solid rgba(255,255,255,.09)}
+.plan-phase .days{display:inline-flex;padding:6px 9px;border-radius:999px;margin-bottom:10px;background:rgba(203,161,104,.10);color:var(--gold2);font-weight:900;font-size:.75rem}
+.plan-phase strong{display:block;color:#fff;margin-bottom:7px}.plan-phase p{margin:0;color:var(--muted);font-size:.8rem;line-height:1.55}
+.career-guide-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:14px}
+.career-guide-card{padding:17px;border-radius:18px;background:rgba(255,255,255,.055);border:1px solid rgba(255,255,255,.09);cursor:pointer}
+.career-guide-card .career-icon{font-size:1.8rem;margin-bottom:8px}.career-guide-card strong{display:block;color:var(--gold2);margin-bottom:6px}.career-guide-card p{margin:0;color:var(--muted);font-size:.8rem;line-height:1.45}.career-guide-card .career-more{display:block;margin-top:10px;color:var(--gold2);font-size:.76rem;font-weight:850}
+.presentation-timer{display:inline-flex;align-items:center;gap:7px;padding:8px 10px;border-radius:999px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.10);color:#fff;font-size:.76rem;font-weight:850}
+.presentation-timer button{border:0;background:transparent;color:var(--gold2);font-weight:900;padding:0}
+@media(max-width:950px){.smart-shortcuts{grid-template-columns:repeat(2,1fr)}.career-guide-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:760px){.home-steps,.plan-90,.result-why,.career-guide-grid{grid-template-columns:1fr}}
+@media(max-width:520px){.smart-shortcuts{grid-template-columns:1fr}}
+
 </style>
 </head>
 <body>
@@ -834,70 +861,17 @@ img{max-width:100%}
 </section>
 
 <section id="homeQuick" class="screen home-quick" style="margin-top:16px">
-  <div class="page-head">
-    <div>
-      <div class="badge">ACESSO RÁPIDO</div>
-      <h2 style="margin:0">O que você quer fazer?</h2>
-      <p class="small">Escolha um caminho. Você não precisa navegar por todo o conteúdo para encontrar o que procura.</p>
-    </div>
+  <div class="page-head"><div><div class="badge">COMECE POR AQUI</div><h2 style="margin:0">Como funciona?</h2><p class="small">O Engenharia 360 foi organizado para você encontrar rapidamente o que precisa.</p></div></div>
+  <div class="home-steps">
+    <div class="home-step"><div class="step-num">1</div><strong>Responda</strong><p>Faça o teste com 18 perguntas sobre interesses, problemas, ambientes e formas de trabalhar.</p></div>
+    <div class="home-step"><div class="step-num">2</div><strong>Entenda</strong><p>Receba um perfil principal, afinidades, possíveis carreiras, áreas e competências para desenvolver.</p></div>
+    <div class="home-step"><div class="step-num">3</div><strong>Explore</strong><p>Continue no guia de carreiras, artigos, entrevistas, apresentação do projeto ou modo Ensino Médio.</p></div>
   </div>
-
-  <div class="dashboard-grid">
-    <div class="dashboard-card" onclick="go('participant')">
-      <div class="dash-icon">🧠</div>
-      <strong>Fazer o teste</strong>
-      <p>18 perguntas e resultado personalizado com perfis, áreas e competências.</p>
-      <div class="dash-link">Começar →</div>
-    </div>
-
-    <div class="dashboard-card" onclick="openHub('careersHub')">
-      <div class="dash-icon">🧭</div>
-      <strong>Explorar carreiras</strong>
-      <p>Guia, artigos, entrevistas, portfólio, mentoria e conteúdos profissionais.</p>
-      <div class="dash-link">Explorar →</div>
-    </div>
-
-    <div class="dashboard-card" onclick="go('presentation')">
-      <div class="dash-icon">🎤</div>
-      <strong>Apresentação do trabalho</strong>
-      <p>Apresentação organizada por capítulos, com interação e conteúdo da disciplina.</p>
-      <div class="dash-link">Apresentar →</div>
-    </div>
-
-    <div class="dashboard-card" onclick="go('schoolPresentation')">
-      <div class="dash-icon">🎒</div>
-      <strong>Modo Ensino Médio</strong>
-      <p>Apresentação simplificada e mini teste para feiras, escolas e ações de extensão.</p>
-      <div class="dash-link">Abrir →</div>
-    </div>
-
-    <div class="dashboard-card" onclick="openHub('articlesSection')">
-      <div class="dash-icon">📰</div>
-      <strong>Artigos</strong>
-      <p>Conteúdos completos sobre carreira, tecnologia, LinkedIn, portfólio e mercado.</p>
-      <div class="dash-link">Ler →</div>
-    </div>
-
-    <div class="dashboard-card" onclick="openHub('interviewsSection')">
-      <div class="dash-icon">🎙️</div>
-      <strong>Entrevistas</strong>
-      <p>Roteiros e futuras conversas com profissionais de diferentes áreas.</p>
-      <div class="dash-link">Ver →</div>
-    </div>
-
-    <div class="dashboard-card" onclick="openProjectTab('teamPanel')">
-      <div class="dash-icon">👥</div>
-      <strong>Equipe</strong>
-      <p>Integrantes, funções, fotos e informações do projeto.</p>
-      <div class="dash-link">Conhecer →</div>
-    </div>
-
-    <div class="dashboard-card" onclick="openProjectTab('requirementsPanel')">
-      <div class="dash-icon">✅</div>
-      <strong>Requisitos da professora</strong>
-      <p>Checklist do que foi pedido na disciplina e onde isso aparece no projeto.</p>
-      <div class="dash-link">Conferir →</div>
-    </div>
+  <div class="smart-shortcuts">
+    <div class="smart-shortcut" onclick="go('participant')"><div class="ico">🧠</div><strong>Fazer o teste</strong><span>Descobrir meu perfil</span></div>
+    <div class="smart-shortcut" onclick="openHub('careersHub')"><div class="ico">🧭</div><strong>Guia de carreiras</strong><span>Explorar áreas e caminhos</span></div>
+    <div class="smart-shortcut" onclick="go('presentation')"><div class="ico">🎤</div><strong>Apresentação</strong><span>Modo sala de aula</span></div>
+    <div class="smart-shortcut" onclick="go('schoolPresentation')"><div class="ico">🎒</div><strong>Ensino Médio</strong><span>Versão para escolas</span></div>
   </div>
 </section>
 
@@ -987,7 +961,17 @@ img{max-width:100%}
   <p class="small">Clique em cada opção para entender o que esse profissional faz, onde atua e como começar a explorar essa carreira.</p>
   <div id="careers" class="result-grid"></div>
 
-  <h3 class="section-title">🎯 Áreas indicadas</h3>
+  
+  <h3 class="section-title">🔎 Por que esse perfil apareceu?</h3>
+  <div class="result-why">
+    <div class="result-insight">
+      <h3>Seu padrão de respostas</h3>
+      <p id="whyProfileText">O resultado considera os tipos de problema, ambiente, tecnologia e forma de trabalho que apareceram com mais força nas suas escolhas.</p>
+      <div id="whyTraits" class="trait-list"></div>
+    </div>
+    <div class="result-next"><strong style="color:var(--gold2)">Como usar este resultado</strong><p>Use o perfil como ponto de partida para pesquisar, conversar com profissionais, testar áreas em projetos e desenvolver novas competências.</p></div>
+  </div>
+<h3 class="section-title">🎯 Áreas indicadas</h3>
   <p class="small">Veja por que essas áreas combinam com seu perfil e quais atividades aparecem nelas.</p>
   <div id="areas" class="result-grid"></div>
 
@@ -1016,7 +1000,8 @@ img{max-width:100%}
     <p id="oneLiner" style="margin:8px 0 0"></p>
   </div>
 
-  <div class="result-disclaimer">
+  <h3 class="section-title">🚀 Plano de desenvolvimento — 30 / 60 / 90 dias</h3><div id="plan90" class="plan-90"></div>
+<div class="result-disclaimer">
     <strong>Importante:</strong> os percentuais apresentados são índices de afinidade relativa dentro deste questionário acadêmico.
     Eles não representam probabilidade de sucesso, diagnóstico psicológico ou teste vocacional validado.
   </div>
@@ -1088,7 +1073,7 @@ img{max-width:100%}
         <button class="btn btn-secondary" onclick="toggleSpeakerNotes()">📝 <span class="desktop-notes-label">Notas de fala</span><span class="presentation-mobile-label">Notas</span></button>
         <button class="btn btn-secondary" onclick="togglePresentationFullscreen()">⛶ Tela cheia</button>
       </div>
-      <div class="presentation-toolbar-right">
+      <div class="presentation-toolbar-right"><div class="presentation-timer">⏱️ <span id="presentationTimer">00:00</span><button onclick="togglePresentationTimer()">▶</button><button onclick="resetPresentationTimer()">↺</button></div>
         <span id="roomPresenter" class="presenter-chip">🎙️ Jhessica</span>
         <span id="roomCounter" class="slide-counter">1 / 14</span>
       </div>
@@ -1247,6 +1232,15 @@ img{max-width:100%}
       <h2>🧭 Guia de Carreiras</h2>
       <p>Use esta área para navegar pelas possibilidades profissionais sem precisar fazer o teste.</p>
     </div>
+    <div class="career-guide-grid">
+      <div class="career-guide-card" onclick="openCareerGuide('civil')"><div class="career-icon">🏗️</div><strong>Construção & Infraestrutura</strong><p>Obras, estruturas, BIM, planejamento, saneamento e cidades.</p><span class="career-more">VER CAMINHOS →</span></div>
+      <div class="career-guide-card" onclick="openCareerGuide('energia')"><div class="career-icon">⚡</div><strong>Energia & Sistemas</strong><p>Elétrica, renováveis, automação, eficiência e sistemas inteligentes.</p><span class="career-more">VER CAMINHOS →</span></div>
+      <div class="career-guide-card" onclick="openCareerGuide('mecanica')"><div class="career-icon">⚙️</div><strong>Máquinas & Indústria</strong><p>Projetos mecânicos, manutenção, robótica e manufatura avançada.</p><span class="career-more">VER CAMINHOS →</span></div>
+      <div class="career-guide-card" onclick="openCareerGuide('tecnologia')"><div class="career-icon">🤖</div><strong>Tecnologia & Inovação</strong><p>IA, automação, IoT, Digital Twins e sistemas inteligentes.</p><span class="career-more">VER CAMINHOS →</span></div>
+      <div class="career-guide-card" onclick="openCareerGuide('gestao')"><div class="career-icon">📊</div><strong>Gestão & Projetos</strong><p>Planejamento, custos, riscos, processos, liderança e dados.</p><span class="career-more">VER CAMINHOS →</span></div>
+      <div class="career-guide-card" onclick="openCareerGuide('sustentabilidade')"><div class="career-icon">🌱</div><strong>Sustentabilidade & Ambiente</strong><p>Saneamento, ESG, energia limpa e infraestrutura sustentável.</p><span class="career-more">VER CAMINHOS →</span></div>
+    </div>
+
 
 
   <div class="hub-grid hidden">
@@ -2322,6 +2316,7 @@ function buildResult(){
  fillDetailed("skills",p.skills,"🧠","Competência");
  fillDetailed("techs",p.techs,"🚀","Tecnologia");
  saveTest();go("result");
+ setTimeout(()=>renderWhyAndPlan(ranking[0][0]),80);
 }
 function fillDetailed(id,items,icon,type){
  document.getElementById(id).innerHTML=items.map(item=>{
@@ -2652,6 +2647,52 @@ function showSchoolTab(id){
     window.scrollTo({top:sec.offsetTop-10,behavior:"smooth"});
   }
 }
+
+
+const profileWhy={
+ construtor:["Suas respostas mostraram maior interesse por soluções concretas, execução, infraestrutura e organização de projetos físicos.",["execução","infraestrutura","planejamento","resultado concreto"]],
+ energia:["Suas escolhas indicaram interesse por sistemas, energia, precisão técnica e funcionamento eficiente.",["energia","precisão","sistemas","eficiência"]],
+ mecanico:["Você demonstrou afinidade com mecanismos, equipamentos, criação técnica e melhoria de desempenho.",["máquinas","criação","prototipagem","desempenho"]],
+ inovador:["Suas respostas destacaram curiosidade por tecnologia, automação, programação e soluções inovadoras.",["tecnologia","automação","IA","novas soluções"]],
+ gestor:["Seu padrão de respostas valorizou coordenação, planejamento, tomada de decisão e organização de pessoas e recursos.",["liderança","planejamento","decisão","organização"]],
+ sustentavel:["Você demonstrou interesse por impacto ambiental, uso responsável de recursos e soluções sustentáveis.",["impacto","recursos","sustentabilidade","responsabilidade"]]
+};
+const planByProfile={
+ construtor:[["0–30 dias","Explorar","Pesquisar BIM, obras e infraestrutura."],["31–60 dias","Praticar","Criar mini projeto, orçamento ou modelagem."],["61–90 dias","Conectar","Conversar com profissional ou fazer visita técnica."]],
+ energia:[["0–30 dias","Explorar","Pesquisar energia, automação e renováveis."],["31–60 dias","Praticar","Fazer pequeno estudo de consumo ou automação."],["61–90 dias","Conectar","Participar de curso ou evento da área."]],
+ mecanico:[["0–30 dias","Explorar","Conhecer CAD 3D, manufatura e manutenção."],["31–60 dias","Praticar","Modelar peça ou pequeno protótipo."],["61–90 dias","Conectar","Buscar laboratório, oficina ou competição."]],
+ inovador:[["0–30 dias","Explorar","Escolher Python, IA, IoT ou automação."],["31–60 dias","Praticar","Criar pequeno protótipo com dados ou sensores."],["61–90 dias","Conectar","Publicar o projeto e conversar com profissional."]],
+ gestor:[["0–30 dias","Explorar","Estudar planejamento, riscos e indicadores."],["31–60 dias","Praticar","Montar cronograma ou dashboard."],["61–90 dias","Conectar","Assumir coordenação em projeto acadêmico."]],
+ sustentavel:[["0–30 dias","Explorar","Pesquisar saneamento, ESG e energia limpa."],["31–60 dias","Praticar","Criar pequeno diagnóstico ambiental."],["61–90 dias","Conectar","Participar de projeto ou ação ambiental."]]
+};
+function renderWhyAndPlan(key){
+ const d=profileWhy[key]; if(d){
+  const t=document.getElementById("whyProfileText"); if(t)t.textContent=d[0];
+  const tr=document.getElementById("whyTraits"); if(tr)tr.innerHTML=d[1].map(x=>`<span class="trait">${x}</span>`).join("");
+ }
+ const p=document.getElementById("plan90"); if(p){
+  p.innerHTML=(planByProfile[key]||[]).map(x=>`<div class="plan-phase"><div class="days">${x[0]}</div><strong>${x[1]}</strong><p>${x[2]}</p></div>`).join("");
+ }
+}
+const careerGuides={
+ civil:["🏗️ Construção & Infraestrutura","Engenheiro de Obras • Estrutural • BIM • Planejamento • Infraestrutura","Construtoras, escritórios, órgãos públicos, consultorias e incorporadoras.","BIM, CAD, orçamento, planejamento e compatibilização.","Comece por BIM/CAD, leitura de projetos e visitas técnicas."],
+ energia:["⚡ Energia & Sistemas","Engenheiro de Energia • Elétrica • Renováveis • Automação • Smart Grids","Concessionárias, indústrias, integradoras e empresas de energia.","Circuitos, automação, dados, segurança e eficiência.","Estude circuitos, energia e automação e escolha uma especialidade para aprofundar."],
+ mecanica:["⚙️ Máquinas & Indústria","Mecânica • Manutenção • Robótica • Manufatura • Simulação","Indústrias, fábricas, montadoras, laboratórios e engenharia de produto.","CAD 3D, materiais, simulação, prototipagem e manutenção.","Aprenda CAD 3D e procure laboratório ou projeto prático."],
+ tecnologia:["🤖 Tecnologia & Inovação","Automação • IA aplicada • Sistemas Inteligentes • IoT • Digital Twins","Indústrias, startups, empresas de tecnologia e consultorias.","Programação, lógica, dados, IA, sensores e integração.","Comece por lógica e Python e crie pequenos projetos."],
+ gestao:["📊 Gestão & Projetos","Gerência de Projetos • Planejamento • Custos • Coordenação • Processos","Construtoras, indústrias, consultorias e empresas de serviços.","Cronogramas, custos, riscos, BI, comunicação e liderança.","Use trabalhos da faculdade para praticar gestão e indicadores."],
+ sustentabilidade:["🌱 Sustentabilidade & Ambiente","Ambiental • Saneamento • ESG • Energia Limpa • Infraestrutura Sustentável","Consultorias, indústrias, órgãos públicos, saneamento e energia.","Análise ambiental, indicadores, legislação e eficiência de recursos.","Explore saneamento, ESG, resíduos e energia limpa."]
+};
+function openCareerGuide(key){
+ const c=careerGuides[key]; if(!c)return;
+ document.getElementById("articleModalType").textContent="GUIA DE CARREIRA";
+ document.getElementById("articleModalTitle").textContent=c[0];
+ document.getElementById("articleModalBody").innerHTML=`<h4>Possíveis caminhos</h4><p>${c[1]}</p><h4>Onde pode trabalhar?</h4><p>${c[2]}</p><h4>Competências e ferramentas</h4><p>${c[3]}</p><h4>Como começar?</h4><p>${c[4]}</p>`;
+ document.getElementById("articleModal").classList.remove("hidden");document.body.style.overflow="hidden";
+}
+let presentationTimerSeconds=0,presentationTimerHandle=null;
+function updatePresentationTimer(){const e=document.getElementById("presentationTimer");if(!e)return;const m=String(Math.floor(presentationTimerSeconds/60)).padStart(2,"0"),s=String(presentationTimerSeconds%60).padStart(2,"0");e.textContent=`${m}:${s}`}
+function togglePresentationTimer(){if(presentationTimerHandle){clearInterval(presentationTimerHandle);presentationTimerHandle=null}else{presentationTimerHandle=setInterval(()=>{presentationTimerSeconds++;updatePresentationTimer()},1000)}}
+function resetPresentationTimer(){if(presentationTimerHandle)clearInterval(presentationTimerHandle);presentationTimerHandle=null;presentationTimerSeconds=0;updatePresentationTimer()}
 
 </script>
 </body>
