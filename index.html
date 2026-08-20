@@ -811,6 +811,20 @@ img{max-width:100%}
 @media(max-width:760px){.home-steps,.plan-90,.result-why,.career-guide-grid{grid-template-columns:1fr}}
 @media(max-width:520px){.smart-shortcuts{grid-template-columns:1fr}}
 
+
+/* V12 */
+.library-tools{display:grid;grid-template-columns:1fr auto;gap:10px;margin:14px 0 18px}
+.library-search{position:relative}.library-search input{padding-left:42px}.library-search span{position:absolute;left:14px;top:50%;transform:translateY(-50%);opacity:.7}
+.library-filters{display:flex;gap:7px;flex-wrap:wrap}.library-filter{padding:9px 11px;border-radius:999px;border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.055);color:#fff;font-size:.75rem;font-weight:800}.library-filter.active{background:linear-gradient(90deg,var(--gold),var(--gold2));color:var(--deep);border-color:transparent}
+.article-library-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.article-lib-card{display:flex;flex-direction:column;min-height:250px;padding:17px;border-radius:18px;background:rgba(255,255,255,.055);border:1px solid rgba(255,255,255,.09)}
+.article-cat{display:inline-flex;align-self:flex-start;padding:6px 8px;border-radius:999px;background:rgba(203,161,104,.1);color:var(--gold2);font-size:.67rem;font-weight:850}.article-lib-card h4{margin:12px 0 8px;color:#fff}.article-lib-card p{margin:0;color:var(--muted);font-size:.8rem;line-height:1.48}.article-meta{margin-top:auto;padding-top:14px;color:#b7cdc7;font-size:.7rem}
+.interview-grid,.portfolio-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}.interview-pro,.portfolio-card{padding:18px;border-radius:18px;background:rgba(255,255,255,.055);border:1px solid rgba(255,255,255,.09)}
+.interview-status{display:inline-flex;margin-top:10px;padding:6px 8px;border-radius:999px;background:rgba(203,161,104,.1);border:1px solid rgba(203,161,104,.22);color:var(--gold2);font-size:.67rem;font-weight:850}
+.team-v12-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}.team-v12-card{padding:16px;border-radius:18px;background:rgba(255,255,255,.055);border:1px solid rgba(255,255,255,.09);text-align:center}
+.team-v12-photo{width:86px;height:86px;margin:0 auto 10px;border-radius:50%;overflow:hidden;border:2px solid rgba(203,161,104,.32);background:rgba(255,255,255,.05)}.team-v12-photo img{width:100%;height:100%;object-fit:cover}.team-v12-card strong{display:block;color:var(--gold2);font-size:.86rem}.team-v12-card span{display:block;color:var(--muted);font-size:.72rem;margin-top:5px}.course-empty{margin-top:8px;padding:6px 8px;border-radius:999px;background:rgba(255,255,255,.05);border:1px dashed rgba(255,255,255,.13);font-size:.67rem;color:#c7d9d4}
+@media(max-width:900px){.article-library-grid{grid-template-columns:repeat(2,1fr)}.team-v12-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:700px){.library-tools{grid-template-columns:1fr}.article-library-grid,.interview-grid,.portfolio-grid,.team-v12-grid{grid-template-columns:1fr}}
+
 </style>
 </head>
 <body>
@@ -1305,253 +1319,38 @@ img{max-width:100%}
   </div>
 
   <div id="articlesSection" class="pres-section tab-panel">
-    <div class="badge">📰 ARTIGOS TÉCNICOS</div>
-    <h2 style="margin:0;color:var(--gold2)">Biblioteca Engenharia 360</h2>
+<div class="module-hero"><h2>📰 Biblioteca de Artigos</h2><p>Conteúdos sobre carreira, tecnologia, mercado e empregabilidade.</p></div>
+<div class="library-tools"><div class="library-search"><span>🔎</span><input id="articleSearch" type="search" placeholder="Pesquisar artigo..." oninput="filterArticles()"></div><div class="library-filters">
+<button class="library-filter active" onclick="setArticleFilter('todos',this)">Todos</button><button class="library-filter" onclick="setArticleFilter('carreira',this)">Carreira</button><button class="library-filter" onclick="setArticleFilter('tecnologia',this)">Tecnologia</button><button class="library-filter" onclick="setArticleFilter('empregabilidade',this)">Empregabilidade</button></div></div>
+<div class="article-library-grid">
+<article class="article-lib-card" data-cat="carreira" data-title="escolher área engenharia"><span class="article-cat">CARREIRA</span><h4>Como escolher uma área sem se prender a um rótulo</h4><p>Use projetos, conversas e experiências para investigar caminhos profissionais.</p><div class="article-meta">Leitura: 4 min</div><button class="btn btn-secondary full" onclick="openV12Article('carreira')">LER</button></article>
+<article class="article-lib-card" data-cat="tecnologia" data-title="ia engenharia"><span class="article-cat">TECNOLOGIA</span><h4>IA na engenharia: como começar</h4><p>Aplicações simples de IA em planejamento, análise, automação e decisão.</p><div class="article-meta">Leitura: 5 min</div><button class="btn btn-secondary full" onclick="openV12Article('ia')">LER</button></article>
+<article class="article-lib-card" data-cat="empregabilidade" data-title="portfolio faculdade"><span class="article-cat">EMPREGABILIDADE</span><h4>Como transformar trabalhos da faculdade em portfólio</h4><p>Documente problema, processo, ferramentas, resultado e aprendizado.</p><div class="article-meta">Leitura: 4 min</div><button class="btn btn-secondary full" onclick="openV12Article('portfolio')">LER</button></article>
+<article class="article-lib-card" data-cat="empregabilidade" data-title="linkedin estudantes engenharia"><span class="article-cat">EMPREGABILIDADE</span><h4>LinkedIn para estudantes de engenharia</h4><p>Como apresentar projetos, interesses, competências e trajetória acadêmica.</p><div class="article-meta">Leitura: 4 min</div><button class="btn btn-secondary full" onclick="openV12Article('linkedin')">LER</button></article>
+<article class="article-lib-card" data-cat="tecnologia" data-title="bim digital twins iot"><span class="article-cat">TECNOLOGIA</span><h4>Tecnologias que estão mudando a engenharia</h4><p>BIM, Digital Twins, IoT, IA, automação e análise de dados.</p><div class="article-meta">Leitura: 6 min</div><button class="btn btn-secondary full" onclick="openV12Article('tech')">LER</button></article>
+<article class="article-lib-card" data-cat="carreira" data-title="soft skills engenheiro"><span class="article-cat">CARREIRA</span><h4>Competências que vão além do cálculo</h4><p>Comunicação, colaboração, liderança, autonomia e pensamento crítico.</p><div class="article-meta">Leitura: 4 min</div><button class="btn btn-secondary full" onclick="openV12Article('skills')">LER</button></article>
+</div></div>
 
-    <p>
-      A plataforma pode manter uma biblioteca de artigos escritos pela equipe,
-      convidados e futuramente pelos próprios estudantes.
-      Os textos ajudam a transformar pesquisa de carreira em conteúdo público e reutilizável.
-    </p>
+<div id="interviewsSection" class="pres-section tab-panel">
+<div class="module-hero"><h2>🎙️ Entrevistas com Profissionais</h2><p>Área preparada para receber entrevistas reais. Enquanto isso, mostramos o plano de execução.</p></div>
+<div class="content-note"><strong>Transparência:</strong> as entrevistas ainda não foram realizadas.</div>
+<div class="interview-grid" style="margin-top:14px">
+<div class="interview-pro"><h4>🏗️ Engenharia Civil</h4><span class="interview-status">A REALIZAR</span><p class="small">Rotina, escolha da área, BIM/obras e conselhos para estudantes.</p></div>
+<div class="interview-pro"><h4>⚡ Elétrica / Energia</h4><span class="interview-status">A REALIZAR</span><p class="small">Tecnologias, ferramentas, mercado e certificações.</p></div>
+<div class="interview-pro"><h4>⚙️ Mecânica / Indústria</h4><span class="interview-status">A REALIZAR</span><p class="small">Projetos, manutenção, manufatura e prática profissional.</p></div>
+<div class="interview-pro"><h4>📊 Gestão de Projetos</h4><span class="interview-status">A REALIZAR</span><p class="small">Planejamento, riscos, liderança e carreira em gestão.</p></div>
+</div></div>
 
-    <div class="article-grid">
-<div class="article">
-        <div class="meta">CARREIRA • LEITURA 4 MIN</div>
-        <h4>Como escolher uma área da engenharia sem se limitar cedo demais</h4>
-        <p>Exploração, autoconhecimento, experiências práticas e critérios para comparar possibilidades.</p>
-        <button class="btn btn-secondary full" style="margin-top:12px" onclick="openArticle('career-choice')">LER ARTIGO →</button>
-      </div>
-<div class="article">
-        <div class="meta">TECNOLOGIA • LEITURA 5 MIN</div>
-        <h4>IA na Engenharia: ferramenta, diferencial ou nova competência básica?</h4>
-        <p>Como inteligência artificial pode apoiar projetos, análise de dados, automação e tomada de decisão.</p>
-        <button class="btn btn-secondary full" style="margin-top:12px" onclick="openArticle('ai-engineering')">LER ARTIGO →</button>
-      </div>
-<div class="article">
-        <div class="meta">EMPREGABILIDADE • LEITURA 4 MIN</div>
-        <h4>O que colocar no LinkedIn enquanto você ainda está na graduação</h4>
-        <p>Projetos, atividades acadêmicas, cursos, competências e experiências que já podem fortalecer o perfil.</p>
-        <button class="btn btn-secondary full" style="margin-top:12px" onclick="openArticle('linkedin-student')">LER ARTIGO →</button>
-      </div>
-<div class="article">
-        <div class="meta">PORTFÓLIO • LEITURA 6 MIN</div>
-        <h4>Como transformar um trabalho da faculdade em projeto de portfólio</h4>
-        <p>Problema, processo, ferramentas, decisões, resultado e aprendizados: a estrutura de um bom case.</p>
-        <button class="btn btn-secondary full" style="margin-top:12px" onclick="openArticle('portfolio-project')">LER ARTIGO →</button>
-      </div>
-<div class="article">
-        <div class="meta">MERCADO • LEITURA 5 MIN</div>
-        <h4>Engenharia tradicional x carreiras emergentes</h4>
-        <p>Como BIM, energia limpa, dados, automação e sustentabilidade estão criando novas interseções profissionais.</p>
-        <button class="btn btn-secondary full" style="margin-top:12px" onclick="openArticle('emerging-careers')">LER ARTIGO →</button>
-      </div>
-<div class="article">
-        <div class="meta">SOFT SKILLS • LEITURA 4 MIN</div>
-        <h4>Competências que nenhum software substitui</h4>
-        <p>Comunicação, liderança, pensamento crítico, colaboração e capacidade de resolver problemas.</p>
-        <button class="btn btn-secondary full" style="margin-top:12px" onclick="openArticle('soft-skills')">LER ARTIGO →</button>
-      </div>
-</div>
+<div id="portfolioSection" class="pres-section tab-panel">
+<div class="module-hero"><h2>💼 Portfólio & Personal Branding</h2><p>Como transformar a experiência acadêmica em presença profissional.</p></div>
+<div class="portfolio-grid">
+<div class="portfolio-card"><h4>🧩 Portfólio técnico</h4><p class="small">Problema → método → ferramentas → resultado → aprendizado.</p></div>
+<div class="portfolio-card"><h4>💼 LinkedIn</h4><p class="small">Título, resumo, projetos, competências e certificados.</p></div>
+<div class="portfolio-card"><h4>📄 Currículo</h4><p class="small">Objetividade, evidências, resultados e ferramentas.</p></div>
+<div class="portfolio-card"><h4>✍️ Conteúdo técnico</h4><p class="small">Artigos, posts, projetos e reflexões que demonstram aprendizado.</p></div>
+</div></div>
 
-    <div class="callout">
-      <strong>📌 Meta de extensão</strong>
-      <p style="margin:8px 0 0">
-        Publicar inicialmente de 3 a 5 artigos técnicos e continuar ampliando a biblioteca
-        ao longo do projeto.
-      </p>
-    </div>
-  </div>
-
-  <div id="interviewsSection" class="pres-section tab-panel">
-    <div class="badge">🎙️ ENTREVISTAS COM PROFISSIONAIS</div>
-    <h2 style="margin:0;color:var(--gold2)">Carreira contada por quem vive a profissão</h2>
-
-    <p>
-      Uma seção de entrevistas aproxima estudantes da realidade do mercado.
-      O objetivo não é mostrar apenas cargos, mas trajetórias reais:
-      como começou, quais escolhas funcionaram, quais erros aconteceram
-      e quais competências fazem diferença.
-    </p>
-
-    <div class="cards">
-      <div class="interview" onclick="openResource('interview-civil')" style="cursor:pointer">
-        <div class="interview-avatar">🏗️</div>
-        <div>
-          <h4>Engenharia Civil</h4><span class="dev-badge">ENTREVISTA A REALIZAR</span>
-          <p><strong>Roteiro:</strong> primeiro estágio, rotina de obra/projeto, BIM, desafios, competências e conselho para quem está começando.</p>
-        </div>
-      </div>
-
-      <div class="interview" onclick="openResource('interview-electric')" style="cursor:pointer">
-        <div class="interview-avatar">⚡</div>
-        <div>
-          <h4>Engenharia Elétrica / Energia</h4><span class="dev-badge">ENTREVISTA A REALIZAR</span>
-          <p><strong>Roteiro:</strong> transição energética, automação, especializações, segurança e oportunidades futuras.</p>
-        </div>
-      </div>
-
-      <div class="interview" onclick="openResource('interview-mech')" style="cursor:pointer">
-        <div class="interview-avatar">⚙️</div>
-        <div>
-          <h4>Engenharia Mecânica / Indústria</h4><span class="dev-badge">ENTREVISTA A REALIZAR</span>
-          <p><strong>Roteiro:</strong> projetos, manutenção, manufatura, Indústria 4.0 e experiência de campo.</p>
-        </div>
-      </div>
-
-      <div class="interview" onclick="openResource('interview-management')" style="cursor:pointer">
-        <div class="interview-avatar">📊</div>
-        <div>
-          <h4>Gestão e Projetos</h4><span class="dev-badge">ENTREVISTA A REALIZAR</span>
-          <p><strong>Roteiro:</strong> liderança, cronograma, custos, certificações, comunicação e transição para cargos de gestão.</p>
-        </div>
-      </div>
-    </div>
-
-    <h3 class="section-title">Perguntas-base para todas as entrevistas</h3>
-    <div class="guide-grid">
-      <div class="guide-item"><strong>1. Como começou?</strong><span class="small">Formação, estágio e primeiro emprego.</span></div>
-      <div class="guide-item"><strong>2. Como é a rotina?</strong><span class="small">Atividades que realmente ocupam o dia a dia.</span></div>
-      <div class="guide-item"><strong>3. O que ninguém conta?</strong><span class="small">Desafios, dificuldades e expectativas irreais.</span></div>
-      <div class="guide-item"><strong>4. Quais competências importam?</strong><span class="small">Técnicas e comportamentais.</span></div>
-      <div class="guide-item"><strong>5. Quais ferramentas usa?</strong><span class="small">Softwares, metodologias e tecnologias.</span></div>
-      <div class="guide-item"><strong>6. Conselho para estudantes</strong><span class="small">O que faria diferente se estivesse na graduação hoje.</span></div>
-    </div>
-
-    <div class="callout">
-      <strong>🎥 Formatos possíveis</strong>
-      <p style="margin:8px 0 0">
-        Vídeo curto • entrevista escrita • podcast • reels • resumo em artigo • QR Code durante workshops.
-      </p>
-    </div>
-  </div>
-
-  <div id="guideSection" class="hidden">
-    <div class="badge">🧭 GUIA DIGITAL DE CARREIRAS</div>
-    <h2 style="margin:0;color:var(--gold2)">Um mapa para explorar possibilidades</h2>
-
-    <p>
-      O guia transforma as informações coletadas pelo projeto em uma base consultável,
-      mesmo por quem não quiser fazer o teste.
-    </p>
-
-    <div class="guide-grid">
-      <div class="guide-item">
-        <strong>🏗️ Áreas de atuação</strong>
-        <span class="small">O que cada área faz e em que tipos de projeto aparece.</span>
-      </div>
-      <div class="guide-item">
-        <strong>💼 Cargos e caminhos</strong>
-        <span class="small">Possíveis funções profissionais e como elas se conectam.</span>
-      </div>
-      <div class="guide-item">
-        <strong>🧠 Competências</strong>
-        <span class="small">Conhecimentos técnicos e habilidades comportamentais importantes.</span>
-      </div>
-      <div class="guide-item">
-        <strong>💻 Ferramentas</strong>
-        <span class="small">Softwares, metodologias e tecnologias relevantes.</span>
-      </div>
-      <div class="guide-item">
-        <strong>🏅 Certificações</strong>
-        <span class="small">Referências de qualificações e registro profissional.</span>
-      </div>
-      <div class="guide-item">
-        <strong>🎙️ Profissionais reais</strong>
-        <span class="small">Entrevistas conectadas a cada área do guia.</span>
-      </div>
-      <div class="guide-item">
-        <strong>📰 Artigos relacionados</strong>
-        <span class="small">Conteúdo para aprofundar cada tema.</span>
-      </div>
-      <div class="guide-item">
-        <strong>🗺️ Próximos passos</strong>
-        <span class="small">Cursos, estágio, projetos, portfólio e networking.</span>
-      </div>
-    </div>
-  </div>
-
-  <div id="highSchoolSection" class="pres-section tab-panel">
-    <div class="badge">🎒 FUTURO • ENSINO MÉDIO</div>
-
-    <div class="hs-banner">
-      <h2>Engenharia 360 Escolas</h2>
-
-      <p>
-        Uma evolução futura do projeto pode adaptar a ferramenta para estudantes
-        do ensino médio, especialmente em feiras de profissões,
-        escolas públicas e particulares, eventos comunitários e ações de extensão.
-      </p>
-
-      <div>
-        <span class="future-chip">linguagem mais simples</span>
-        <span class="future-chip">quiz reduzido</span>
-        <span class="future-chip">vídeos curtos</span>
-        <span class="future-chip">profissões explicadas</span>
-        <span class="future-chip">QR Code</span>
-        <span class="future-chip">atividades em sala</span>
-      </div>
-    </div>
-
-    <h3 class="section-title">Como seria a experiência para alunos do ensino médio?</h3>
-
-    <div class="mentoring-flow">
-      <div class="mentor-step"><strong>1. Descobrir</strong><span class="small">“O que um engenheiro realmente faz?”</span></div>
-      <div class="mentor-step"><strong>2. Experimentar</strong><span class="small">Quiz curto e exemplos de projetos.</span></div>
-      <div class="mentor-step"><strong>3. Explorar</strong><span class="small">Carreiras, cursos e tecnologias.</span></div>
-      <div class="mentor-step"><strong>4. Conversar</strong><span class="small">Workshop ou bate-papo com universitários/profissionais.</span></div>
-    </div>
-
-    <h3 class="section-title">Possíveis ações de extensão</h3>
-
-    <div class="workshop-grid">
-      <div class="workshop-item"><strong>🏫 Visita a escolas</strong><span class="small">Apresentar o Engenharia 360 em turmas do 2º e 3º ano.</span></div>
-      <div class="workshop-item"><strong>🎪 Feira de Profissões</strong><span class="small">Totem ou QR Code para testar a plataforma durante eventos.</span></div>
-      <div class="workshop-item"><strong>🎤 Mini palestra</strong><span class="small">“O que ninguém conta sobre escolher uma engenharia”.</span></div>
-      <div class="workshop-item"><strong>🧪 Oficina prática</strong><span class="small">Pequenos desafios de Civil, Elétrica, Mecânica, Química e Ambiental.</span></div>
-      <div class="workshop-item"><strong>📘 Guia para escolas</strong><span class="small">Material resumido de carreiras e possibilidades acadêmicas.</span></div>
-      <div class="workshop-item"><strong>📊 Pesquisa de impacto</strong><span class="small">Antes/depois para medir aumento de conhecimento sobre profissões.</span></div>
-    </div>
-
-    <div class="callout">
-      <strong>🌎 Impacto social futuro</strong>
-      <p style="margin:8px 0 0">
-        A ferramenta pode democratizar acesso à informação profissional,
-        principalmente para jovens que não convivem com engenheiros
-        ou possuem pouco contato com diferentes carreiras.
-      </p>
-    </div>
-  </div>
-
-  <div id="portfolioSection" class="pres-section tab-panel">
-    <div class="badge">💼 PORTFÓLIO & PERSONAL BRANDING</div>
-    <h2 style="margin:0;color:var(--gold2)">Transformar experiência em evidência profissional</h2>
-
-    <p>
-      O portfólio online pode ser uma extensão natural do resultado do Engenharia 360.
-      Depois de identificar áreas e competências, o estudante passa a registrar
-      projetos que comprovem seu desenvolvimento.
-    </p>
-
-    <div class="guide-grid">
-      <div class="guide-item"><strong>👤 Apresentação</strong><span class="small">Quem sou, área de interesse e objetivos profissionais.</span></div>
-      <div class="guide-item"><strong>🏗️ Projetos acadêmicos</strong><span class="small">Problema, solução, ferramentas utilizadas e resultado.</span></div>
-      <div class="guide-item"><strong>🧠 Competências</strong><span class="small">Exemplos concretos de onde cada habilidade foi aplicada.</span></div>
-      <div class="guide-item"><strong>🏅 Cursos & certificações</strong><span class="small">Formações complementares relevantes.</span></div>
-      <div class="guide-item"><strong>📰 Artigos publicados</strong><span class="small">Conteúdo técnico produzido pelo estudante.</span></div>
-      <div class="guide-item"><strong>🔗 LinkedIn</strong><span class="small">Perfil profissional alinhado ao portfólio.</span></div>
-      <div class="guide-item"><strong>📄 Currículo</strong><span class="small">Versão objetiva e coerente com a área de interesse.</span></div>
-      <div class="guide-item"><strong>📬 Contato</strong><span class="small">Facilitar networking e oportunidades.</span></div>
-    </div>
-
-    <div class="speaker-note">
-      <strong>Exemplo:</strong>
-      um estudante com perfil “Inovador Tecnológico” pode usar o próprio
-      Engenharia 360 como case de portfólio, descrevendo problema,
-      pesquisa, interface, algoritmo, testes e aprendizados.
-    </div>
-  </div>
-
-  <div id="mentoringSection" class="pres-section tab-panel">
+<div id="mentoringSection" class="pres-section tab-panel">
     <div class="badge">🤝 MENTORIA & WORKSHOP COMUNITÁRIO</div>
     <h2 style="margin:0;color:var(--gold2)">Compartilhar experiência para gerar impacto</h2>
 
@@ -1819,59 +1618,16 @@ img{max-width:100%}
   </div>
 
   <div id="teamPanel" class="project-panel active">
+<div class="module-hero"><h2>👥 Equipe do Projeto</h2><p>Os cursos e fotos serão preenchidos com os dados finais de cada integrante.</p></div>
+<div class="team-v12-grid">
+<div class="team-v12-card"><div class="team-v12-photo"><img src="./equipe/jhessica.jpg" alt="Jhessica" onerror="this.style.display='none'"></div><strong>Jhessica Ellen de Souza Nakano</strong><span>Integrante do projeto</span><div class="course-empty">Curso: confirmar</div></div>
+<div class="team-v12-card"><div class="team-v12-photo"><img src="./equipe/aghata.jpg" alt="Aghata" onerror="this.style.display='none'"></div><strong>Aghata Wanessa Lacerda Leite</strong><span>Integrante do projeto</span><div class="course-empty">Curso: informar</div></div>
+<div class="team-v12-card"><div class="team-v12-photo"><img src="./equipe/richard.jpg" alt="Richard" onerror="this.style.display='none'"></div><strong>Richard Gil Ferreira Brito</strong><span>Integrante do projeto</span><div class="course-empty">Curso: informar</div></div>
+<div class="team-v12-card"><div class="team-v12-photo"><img src="./equipe/mauro.jpg" alt="Mauro" onerror="this.style.display='none'"></div><strong>Mauro César Oliveira Venâncio</strong><span>Integrante do projeto</span><div class="course-empty">Curso: informar</div></div>
+<div class="team-v12-card"><div class="team-v12-photo"><img src="./equipe/andre.jpg" alt="Andre" onerror="this.style.display='none'"></div><strong>Andre Luiz Andrade de Oliveira</strong><span>Integrante do projeto</span><div class="course-empty">Curso: informar</div></div>
+</div></div>
 
-
-  <h3 class="section-title">👥 Integrantes</h3>
-  <div class="team-grid-v6">
-    <div class="team-photo">
-      <img loading="lazy" decoding="async" src="./equipe/jhessica.jpg" alt="Jhessica Ellen de Souza Nakano" onerror="this.onerror=null;this.src=&quot;data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20width%3D%27500%27%20height%3D%27500%27%3E%3Crect%20width%3D%27500%27%20height%3D%27500%27%20fill%3D%27%230b6b61%27%2F%3E%3Ccircle%20cx%3D%27250%27%20cy%3D%27190%27%20r%3D%2782%27%20fill%3D%27%23e7c89c%27%2F%3E%3Crect%20x%3D%27115%27%20y%3D%27300%27%20width%3D%27270%27%20height%3D%27105%27%20rx%3D%2752%27%20fill%3D%27%23e7c89c%27%2F%3E%3Ctext%20x%3D%27250%27%20y%3D%27465%27%20text-anchor%3D%27middle%27%20font-family%3D%27Arial%27%20font-size%3D%2732%27%20fill%3D%27white%27%3EJhessica%3C%2Ftext%3E%3C%2Fsvg%3E&quot;">
-      <div class="team-body">
-        <strong>Jhessica Ellen de Souza Nakano</strong>
-        <span class="team-course">Engenharia Civil</span>
-        <span class="team-role neutral-role">Integrante do projeto</span>
-      </div>
-    </div>
-
-    <div class="team-photo">
-      <img loading="lazy" decoding="async" src="./equipe/aghata.jpg" alt="Aghata Wanessa Lacerda Leite" onerror="this.onerror=null;this.src=&quot;data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20width%3D%27500%27%20height%3D%27500%27%3E%3Crect%20width%3D%27500%27%20height%3D%27500%27%20fill%3D%27%230b6b61%27%2F%3E%3Ccircle%20cx%3D%27250%27%20cy%3D%27190%27%20r%3D%2782%27%20fill%3D%27%23e7c89c%27%2F%3E%3Crect%20x%3D%27115%27%20y%3D%27300%27%20width%3D%27270%27%20height%3D%27105%27%20rx%3D%2752%27%20fill%3D%27%23e7c89c%27%2F%3E%3Ctext%20x%3D%27250%27%20y%3D%27465%27%20text-anchor%3D%27middle%27%20font-family%3D%27Arial%27%20font-size%3D%2732%27%20fill%3D%27white%27%3EAghata%3C%2Ftext%3E%3C%2Fsvg%3E&quot;">
-      <div class="team-body">
-        <strong>Aghata Wanessa Lacerda Leite</strong>
-        <span class="team-course">Curso: informar</span>
-        <span class="team-role neutral-role">Integrante do projeto</span>
-      </div>
-    </div>
-
-    <div class="team-photo">
-      <img loading="lazy" decoding="async" src="./equipe/richard.jpg" alt="Richard Gil Ferreira Brito" onerror="this.onerror=null;this.src=&quot;data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20width%3D%27500%27%20height%3D%27500%27%3E%3Crect%20width%3D%27500%27%20height%3D%27500%27%20fill%3D%27%230b6b61%27%2F%3E%3Ccircle%20cx%3D%27250%27%20cy%3D%27190%27%20r%3D%2782%27%20fill%3D%27%23e7c89c%27%2F%3E%3Crect%20x%3D%27115%27%20y%3D%27300%27%20width%3D%27270%27%20height%3D%27105%27%20rx%3D%2752%27%20fill%3D%27%23e7c89c%27%2F%3E%3Ctext%20x%3D%27250%27%20y%3D%27465%27%20text-anchor%3D%27middle%27%20font-family%3D%27Arial%27%20font-size%3D%2732%27%20fill%3D%27white%27%3ERichard%3C%2Ftext%3E%3C%2Fsvg%3E&quot;">
-      <div class="team-body">
-        <strong>Richard Gil Ferreira Brito</strong>
-        <span class="team-course">Curso: informar</span>
-        <span class="team-role neutral-role">Integrante do projeto</span>
-      </div>
-    </div>
-
-    <div class="team-photo">
-      <img loading="lazy" decoding="async" src="./equipe/mauro.jpg" alt="Mauro César Oliveira Venâncio" onerror="this.onerror=null;this.src=&quot;data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20width%3D%27500%27%20height%3D%27500%27%3E%3Crect%20width%3D%27500%27%20height%3D%27500%27%20fill%3D%27%230b6b61%27%2F%3E%3Ccircle%20cx%3D%27250%27%20cy%3D%27190%27%20r%3D%2782%27%20fill%3D%27%23e7c89c%27%2F%3E%3Crect%20x%3D%27115%27%20y%3D%27300%27%20width%3D%27270%27%20height%3D%27105%27%20rx%3D%2752%27%20fill%3D%27%23e7c89c%27%2F%3E%3Ctext%20x%3D%27250%27%20y%3D%27465%27%20text-anchor%3D%27middle%27%20font-family%3D%27Arial%27%20font-size%3D%2732%27%20fill%3D%27white%27%3EMauro%3C%2Ftext%3E%3C%2Fsvg%3E&quot;">
-      <div class="team-body">
-        <strong>Mauro César Oliveira Venâncio</strong>
-        <span class="team-course">Curso: informar</span>
-        <span class="team-role neutral-role">Integrante do projeto</span>
-      </div>
-    </div>
-
-    <div class="team-photo">
-      <img loading="lazy" decoding="async" src="./equipe/andre.jpg" alt="Andre Luiz Andrade de Oliveira" onerror="this.onerror=null;this.src=&quot;data:image/svg+xml,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20width%3D%27500%27%20height%3D%27500%27%3E%3Crect%20width%3D%27500%27%20height%3D%27500%27%20fill%3D%27%230b6b61%27%2F%3E%3Ccircle%20cx%3D%27250%27%20cy%3D%27190%27%20r%3D%2782%27%20fill%3D%27%23e7c89c%27%2F%3E%3Crect%20x%3D%27115%27%20y%3D%27300%27%20width%3D%27270%27%20height%3D%27105%27%20rx%3D%2752%27%20fill%3D%27%23e7c89c%27%2F%3E%3Ctext%20x%3D%27250%27%20y%3D%27465%27%20text-anchor%3D%27middle%27%20font-family%3D%27Arial%27%20font-size%3D%2732%27%20fill%3D%27white%27%3EAndre%3C%2Ftext%3E%3C%2Fsvg%3E&quot;">
-      <div class="team-body">
-        <strong>Andre Luiz Andrade de Oliveira</strong>
-        <span class="team-course">Curso: informar</span>
-        <span class="team-role neutral-role">Integrante do projeto</span>
-      </div>
-    </div>
-  </div>
-
-    </div>
-
-  <div id="studyPanel" class="project-panel">
+<div id="studyPanel" class="project-panel">
 <h3 class="section-title">📚 O que estamos estudando?</h3>
   <div class="cards">
     <div class="card"><strong>Identidade profissional</strong><p class="small">Como interesses, competências e valores influenciam escolhas de carreira.</p></div>
@@ -2693,6 +2449,20 @@ let presentationTimerSeconds=0,presentationTimerHandle=null;
 function updatePresentationTimer(){const e=document.getElementById("presentationTimer");if(!e)return;const m=String(Math.floor(presentationTimerSeconds/60)).padStart(2,"0"),s=String(presentationTimerSeconds%60).padStart(2,"0");e.textContent=`${m}:${s}`}
 function togglePresentationTimer(){if(presentationTimerHandle){clearInterval(presentationTimerHandle);presentationTimerHandle=null}else{presentationTimerHandle=setInterval(()=>{presentationTimerSeconds++;updatePresentationTimer()},1000)}}
 function resetPresentationTimer(){if(presentationTimerHandle)clearInterval(presentationTimerHandle);presentationTimerHandle=null;presentationTimerSeconds=0;updatePresentationTimer()}
+
+
+let currentArticleFilter="todos";
+function setArticleFilter(f,b){currentArticleFilter=f;document.querySelectorAll(".library-filter").forEach(x=>x.classList.remove("active"));b.classList.add("active");filterArticles()}
+function filterArticles(){const q=(document.getElementById("articleSearch")?.value||"").toLowerCase();document.querySelectorAll(".article-lib-card").forEach(c=>{const ok=(currentArticleFilter==="todos"||c.dataset.cat===currentArticleFilter)&&(!q||c.innerText.toLowerCase().includes(q));c.style.display=ok?"flex":"none"})}
+const v12Articles={
+carreira:["Como escolher uma área sem se prender a um rótulo","<p>Trate a carreira como investigação. Observe interesses, experimente projetos, converse com profissionais e registre o que você aprende sobre si.</p>"],
+ia:["IA na engenharia: como começar","<p>Comece pelo problema, não pela ferramenta. Explore dados, lógica e pequenos projetos de automação, análise ou apoio à decisão.</p>"],
+portfolio:["Como transformar trabalhos da faculdade em portfólio","<p>Explique problema, objetivo, sua participação, ferramentas, processo, resultado e aprendizado. Um bom portfólio mostra raciocínio, não apenas a imagem final.</p>"],
+linkedin:["LinkedIn para estudantes de engenharia","<p>Mostre curso, interesses, projetos, ferramentas que está aprendendo e competências. Não é preciso inventar experiência.</p>"],
+tech:["Tecnologias que estão mudando a engenharia","<p>BIM, Digital Twins, IoT, IA, automação e dados estão atravessando diferentes engenharias. Escolha as que fazem sentido para seu caminho.</p>"],
+skills:["Competências que vão além do cálculo","<p>Comunicação, colaboração, pensamento crítico, autonomia, ética e aprendizagem contínua são parte importante da atuação profissional.</p>"]
+};
+function openV12Article(k){const a=v12Articles[k];if(!a)return;document.getElementById("articleModalType").textContent="ARTIGO • ENGENHARIA 360";document.getElementById("articleModalTitle").textContent=a[0];document.getElementById("articleModalBody").innerHTML=a[1];document.getElementById("articleModal").classList.remove("hidden");document.body.style.overflow="hidden"}
 
 </script>
 </body>
