@@ -1,0 +1,17 @@
+ENGENHARIA360 — APRESENTAÇÃO AJUSTADA — 24/09/2026
+
+Versão preparada para a apresentação à turma e à Prof.ª Karina Kida.
+
+ALTERAÇÕES PRINCIPAIS
+- abertura com situação concreta e problema de compreensão;
+- distinção entre hipótese a investigar e problema já comprovado;
+- demonstração de uma pergunta com foco no que o aluno aprende;
+- caminho explícito: situação → escolha → explicação → conversa;
+- aplicação na Escola Estadual Nathália Uchôa;
+- avaliação antes/depois da compreensão;
+- resposta pronta para “como vocês sabem que esse problema existe?”;
+- roteiro alinhado aos 5 minutos;
+- cronômetro automático, favicon e identidade visual preservados.
+
+PUBLICAÇÃO
+Envie todos os arquivos desta pasta para a raiz da hospedagem/GitHub Pages. O arquivo principal é index.html.
