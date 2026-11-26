@@ -607,3 +607,84 @@ footer { padding: 28px 0; background: var(--ink); color: white; }
 @media(max-width:680px){.node-ele{left:calc(50% - 30.5px)}}
 .studio{padding:82px 0;background:#eef6f3;scroll-margin:16px}.studio h2{font:800 clamp(30px,4vw,48px)/1.08 Manrope,system-ui;letter-spacing:-.045em;margin:12px 0 20px}.studio p{line-height:1.55;max-width:76ch}.studio h3{margin:24px 0 12px;font-size:21px}.studio-intro,.data-grid{display:grid;grid-template-columns:1.2fr 1fr;gap:42px}.studio-intro aside,.study-panel,#activity-work{background:white;border:1px solid #cdded8;border-radius:22px;padding:clamp(18px,3vw,38px)}.studio-intro aside h3,.data-grid h3{margin-top:0}.studio-intro ol{padding-left:22px}.studio-intro li{padding:9px 0;border-bottom:1px solid #deebe7}.studio-intro li b{float:right}.studio-actions,.file-list{display:flex;flex-wrap:wrap;gap:10px;margin-top:20px}.studio .secondary,.file-list a{border:1px solid #b7ccc4;background:white;color:#123e35}.file-list a{border-radius:10px;padding:10px 13px;font-weight:650}.study-panel,#activity-work{margin-top:30px;scroll-margin:18px}.data-grid{margin:24px 0;padding:24px 0;border-block:1px solid #dce8e3}.legend{display:flex;gap:20px;font-size:14px}.legend span:before{content:'';display:inline-block;width:12px;height:12px;background:#536479;border-radius:3px;margin-right:6px}.legend span+span:before{background:#097663}.measure{margin-top:14px}.measure strong{font-size:15px}.bar{display:flex;align-items:center;gap:5px;height:18px;font-size:13px}.bar i{width:calc(var(--v)*41%);height:8px;border-radius:8px;background:#536479}.bar.after i{background:#097663}.studio table{width:100%;border-collapse:collapse;font-size:15px}.studio th,.studio td{padding:9px 4px;border-bottom:1px solid #d3e4dc;text-align:left}.studio summary{cursor:pointer;font-weight:700;padding:12px 0}.studio details{border-bottom:1px solid #dce8e3}.studio label{display:block;margin:16px 0;font-weight:650}.studio textarea,.studio select{display:block;width:100%;font:inherit;padding:10px;margin-top:6px;border:1px solid #93aaa1;border-radius:8px}.studio textarea{min-height:70px}.studio button:focus-visible,.studio a:focus-visible{outline:3px solid #005b9d;outline-offset:3px}
 @media(max-width:760px){.studio{padding:44px 0}.studio-intro,.data-grid{grid-template-columns:1fr;gap:18px}.studio .button{width:100%}.studio table{font-size:14px}}
+
+/* MENU RESPONSIVO ENGENHARIA360 */
+
+.mobile-menu-toggle,
+.mobile-nav {
+  display: none;
+}
+
+@media (max-width: 900px) {
+
+  .desktop-nav {
+    display: none !important;
+  }
+
+  .nav-shell {
+    gap: 8px;
+    padding-right: 54px;
+  }
+
+  .mobile-menu-toggle {
+    display: grid;
+    place-items: center;
+    position: absolute;
+    right: 16px;
+    top: 42px;
+    transform: translateY(-50%);
+    width: 40px;
+    height: 40px;
+    background: rgba(62, 227, 182, .08);
+    border: 1px solid rgba(62, 227, 182, .35);
+    border-radius: 10px;
+    color: #3de3b6;
+    font-size: 22px;
+    cursor: pointer;
+  }
+
+  .mobile-nav:not([hidden]) {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    left: 16px;
+    right: 16px;
+    padding: 12px;
+    background: #102c3c;
+    border: 1px solid rgba(62, 227, 182, .25);
+    border-radius: 16px;
+    box-shadow: 0 15px 40px rgba(0,0,0,.35);
+    z-index: 1000;
+  }
+
+  .mobile-nav a {
+    padding: 15px;
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 600;
+    border-bottom: 1px solid rgba(255,255,255,.08);
+  }
+
+  .mobile-nav a:last-child {
+    border-bottom: none;
+  }
+
+  .mobile-nav a:hover {
+    color: #3de3b6;
+    background: rgba(62,227,182,.05);
+  }
+}
+
+@media (max-width: 400px) {
+  .nav-shell .brand {
+    font-size: 16px;
+    gap: 6px;
+  }
+
+  .nav-shell .button {
+    padding-inline: 9px;
+    white-space: nowrap;
+  }
+}
