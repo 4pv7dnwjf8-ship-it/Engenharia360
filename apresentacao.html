@@ -397,6 +397,15 @@ blockquote {
     break-after:auto;
   }
 }
+@font-face{font-family:"DM Sans";src:url("fontes/dm-sans.ttf") format("truetype");font-weight:100 1000;font-display:swap}
+@font-face{font-family:Manrope;src:url("fontes/manrope.ttf") format("truetype");font-weight:200 800;font-display:swap}
+
+.school-views{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(14px,3vw,46px);margin-top:12px}
+.school-views figure{margin:0;min-width:0}
+.school-views .photo-box{aspect-ratio:1.52;overflow:hidden;border-radius:6px;background:var(--line)}
+.school-views img{display:block;width:100%;height:auto}
+.school-views figcaption{font-size:clamp(14px,1.1vw,18px);color:var(--soft);padding-top:8px}
+@media(max-width:620px){.school-views{grid-template-columns:1fr}.school-views .photo-box{max-height:250px}}
 </style>
 </head>
 <body>
@@ -419,29 +428,19 @@ blockquote {
     <p class="credits">Aghata Wanessa Lacerda Leite · Andre Luiz Andrade de Oliveira · Jhessica Ellen de Souza Nakano<br>Mauro César Oliveira Venâncio · Richard Gil Ferreira Brito<br>Manaus, 2026</p>
   </section>
   <section class="page" data-title="Quando a rua alaga, quem entra em ação?">
-    <div class="kicker">Contexto · Manaus
-    </div>
+    <div class="kicker">Contexto e problema</div>
     <h2>Quando a rua alaga, quem entra em ação?</h2>
-    <div class="split">
-      <p class="lead">A água sai da rua. Para onde ela vai depois?</p>
-      <div class="stack">
-        <div>
-          <h3>Infraestrutura e ambiente</h3>
-          <p>A Civil dimensiona a galeria. A Ambiental e Sanitária investiga o que a água transporta até o igarapé.</p>
-        </div>
-        <div>
-          <h3>Equipamentos e processos</h3>
-          <p>Se houver bombeamento, entram a Mecânica e a Elétrica. Se houver contaminantes, a Química pode estudar o tratamento.</p>
-        </div>
-      </div>
+    <p>A equipe realizou a atividade com uma turma do ensino médio da Escola Estadual Nathália Uchôa, em Manaus (AM).</p>
+    <div class="school-views">
+      <figure><div class="photo-box"><img src="midia/escola.jpeg" alt="Estudantes com papel e caneta no pátio da escola."></div><figcaption>Estudantes no pátio da escola. Acervo da equipe (2026).</figcaption></figure>
+      <figure><div class="photo-box"><img src="midia/painel.png" alt="Estudantes no pátio da escola, com o painel do Engenharia360 inserido na fotografia."></div><figcaption>Atividade do Engenharia360 na escola. Ilustração a partir de fotografia da equipe (2026).</figcaption></figure>
     </div>
-    <p class="source">A equipe informa a realização da atividade com uma turma do Ensino Médio da Escola Estadual Nathália Uchôa.</p>
   </section>
   <section class="page dark" data-title="Objetivos da proposta">
     <div class="kicker">Objetivo geral
     </div>
     <h2>Objetivos da proposta</h2>
-    <p class="lead">Desenvolver uma experiência digital de exploração de carreiras e demonstrar como interpretar as respostas.</p>
+    <p class="lead">Desenvolver e aplicar uma atividade digital de orientação profissional que aproxime estudantes do ensino médio das decisões tomadas nas diferentes áreas da engenharia.</p>
     <div class="cards">
       <div>
         <h3>Contextualizar</h3>
@@ -453,7 +452,7 @@ blockquote {
       </div>
       <div>
         <h3>Comparar</h3>
-        <p>Respostas iniciais e finais segundo critérios explícitos.</p>
+        <p>Três pares de respostas elaborados pela equipe, avaliados com a mesma rubrica.</p>
       </div>
     </div>
   </section>
@@ -476,10 +475,10 @@ blockquote {
       </div>
     </div>
   </section>
-  <section class="page" data-title="Uma atividade de 15 minutos">
+  <section class="page" data-title="Roteiro de aplicação em 15 minutos previstos">
     <div class="kicker">Metodologia
     </div>
-    <h2>Uma atividade de 15 minutos</h2>
+    <h2>Roteiro de aplicação em 15 minutos previstos</h2>
     <div class="stepgrid">
       <div>
         <div class="big">3 <small>min</small>
@@ -526,12 +525,12 @@ blockquote {
         </div>
       </div>
     </div>
-    <p class="source">O percentual descreve as escolhas daquela sessão e serve como ponto de partida para explorar carreiras.</p>
+    <p class="source">O site usa HTML, CSS e JavaScript. A atividade guiada permite exportar as respostas e os percentuais da sessão em JSON.</p>
   </section>
-  <section class="page" data-title="Resultados do teste da plataforma">
+  <section class="page" data-title="Civil e Elétrica empataram">
     <div class="kicker">Resultados · sessão técnica
     </div>
-    <h2>Resultados do teste da plataforma</h2>
+    <h2>Civil e Elétrica empataram</h2>
     <div class="split">
       <div class="answers" id="results" aria-label="Contagem e percentual por área">
       </div>

@@ -1,5 +1,7 @@
-Atualização do domínio www.engenharia360pi.com.br
+ENGENHARIA360 | Entrega final
 
-Extraia o ZIP e envie index.html, app.js, trabalho.pdf e trabalho.docx para a pasta do repositório que já contém esses quatro arquivos. Mantenha os nomes e publique a alteração. Os demais arquivos do site continuam em suas pastas atuais.
+Extraia a pasta inteira e abra index.html para usar o site, o teste de afinidades e a atividade guiada. Para exibir os slides no navegador, abra apresentacao.html.
 
-Em uma janela de celular, abra Menu > Materiais para acessar a nova versão. No teste, marque A nas nove situações para conferir o empate entre Civil e Elétrica.
+O trabalho escrito está em trabalho.pdf e trabalho.docx. A apresentação está em slides.pptx e slides.pdf. O PowerPoint inclui as notas de fala. Esses arquivos também podem ser baixados na seção Materiais do site.
+
+As respostas da atividade ficam no dispositivo e podem ser exportadas em JSON ao final da sessão. Os links para instituições externas exigem internet.
