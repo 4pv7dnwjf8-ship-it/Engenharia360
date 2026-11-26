@@ -3,86 +3,636 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Engenharia360 — Apresentação do projeto</title>
-<style>body{margin:0;min-height:100vh;display:grid;place-items:center;background:#071b2b;font-family:system-ui,sans-serif}engenharia360-apresentacao{display:block;padding:24px}</style>
+<title>Apresentação | Engenharia360</title>
+<style>
+/* Paleta do Engenharia360. Os slides estão nas dez seções abaixo. */ :root {
+  --ink:#071b2b;
+  --mint:#3ee3b6;
+  --deep:#076b59;
+  --paper:#f7faf9;
+  --line:#cbdcd7;
+  --soft:#43616b;
+  color-scheme:light;
+}
+* {
+  box-sizing:border-box;
+}
+body {
+  margin:0;
+  background:var(--ink);
+  font:clamp(16px,1.65vw,24px)/1.4 "DM Sans","Segoe UI",sans-serif;
+  color:var(--ink);
+}
+button,select,a {
+  font:inherit;
+}
+button,select {
+  cursor:pointer;
+}
+button:focus-visible,a:focus-visible,select:focus-visible {
+  outline:3px solid #fcad49;
+  outline-offset:4px;
+}
+body {
+  min-height:100vh;
+  min-height:100dvh;
+  display:flex;
+  flex-direction:column;
+}
+.top,.controls {
+  background:var(--ink);
+  color:white;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  padding:12px max(4vw,16px);
+  font-size:15px;
+}
+.brand {
+  font-weight:800;
+  font-size:20px;
+  letter-spacing:-.7px;
+}
+.brand span,.dark em {
+  color:var(--mint);
+}
+.top a {
+  color:white;
+  text-decoration:none;
+}
+.top select {
+  background:#102f3d;
+  color:white;
+  border:1px solid #416171;
+  padding:7px;
+  border-radius:6px;
+  max-width:45vw;
+}
+.controls {
+  margin-top:auto;
+  border-top:1px solid #25404d;
+}
+.controls button {
+  border:1px solid #607781;
+  color:white;
+  border-radius:8px;
+  background:transparent;
+  padding:8px 16px;
+}
+.controls .forward {
+  background:var(--mint);
+  color:var(--ink);
+  border-color:var(--mint);
+  font-weight:700;
+}
+.controls button:disabled {
+  opacity:.35;
+}
+.buttons {
+  display:flex;
+  gap:10px;
+}
+.track {
+  height:3px;
+  background:#153d42;
+}
+.track i {
+  display:block;
+  height:100%;
+  background:var(--mint);
+}
+main {
+  display:flex;
+  flex:1;
+}
+.page {
+  background:var(--paper);
+  width:100%;
+  padding:clamp(28px,5vw,78px) max(6vw,22px);
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  gap:clamp(14px,2.2vh,25px);
+}
+[hidden] {
+  display:none!important;
+}
+.page.dark {
+  background:radial-gradient(ellipse at 100% 15%,#10484b,transparent 53%),var(--ink);
+  color:white;
+}
+.kicker {
+  color:var(--deep);
+  font-size:.66em;
+  font-weight:800;
+  letter-spacing:.15em;
+  text-transform:uppercase;
+}
+.dark .kicker {
+  color:var(--mint);
+}
+h1,h2,h3,p,ol,dl,figure {
+  margin:0;
+}
+h1,h2,h3 {
+  font-family:Manrope,"Segoe UI",sans-serif;
+}
+h1 {
+  font-size:clamp(49px,7.5vw,112px);
+  letter-spacing:-.08em;
+  line-height:.96;
+}
+h2 {
+  font-size:clamp(32px,4.3vw,68px);
+  line-height:1.03;
+  letter-spacing:-.055em;
+  max-width:22ch;
+}
+h3 {
+  line-height:1.15;
+  font-size:1.13em;
+  letter-spacing:-.025em;
+}
+em {
+  font-style:normal;
+  color:var(--deep);
+}
+.lead {
+  font-size:clamp(22px,2.1vw,36px);
+  line-height:1.28;
+  max-width:36ch;
+}
+.lightcopy {
+  color:var(--soft);
+}
+.dark .lightcopy {
+  color:#bdd6d8;
+}
+.split {
+  display:grid;
+  grid-template-columns:1.1fr 1fr;
+  gap:5vw;
+  align-items:center;
+}
+.stack {
+  display:grid;
+  gap:16px;
+}
+.stack>div {
+  border-top:1px solid var(--line);
+  padding-top:12px;
+}
+.dark .stack>div {
+  border-color:#33535a;
+}
+.stack p,.cards p {
+  margin-top:5px;
+}
+.credits,.source {
+  font-size:.7em;
+  line-height:1.5;
+}
+.source {
+  color:var(--soft);
+  margin-top:8px;
+}
+.dark .source {
+  color:#b6d1d1;
+}
+.blueprint {
+  margin:0;
+  aspect-ratio:1.45;
+  display:grid;
+  place-items:center;
+  border:1px solid #28515d;
+  border-radius:18px;
+  background:linear-gradient(#21505b55 1px,transparent 1px),linear-gradient(90deg,#21505b55 1px,transparent 1px),#0c2c38;
+  background-size:26px 26px;
+}
+.blueprint svg {
+  width:94%;
+  height:94%;
+  color:var(--mint);
+}
+.cards {
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:26px;
+}
+.cards>div {
+  padding:18px 0;
+  border-top:3px solid #0b8972;
+}
+.dark .cards>div {
+  border-color:var(--mint);
+}
+.stepgrid {
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:22px;
+}
+.stepgrid>div {
+  border-top:1px solid var(--line);
+  padding-top:15px;
+}
+.big {
+  font-size:clamp(38px,5.2vw,80px);
+  font-weight:800;
+  letter-spacing:-.07em;
+  color:var(--deep);
+}
+.big small {
+  font-size:.32em;
+  letter-spacing:-.02em;
+}
+.stepgrid h3 {
+  margin:3px 0 8px;
+}
+.tag {
+  display:inline-block;
+  color:var(--mint);
+  font-weight:700;
+  font-size:.75em;
+}
+.metric {
+  background:#0e3541;
+  border-radius:15px;
+  padding:25px;
+  color:white;
+}
+.metric strong {
+  font-size:clamp(44px,7vw,94px);
+  line-height:1;
+  letter-spacing:-.08em;
+  color:var(--mint);
+}
+.metric p {
+  margin-top:10px;
+}
+.answers {
+  display:grid;
+  grid-template-columns:1fr auto auto;
+  gap:0 15px;
+  align-items:center;
+}
+.answers>* {
+  padding:6px 0;
+}
+.answers .label {
+  font-size:.7em;
+  font-weight:700;
+  color:var(--soft);
+}
+.rowlabel {
+  font-weight:600;
+}
+.fill {
+  background:#deeae7;
+  border-radius:5px;
+  height:7px;
+  max-width:100%;
+  margin-top:3px;
+}
+.fill i {
+  background:#0b826b;
+  height:100%;
+  display:block;
+  width:var(--w);
+  border-radius:5px;
+}
+.right {
+  text-align:right;
+  font-variant-numeric:tabular-nums;
+}
+.level {
+  font-size:2em;
+  letter-spacing:-.07em;
+  font-weight:750;
+  color:var(--mint);
+}
+.refs {
+  display:grid;
+  gap:11px;
+  font-size:.89em;
+  max-width:1000px;
+}
+.refs p {
+  border-top:1px solid var(--line);
+  padding-top:11px;
+}
+blockquote {
+  margin:0;
+  padding:16px 22px;
+  border-left:4px solid var(--mint);
+  background:#102e3a;
+  color:white;
+  font-size:1.12em;
+}
+.course {
+  font-weight:700;
+  color:var(--deep);
+}
+@media(max-width:720px) {
+  .page {
+    padding:28px 20px;
+    justify-content:start;
+  }
+  .split,.cards {
+    grid-template-columns:1fr;
+    gap:20px;
+  }
+  .stepgrid {
+    grid-template-columns:1fr 1fr;
+    gap:13px;
+  }
+  .blueprint {
+    max-height:180px;
+    aspect-ratio:auto;
+  }
+  .source,.credits,.kicker {
+    font-size:13px;
+  }
+  .cards>div {
+    padding:9px 0;
+  }
+  .top,.controls {
+    flex-wrap:wrap;
+  }
+  .top select {
+    order:3;
+    max-width:100%;
+    width:100%;
+  }
+  .controls .keys {
+    display:none;
+  }
+  .top .brand {
+    font-size:18px;
+  }
+  .controls button {
+    padding:7px 10px;
+  }
+  .big {
+    font-size:40px;
+  }
+  .stepgrid p {
+    font-size:16px;
+  }
+}
+@media print {
+  body,main {
+    display:block;
+  }
+  .top,.controls,.track {
+    display:none;
+  }
+  .page,.page[hidden] {
+    display:flex!important;
+    min-height:95vh;
+    break-after:page;
+    print-color-adjust:exact;
+  }
+  .page:last-child {
+    break-after:auto;
+  }
+}
+</style>
 </head>
 <body>
-<!-- Cole este bloco no HTML da página, antes de </body>. Inclua uma única vez.
-Contém somente a apresentação: 7 telas, cinco engenharias e navegação.
-Não requer bibliotecas externas. O editor do site precisa permitir JavaScript. -->
-<engenharia360-apresentacao></engenharia360-apresentacao>
+<header class="top"><a class="brand" href="index.html#apresentacao">Engenharia<span>360</span></a><select aria-label="Ir para uma tela" id="menu"></select><a href="index.html#apresentacao">Voltar ao site</a></header>
+<div class="track" aria-hidden="true"><i id="progress"></i></div>
+<main>
+  <section class="page dark" data-title="Engenharia360">
+    <div class="kicker">Profissão e Carreira · ULBRA Manaus
+    </div>
+    <div class="split">
+      <div class="stack">
+        <h1>Engenharia<em>360</em></h1>
+        <p class="lead">Exploração de carreiras no Ensino Médio</p>
+        <p class="lightcopy">Cinco engenharias a partir de uma pergunta sobre a cidade.</p>
+      </div>
+      <figure class="blueprint" aria-label="Desenho técnico de uma ponte e do curso da água">
+        <svg viewBox="0 0 440 245" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 151H421M20 159H421M88 155v37m10-37v37m232-37v37m10-37v37M48 150l45-67 63 67 63-67 63 67 53-67 62 67M93 83h242M93 83v67m63 0V85m63-2v67m63 0V85m53-2v67"/><path d="M27 201q25-12 50 0t50 0t50 0t50 0t50 0t50 0t50 0t50 0M27 214q25-12 50 0t50 0t50 0t50 0t50 0t50 0t50 0t50 0" stroke="#6c9fab"/><path d="M92 60h243m-243-9v18m243-18v18" stroke-dasharray="4 3"/>
+        </svg></figure>
+    </div>
+    <p class="credits">Aghata Wanessa Lacerda Leite · Andre Luiz Andrade de Oliveira · Jhessica Ellen de Souza Nakano<br>Mauro César Oliveira Venâncio · Richard Gil Ferreira Brito<br>Manaus, 2026</p>
+  </section>
+  <section class="page" data-title="Quando a rua alaga, quem entra em ação?">
+    <div class="kicker">Contexto · Manaus
+    </div>
+    <h2>Quando a rua alaga, quem entra em ação?</h2>
+    <div class="split">
+      <p class="lead">A água sai da rua. Para onde ela vai depois?</p>
+      <div class="stack">
+        <div>
+          <h3>Infraestrutura e ambiente</h3>
+          <p>A Civil dimensiona a galeria. A Ambiental e Sanitária investiga o que a água transporta até o igarapé.</p>
+        </div>
+        <div>
+          <h3>Equipamentos e processos</h3>
+          <p>Se houver bombeamento, entram a Mecânica e a Elétrica. Se houver contaminantes, a Química pode estudar o tratamento.</p>
+        </div>
+      </div>
+    </div>
+    <p class="source">A equipe informa a realização da atividade com uma turma do Ensino Médio da Escola Estadual Nathália Uchôa.</p>
+  </section>
+  <section class="page dark" data-title="Objetivos da proposta">
+    <div class="kicker">Objetivo geral
+    </div>
+    <h2>Objetivos da proposta</h2>
+    <p class="lead">Desenvolver uma experiência digital de exploração de carreiras e demonstrar como interpretar as respostas.</p>
+    <div class="cards">
+      <div>
+        <h3>Contextualizar</h3>
+        <p>Cinco áreas a partir de decisões sobre uma rua alagada.</p>
+      </div>
+      <div>
+        <h3>Relacionar</h3>
+        <p>Interesses pessoais e tarefas do cotidiano profissional.</p>
+      </div>
+      <div>
+        <h3>Comparar</h3>
+        <p>Respostas iniciais e finais segundo critérios explícitos.</p>
+      </div>
+    </div>
+  </section>
+  <section class="page" data-title="O que orienta o percurso">
+    <div class="kicker">Referencial teórico
+    </div>
+    <h2>O que orienta o percurso</h2>
+    <div class="stack">
+      <div>
+        <h3>Projeto de vida</h3>
+        <p>Comparar possibilidades amplia o repertório para escolher uma formação. <small>Brasil (2018)</small></p>
+      </div>
+      <div>
+        <h3>Conhecimento prévio</h3>
+        <p>O alagamento permite explicar um conceito novo a partir de uma situação conhecida. <small>Ausubel (1968)</small></p>
+      </div>
+      <div>
+        <h3>Avaliação formativa</h3>
+        <p>A resposta escrita ajuda o mediador a formular a próxima pergunta. <small>Black e Wiliam (1998) e Hattie e Timperley (2007)</small></p>
+      </div>
+    </div>
+  </section>
+  <section class="page" data-title="Uma atividade de 15 minutos">
+    <div class="kicker">Metodologia
+    </div>
+    <h2>Uma atividade de 15 minutos</h2>
+    <div class="stepgrid">
+      <div>
+        <div class="big">3 <small>min</small>
+        </div>
+        <h3>Diagnóstico</h3>
+        <p>Três perguntas sobre compreensão, exemplo e interesse.</p>
+      </div>
+      <div>
+        <div class="big">5 <small>min</small>
+        </div>
+        <h3>Exploração</h3>
+        <p>Nove escolhas sobre situações de cinco engenharias.</p>
+      </div>
+      <div>
+        <div class="big">3 <small>min</small>
+        </div>
+        <h3>Mediação</h3>
+        <p>O grupo discute o caminho da água e o papel das áreas.</p>
+      </div>
+      <div>
+        <div class="big">4 <small>min</small>
+        </div>
+        <h3>Avaliação final</h3>
+        <p>Retomada das perguntas e quatro itens opcionais sobre o uso.</p>
+      </div>
+    </div>
+  </section>
+  <section class="page dark" data-title="O teste de afinidades">
+    <div class="kicker">Experiência digital
+    </div>
+    <h2>O teste de afinidades</h2>
+    <div class="split">
+      <div class="metric"><strong>9</strong>
+        <p>situações com cinco alternativas cada</p>
+      </div>
+      <div class="stack">
+        <div>
+          <h3>Escolher uma tarefa</h3>
+          <p>O estudante marca o que preferiria fazer em cada situação.</p>
+        </div>
+        <div>
+          <h3>Ler o mapa de afinidades</h3>
+          <p>O site conta as escolhas por área e exibe a participação de cada uma no total.</p>
+        </div>
+      </div>
+    </div>
+    <p class="source">O percentual descreve as escolhas daquela sessão e serve como ponto de partida para explorar carreiras.</p>
+  </section>
+  <section class="page" data-title="Resultados do teste da plataforma">
+    <div class="kicker">Resultados · sessão técnica
+    </div>
+    <h2>Resultados do teste da plataforma</h2>
+    <div class="split">
+      <div class="answers" id="results" aria-label="Contagem e percentual por área">
+      </div>
+      <div class="stack">
+        <p class="lead">Civil e Elétrica empataram com três escolhas cada.</p>
+        <p>O painel atribui um ponto de arredondamento à Civil para que a soma exibida seja 100%.</p>
+      </div>
+    </div>
+    <p class="source">Fonte: sessão de verificação no Engenharia360 (2026). A alternativa A foi marcada nas nove situações. A unidade de análise é uma sessão.</p>
+  </section>
+  <section class="page dark" data-title="Como a rubrica classifica as respostas">
+    <div class="kicker">Análise · níveis de 0 a 2
+    </div>
+    <h2>Como a rubrica classifica as respostas</h2>
+    <div class="cards">
+      <div>
+        <h3>Compreensão</h3>
+        <div class="level">1 → 2
+        </div>
+        <p>Da distinção genérica à explicação da galeria e do igarapé.</p>
+      </div>
+      <div>
+        <h3>Exemplificação</h3>
+        <div class="level">0 → 2
+        </div>
+        <p>A seleção de uma bomba identifica uma tarefa concreta.</p>
+      </div>
+      <div>
+        <h3>Reflexão</h3>
+        <div class="level">1 → 1
+        </div>
+        <p>O interesse por robôs ainda pede justificativa e outra opção.</p>
+      </div>
+    </div>
+    <p class="source">Fonte: três pares de respostas elaborados pela equipe para demonstrar a rubrica (2026). Valores na ordem inicial e final.</p>
+  </section>
+  <section class="page" data-title="O que a devolutiva pode aprofundar">
+    <div class="kicker">Discussão e conclusão
+    </div>
+    <h2>O que a devolutiva pode aprofundar</h2>
+    <div class="split">
+      <blockquote>“No robô, você gostaria de projetar o movimento ou controlar os motores? Que outra engenharia ajudaria nessa tarefa?”</blockquote>
+      <div class="stack">
+        <div>
+          <h3>Uma pergunta mais específica</h3>
+          <p>A preferência por robótica abre uma conversa sobre tarefas da Mecânica e da Elétrica.</p>
+        </div>
+        <div>
+          <h3>Alcance dos resultados</h3>
+          <p>O percurso técnico verifica o funcionamento do site. A aprendizagem da turma depende de registros individuais comparáveis.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="page" data-title="Referências essenciais">
+    <div class="kicker">Bibliografia
+    </div>
+    <h2>Referências essenciais</h2>
+    <div class="refs">
+      <p>AUSUBEL, D. P. <i>Educational psychology: a cognitive view.</i> New York: Holt, Rinehart and Winston, 1968.</p>
+      <p>BLACK, P.; WILIAM, D. Assessment and classroom learning. <i>Assessment in Education</i>, v. 5, n. 1, p. 7–74, 1998.</p>
+      <p>BRASIL. Ministério da Educação. <i>Base Nacional Comum Curricular: Ensino Médio.</i> Brasília: MEC, 2018.</p>
+      <p>HATTIE, J.; TIMPERLEY, H. The power of feedback. <i>Review of Educational Research</i>, v. 77, n. 1, p. 81–112, 2007.</p>
+    </div>
+    <p class="source">A bibliografia completa consta no trabalho escrito.</p>
+  </section>
+</main>
+<footer class="controls"><span id="status" aria-live="polite"></span><span class="keys">Use as setas do teclado para navegar</span><div class="buttons"><button id="prev" type="button">Anterior</button><button id="next" class="forward" type="button">Próxima</button></div></footer>
 <script>
-(()=>{
-if(customElements.get('engenharia360-apresentacao'))return;
-customElements.define('engenharia360-apresentacao',class extends HTMLElement{
-connectedCallback(){
-if(this.shadowRoot)return;
-const root=this.attachShadow({mode:'open'});
-root.innerHTML="<style>:host { --ink:#071b2b; --mint:#3ee3b6; --orange:#ff9f43; --blue:#4f7cff; font:16px system-ui,sans-serif; }\n*{box-sizing:border-box} button{font:inherit;cursor:pointer} a{color:inherit;text-decoration:none} svg{display:block} :focus-visible{outline:3px solid #3ee3b6;outline-offset:4px}\n.brand { display: inline-flex; align-items: center; gap: 10px; font-family: Manrope, sans-serif; font-weight: 800; font-size: 20px; letter-spacing: -.7px; }\n.brand > span:last-child > span { color: var(--mint); }\n.brand-mark { width: 34px; height: 34px; border-radius: 10px; background: rgba(62, 227, 182, .12); display: grid; place-items: center; color: var(--mint); }\n.brand-mark svg { width: 25px; fill: none; stroke: currentColor; stroke-width: 1.7; }\n.eyebrow { margin: 0 0 18px; color: var(--mint-bright); text-transform: uppercase; letter-spacing: 2.1px; font-size: 11px; font-weight: 800; display: flex; align-items: center; gap: 10px; }\n.eyebrow span { width: 28px; height: 1px; background: currentColor; }\n.avatar { flex: 0 0 40px; height: 40px; border-radius: 12px; display: grid; place-items: center; font: 800 10px Manrope, sans-serif; }\n.avatar-mec { background: #fff0df; color: #c76818; }\n.avatar-civil { background: #dff7f0; color: #15765f; }\n.avatar-ele { background: #e9efff; color: #3c64d4; }\n.presentation-dialog { width: 100%; max-width: none; height: 100%; max-height: none; margin: 0; padding: 0; border: 0; color: white; background: var(--ink); }\n.presentation-dialog::backdrop { background: rgba(2,10,17,.85); backdrop-filter: blur(8px); }\n.presentation-dialog[open] { animation: dialogIn .28s ease both; }\n.presentation-shell { min-height: 100%; display: grid; grid-template-rows: 74px 1fr 76px; background: radial-gradient(circle at 82% 15%, rgba(21,92,92,.42), transparent 30%), radial-gradient(circle at 9% 90%, rgba(52,84,152,.16), transparent 28%), var(--ink); }\n.presentation-header { display: grid; grid-template-columns: 1fr minmax(220px,360px) 1fr; align-items: center; gap: 25px; padding: 0 32px; border-bottom: 1px solid rgba(255,255,255,.1); }\n.presentation-brand { justify-self: start; }\n.presentation-close { justify-self: end; color: white; background: rgba(255,255,255,.05); border-color: rgba(255,255,255,.15); }\n.slide-status { display: flex; align-items: center; gap: 13px; color: rgba(255,255,255,.52); font-size: 10px; }\n.slide-status > div { flex: 1; height: 4px; overflow: hidden; background: rgba(255,255,255,.1); border-radius: 99px; }\n.slide-status i { display: block; width: 14.28%; height: 100%; background: var(--mint); border-radius: inherit; transition: width .3s ease; }\n.presentation-stage { width: min(calc(100% - 80px), 1180px); margin: auto; padding: 46px 0; display: grid; align-items: center; }\n.slide { display: grid; gap: 48px; align-items: center; animation: slideIn .32s ease both; }\n.slide-cover { grid-template-columns: 1.1fr .9fr; }\n.slide-copy .eyebrow { margin-bottom: 20px; }\n.slide-copy h1 { max-width: 820px; margin: 0; font: 800 clamp(48px,6.8vw,88px)/.98 Manrope, sans-serif; letter-spacing: -5px; }\n.slide-copy h1 em { color: var(--mint); font-style: normal; }\n.slide-copy h2 { max-width: 850px; margin: 0; font: 800 clamp(40px,5vw,67px)/1.05 Manrope, sans-serif; letter-spacing: -3.5px; }\n.slide-copy > p { max-width: 720px; margin: 22px 0 0; color: rgba(255,255,255,.62); font-size: 17px; line-height: 1.65; }\n.cover-tag { display: inline-flex; margin-top: 30px; padding: 9px 13px; border: 1px solid rgba(62,227,182,.32); border-radius: 99px; color: var(--mint); background: rgba(62,227,182,.07); font-size: 10px; text-transform: uppercase; letter-spacing: 1.3px; font-weight: 800; }\n.cover-graphic { height: min(47vw,460px); max-height: 460px; position: relative; display: grid; place-items: center; }\n.cover-orbit { position: absolute; width: 78%; aspect-ratio: 1; border: 1px solid rgba(255,255,255,.1); border-radius: 50%; }\n.cover-orbit:before, .cover-orbit:after { content: \"\"; position: absolute; inset: 15%; border: inherit; border-radius: inherit; transform: rotateX(62deg) rotate(28deg); }\n.cover-orbit:after { transform: rotateY(66deg) rotate(-22deg); }\n.cover-core { width: 160px; height: 160px; display: grid; place-items: center; border-radius: 50%; color: var(--mint); background: radial-gradient(circle at 35% 30%, #1a5d5c, #0a2635); border: 1px solid rgba(62,227,182,.42); box-shadow: 0 0 80px rgba(62,227,182,.2); }\n.cover-core svg { width: 78px; fill: none; stroke: currentColor; stroke-width: 1; }\n.slide-layout { grid-template-columns: .85fr 1.15fr; }\n.slide-question { padding-left: 28px; border-left: 3px solid var(--mint); color: rgba(255,255,255,.9); font: 700 clamp(23px,3vw,38px)/1.4 Manrope, sans-serif; }\n.slide-cards { display: grid; gap: 13px; }\n.slide-card { padding: 23px; border: 1px solid rgba(255,255,255,.12); border-radius: 18px; background: rgba(255,255,255,.055); }\n.slide-card span { color: var(--mint); text-transform: uppercase; font-size: 9px; letter-spacing: 1.3px; font-weight: 800; }\n.slide-card h3 { margin: 7px 0 7px; font: 800 19px Manrope, sans-serif; }\n.slide-card p { margin: 0; color: rgba(255,255,255,.53); line-height: 1.5; font-size: 12px; }\n.slide-objective-box { padding: 34px; border-radius: 23px; background: linear-gradient(135deg, rgba(62,227,182,.14), rgba(255,255,255,.055)); border: 1px solid rgba(62,227,182,.22); }\n.slide-objective-box span { color: var(--mint); text-transform: uppercase; letter-spacing: 1.5px; font-size: 10px; font-weight: 800; }\n.slide-objective-box p { margin: 14px 0 0; font: 600 clamp(20px,2.3vw,30px)/1.5 Manrope, sans-serif; }\n.slide-points { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }\n.slide-point { padding: 20px; border-radius: 16px; background: rgba(255,255,255,.055); border: 1px solid rgba(255,255,255,.1); }\n.slide-point b { display: block; margin-bottom: 7px; color: var(--mint); font: 800 11px Manrope, sans-serif; }\n.slide-point span { color: rgba(255,255,255,.58); font-size: 12px; line-height: 1.45; }\n.slide-flow { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; }\n.flow-item { min-height: 215px; display: flex; flex-direction: column; justify-content: flex-end; padding: 25px; border-radius: 22px; background: rgba(255,255,255,.055); border: 1px solid rgba(255,255,255,.12); }\n.flow-item > b { margin-bottom: auto; color: var(--mint); font: 800 13px Manrope, sans-serif; }\n.flow-item h3 { margin: 22px 0 7px; font: 800 22px Manrope, sans-serif; }\n.flow-item p { margin: 0; color: rgba(255,255,255,.5); line-height: 1.5; font-size: 11px; }\n.slide-timeline { display: grid; grid-template-columns: repeat(4,1fr); gap: 18px; position: relative; }\n.slide-timeline:before { content: \"\"; position: absolute; left: 7%; right: 7%; top: 22px; height: 1px; background: rgba(255,255,255,.16); }\n.timeline-step { position: relative; }\n.timeline-step > b { width: 44px; height: 44px; display: grid; place-items: center; border: 1px solid rgba(62,227,182,.5); border-radius: 50%; color: var(--mint); background: var(--ink); font: 800 12px Manrope, sans-serif; }\n.timeline-step h3 { margin: 25px 0 8px; font: 800 18px Manrope, sans-serif; }\n.timeline-step p { margin: 0; color: rgba(255,255,255,.5); line-height: 1.5; font-size: 11px; }\n.school-panel { display: grid; grid-template-columns: .9fr 1.1fr; gap: 16px; }\n.school-name { min-height: 280px; padding: 30px; display: flex; flex-direction: column; justify-content: space-between; border-radius: 24px; background: var(--mint); color: var(--ink); }\n.school-name span { text-transform: uppercase; letter-spacing: 1.5px; font-size: 9px; font-weight: 800; }\n.school-name h3 { margin: 0; font: 800 clamp(28px,3vw,40px)/1.1 Manrope, sans-serif; letter-spacing: -1.7px; }\n.school-name small { font-size: 11px; }\n.school-activity { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }\n.school-activity div { padding: 21px; border-radius: 18px; background: rgba(255,255,255,.055); border: 1px solid rgba(255,255,255,.1); }\n.school-activity b { display: block; color: var(--mint); font: 800 11px Manrope, sans-serif; }\n.school-activity p { margin: 8px 0 0; color: rgba(255,255,255,.54); line-height: 1.45; font-size: 11px; }\n.results-list { display: grid; grid-template-columns: repeat(3,1fr); gap: 15px; }\n.result-card { min-height: 230px; padding: 25px; display: flex; flex-direction: column; justify-content: space-between; border-radius: 21px; background: rgba(255,255,255,.055); border: 1px solid rgba(255,255,255,.11); }\n.result-card > span { width: 42px; height: 42px; display: grid; place-items: center; border-radius: 13px; background: rgba(62,227,182,.12); color: var(--mint); font-weight: 800; }\n.result-card h3 { margin: 24px 0 8px; font: 800 19px Manrope, sans-serif; }\n.result-card p { margin: 0; color: rgba(255,255,255,.5); font-size: 11px; line-height: 1.5; }\n.team-slide-list { display: grid; grid-template-columns: 1fr 1fr; gap: 11px; }\n.team-slide-list div { display: flex; align-items: center; gap: 13px; padding: 13px 15px; border-radius: 15px; background: rgba(255,255,255,.055); border: 1px solid rgba(255,255,255,.1); }\n.team-slide-list b { display: block; font-size: 12px; }\n.team-slide-list small { display: block; margin-top: 3px; color: rgba(255,255,255,.46); font-size: 9px; }\n.presentation-controls { display: flex; align-items: center; justify-content: space-between; padding: 0 32px; border-top: 1px solid rgba(255,255,255,.1); background: transparent; }\n.keyboard-tip { color: rgba(255,255,255,.38); font-size: 10px; }\n.presentation-controls > div { display: flex; gap: 8px; }\n.slide-nav { width: 46px; height: 46px; border: 1px solid rgba(255,255,255,.16); border-radius: 13px; background: rgba(255,255,255,.05); color: white; cursor: pointer; font-size: 19px; }\n.slide-nav-next { background: var(--mint); color: var(--ink); border-color: var(--mint); }\n.slide-nav:disabled { opacity: .25; cursor: not-allowed; }\n@keyframes slideIn { from { opacity: 0; transform: translateX(18px); } to { opacity: 1; transform: none; } }\n\n#open-presentation{background:var(--ink);color:white;padding:16px 24px;border:0;border-radius:13px;font-weight:700}\n.dialog-close{width:44px;height:44px;border:1px solid #ffffff55;border-radius:12px;font-size:28px}\n.presentation-dialog{font:16px system-ui,sans-serif}\n.slide-copy h1,.slide-copy h2{letter-spacing:-.035em;overflow-wrap:anywhere}\n.slide-card p,.slide-point span,.flow-item p,.timeline-step p,.school-activity p,.result-card p{font-size:1rem;color:#c6d5dc}\n.slide-card span,.slide-point b,.school-activity b,.cover-tag,.school-name span,.school-name small,.team-slide-list b,.team-slide-list small,.slide-status,.keyboard-tip{font-size:.875rem}\n.slide-card p{margin-top:12px}.slide{min-width:0}.slide>*{min-width:0}.slide-copy .eyebrow{color:var(--mint);font-size:.875rem}.slide-question{margin-top:24px}\n@media(max-width:850px){.presentation-header{grid-template-columns:1fr auto;padding:14px;gap:12px}.slide-status{grid-row:2;grid-column:1/-1}.presentation-shell{grid-template-rows:auto 1fr 76px}.presentation-stage{width:calc(100% - 32px);padding:30px 0}.slide,.slide-layout,.slide-cover{grid-template-columns:1fr;gap:28px}.slide-copy h1{font-size:clamp(36px,9vw,60px)}.slide-copy h2{font-size:clamp(30px,7vw,48px)}.slide-timeline,.results-list,.slide-flow,.school-panel{grid-template-columns:1fr}.slide-timeline:before{display:none}.cover-graphic{height:240px}.presentation-controls{padding:0 16px}}\n@media(max-width:480px){.slide-points,.school-activity,.team-slide-list{grid-template-columns:1fr}.cover-core{width:100px;height:100px}.cover-core svg{width:52px}.brand{font-size:16px}.slide-objective-box{padding:22px}.slide-copy>p{font-size:1rem}}\n@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important}}\n</style><button type=\"button\" id=\"open-presentation\">Abrir apresentação • Engenharia360</button><dialog class=\"presentation-dialog\" id=\"presentation-dialog\" aria-label=\"Apresentação do projeto Engenharia360\">\n    <div class=\"presentation-shell\">\n      <header class=\"presentation-header\">\n        <a class=\"brand presentation-brand\" href=\"#\" aria-label=\"Engenharia360\"><span class=\"brand-mark\" aria-hidden=\"true\"><svg viewBox=\"0 0 40 40\"><path d=\"M9 10.5 20 4l11 6.5v19L20 36 9 29.5z\"/><path d=\"m9 10.5 11 6.4 11-6.4M20 16.9V36\"/></svg></span><span>Engenharia<span>360</span></span></a>\n        <div class=\"slide-status\"><span id=\"slide-number\">01 / 07</span><div><i id=\"slide-progress\"></i></div></div>\n        <button class=\"dialog-close presentation-close\" id=\"close-presentation\" type=\"button\" aria-label=\"Fechar apresentação\">×</button>\n      </header>\n      <main class=\"presentation-stage\" id=\"presentation-stage\" aria-live=\"polite\"></main>\n      <footer class=\"presentation-controls\">\n        <span class=\"keyboard-tip\">Use ← → para navegar</span>\n        <div>\n          <button class=\"slide-nav\" id=\"previous-slide\" type=\"button\" aria-label=\"Tela anterior\">←</button>\n          <button class=\"slide-nav slide-nav-next\" id=\"next-slide\" type=\"button\" aria-label=\"Próxima tela\">→</button>\n        </div>\n      </footer>\n    </div>\n  </dialog>";
-const presentationSlides = [
-  '<section class="slide slide-cover"><div class="slide-copy"><p class="eyebrow"><span></span> Projeto Interdisciplinar • ULBRA Manaus</p><h1>Engenharia<em>360</em></h1><p>Uma plataforma interativa que testa afinidades com as Engenharias Civil, Mecânica, Elétrica, Química e Ambiental e Sanitária.</p><span class="cover-tag">Orientação universitária acessível</span></div><div class="cover-graphic" aria-hidden="true"><span class="cover-orbit"></span><span class="cover-core"><svg viewBox="0 0 40 40"><path d="M9 10.5 20 4l11 6.5v19L20 36 9 29.5z"/><path d="m9 10.5 11 6.4 11-6.4M20 16.9V36"/></svg></span></div></section>',
-  '<section class="slide slide-layout"><div class="slide-copy"><p class="eyebrow"><span></span> Ponto de partida</p><h2>Qual problema queremos resolver?</h2><p>As engenharias fazem parte do cotidiano, mas suas diferenças nem sempre são apresentadas de forma simples a quem ainda está escolhendo um curso.</p><div class="slide-question">Como transformar informação em uma experiência que ajude o estudante a se reconhecer?</div></div><div class="slide-cards"><article class="slide-card"><span>01 • Informação</span><h3>Conteúdo muito técnico</h3><p>Termos complexos podem afastar quem está tendo o primeiro contato com a área.</p></article><article class="slide-card"><span>02 • Escolha</span><h3>Dificuldade de comparação</h3><p>O estudante precisa enxergar, de forma prática, o que aproxima e diferencia cada curso.</p></article><article class="slide-card"><span>03 • Experiência</span><h3>Pouca identificação</h3><p>Conhecer profissões fica mais claro quando o conteúdo se conecta a interesses pessoais.</p></article></div></section>',
-  '<section class="slide slide-layout"><div class="slide-copy"><p class="eyebrow"><span></span> Direção do projeto</p><h2>Objetivos</h2><p>O Engenharia360 informa, envolve e orienta sem tentar decidir pelo estudante.</p><div class="slide-objective-box"><span>Objetivo geral</span><p>Desenvolver e aplicar uma plataforma digital interativa que aproxime estudantes do Ensino Médio de cinco áreas da engenharia: Civil, Mecânica, Elétrica, Química e Ambiental e Sanitária.</p></div></div><div class="slide-points"><div class="slide-point"><b>01 • Apresentar</b><span>Explicar os cursos com linguagem simples e visual.</span></div><div class="slide-point"><b>02 • Identificar</b><span>Relacionar interesses a situações próprias das engenharias.</span></div><div class="slide-point"><b>03 • Recomendar</b><span>Oferecer caminhos para continuar explorando.</span></div><div class="slide-point"><b>04 • Avaliar</b><span>Observar compreensão e interesse durante a aplicação.</span></div></div></section>',
-  '<section class="slide"><div class="slide-copy"><p class="eyebrow"><span></span> Experiência do estudante</p><h2>Como a plataforma funciona</h2><p>Uma jornada curta, sem cadastro e com resultado imediato.</p></div><div class="slide-flow"><article class="flow-item"><b>01</b><h3>Responder</h3><p>O estudante escolhe como agiria em nove situações relacionadas a problemas reais.</p></article><article class="flow-item"><b>02</b><h3>Descobrir</h3><p>As escolhas formam um mapa percentual de afinidades entre as cinco engenharias: Civil, Mecânica, Elétrica, Química e Ambiental e Sanitária.</p></article><article class="flow-item"><b>03</b><h3>Explorar</h3><p>O resultado explica a afinidade e recomenda experiências e próximos passos.</p></article></div></section>',
-  '<section class="slide"><div class="slide-copy"><p class="eyebrow"><span></span> Caminho de desenvolvimento</p><h2>Metodologia</h2><p>Conteúdo, experiência e tecnologia foram organizados em quatro etapas.</p></div><div class="slide-timeline"><article class="timeline-step"><b>1</b><h3>Pesquisa</h3><p>Levantamento das características dos cursos e das necessidades do público.</p></article><article class="timeline-step"><b>2</b><h3>Desenvolvimento</h3><p>Criação das perguntas, lógica de pontuação, conteúdo e interface.</p></article><article class="timeline-step"><b>3</b><h3>Validação</h3><p>Testes de clareza, funcionamento, navegação e adaptação a celulares.</p></article><article class="timeline-step"><b>4</b><h3>Aplicação</h3><p>Apresentação guiada, teste individual e conversa sobre os resultados.</p></article></div></section>',
-  '<section class="slide slide-layout"><div class="slide-copy"><p class="eyebrow"><span></span> Atividade com o público</p><h2>Aplicação e resultados esperados</h2><p>A experiência será conduzida de forma educativa, acolhendo dúvidas e evitando tratar o resultado como uma decisão definitiva.</p><div class="school-panel"><div class="school-name"><span>Local da atividade</span><h3>Escola Estadual Nathália Uchôa</h3><small>Manaus • Amazonas</small></div><div class="school-activity"><div><b>1 • Contextualizar</b><p>Apresentaremos aos alunos as Engenharias Civil, Mecânica, Elétrica, Química e Ambiental e Sanitária.</p></div><div><b>2 • Experimentar</b><p>Realizar o teste individualmente.</p></div><div><b>3 • Conversar</b><p>Comparar resultados e tirar dúvidas.</p></div><div><b>4 • Refletir</b><p>Reconhecer interesses e novos caminhos.</p></div></div></div></div><div class="results-list"><article class="result-card"><span>✓</span><div><h3>Compreensão</h3><p>Entender melhor o que cada engenharia transforma.</p></div></article><article class="result-card"><span>✓</span><div><h3>Identificação</h3><p>Perceber interesses e habilidades pessoais.</p></div></article><article class="result-card"><span>✓</span><div><h3>Autonomia</h3><p>Explorar a escolha acadêmica com mais consciência.</p></div></article></div></section>',
-  '<section class="slide slide-layout"><div class="slide-copy"><p class="eyebrow"><span></span> Encerramento</p><h2>Conhecer para escolher melhor.</h2><p>O Engenharia360 não entrega uma resposta definitiva. Ele abre uma conversa entre curiosidade, conhecimento e futuro.</p><div class="slide-question">Obrigado! Agora queremos ouvir as perguntas da turma.</div></div><div class="team-slide-list"><div><span class="avatar avatar-mec">AW</span><span><b>Aghata Wanessa Lacerda Leite</b><small>Engenharia Mecânica</small></span></div><div><span class="avatar avatar-mec">AA</span><span><b>Andre Luiz Andrade de Oliveira</b><small>Engenharia Mecânica</small></span></div><div><span class="avatar avatar-civil">JN</span><span><b>Jhessica Ellen de Souza Nakano</b><small>Engenharia Civil</small></span></div><div><span class="avatar avatar-mec">MV</span><span><b>Mauro César Oliveira Venâncio</b><small>Engenharia Mecânica</small></span></div><div><span class="avatar avatar-ele">RB</span><span><b>Richard Gil Ferreira Brito</b><small>Engenharia Elétrica</small></span></div></div></section>'
+// Altere os registros abaixo para atualizar o gráfico da sessão técnica.
+const results = [
+  {area:'Civil',choices:3,percent:34}, {area:'Elétrica',choices:3,percent:33},
+  {area:'Química',choices:2,percent:22}, {area:'Ambiental e Sanitária',choices:1,percent:11},
+  {area:'Mecânica',choices:0,percent:0}
 ];
-let currentSlide=0;
-function renderPresentationSlide() {
-  root.querySelector('#presentation-stage').innerHTML = presentationSlides[currentSlide];
-  root.querySelector('#slide-number').textContent = String(currentSlide + 1).padStart(2, '0') + ' / ' + String(presentationSlides.length).padStart(2, '0');
-  root.querySelector('#slide-progress').style.width = (((currentSlide + 1) / presentationSlides.length) * 100) + '%';
-  root.querySelector('#previous-slide').disabled = currentSlide === 0;
-  const next = root.querySelector('#next-slide');
-  const isLast = currentSlide === presentationSlides.length - 1;
-  next.textContent = isLast ? '✓' : '→';
-  next.setAttribute('aria-label', isLast ? 'Encerrar apresentação' : 'Próxima tela');
+const chart=document.querySelector('#results');
+function cell(text,style){const item=document.createElement('div');item.textContent=text;item.className=style;chart.append(item);return item;}
+cell('Área','label');cell('Escolhas','label right');cell('Tela','label right');
+const max=Math.max(1,...results.map(r=>r.choices));
+for(const row of results){const label=cell(row.area,'rowlabel');const track=document.createElement('div');track.className='fill';const bar=document.createElement('i');bar.style.setProperty('--w',(100*row.choices/max)+'%');track.append(bar);label.append(track);cell(row.choices,'right');cell(row.percent+'%','right');}
+const pages=Array.from(document.querySelectorAll('.page')),menu=document.querySelector('#menu');
+pages.forEach((page,i)=>menu.add(new Option((i+1)+'. '+page.dataset.title,i)));
+let index=-1;
+function show(n){
+  if(!Number.isInteger(n)||n<0||n>=pages.length)return;
+  pages.forEach((page,i)=>page.hidden=i!==n);index=n;menu.value=String(n);
+  document.querySelector('#status').textContent='Tela '+(n+1)+' de '+pages.length;
+  document.querySelector('#progress').style.width=((n+1)*100/pages.length)+'%';
+  document.querySelector('#prev').disabled=n===0;
+  document.querySelector('#next').textContent=n===pages.length-1?'Recomeçar':'Próxima';
+  window.scrollTo(0,0);
 }
-
-function openPresentation() {
-  currentSlide = 0;
-  renderPresentationSlide();
-  root.querySelector('#presentation-dialog').showModal();
-
-}
-
-function closePresentation() {
-  root.querySelector('#presentation-dialog').close();
-
-}
-
-function nextSlide() {
-  if (currentSlide === presentationSlides.length - 1) {
-    closePresentation();
-    return;
-  }
-  currentSlide += 1;
-  renderPresentationSlide();
-}
-
-function previousSlide() {
-  if (currentSlide === 0) return;
-  currentSlide -= 1;
-  renderPresentationSlide();
-}
-
-
-root.querySelector('#open-presentation').addEventListener('click',openPresentation);
-root.querySelector('#close-presentation').addEventListener('click',closePresentation);
-root.querySelector('#next-slide').addEventListener('click',nextSlide);
-root.querySelector('#previous-slide').addEventListener('click',previousSlide);
-root.querySelector('.presentation-brand').addEventListener('click',e=>e.preventDefault());
-root.addEventListener('keydown',event=>{
- if(!root.querySelector('#presentation-dialog').open)return;
- if(['ArrowRight','PageDown'].includes(event.key)){event.preventDefault();nextSlide()}
- if(['ArrowLeft','PageUp'].includes(event.key)){event.preventDefault();previousSlide()}
+function go(n){show(n);if(index===n)history.replaceState(null,'','#tela-'+(n+1));}
+function next(){go((index+1)%pages.length);}
+document.querySelector('#prev').onclick=()=>go(index-1);document.querySelector('#next').onclick=next;
+menu.onchange=()=>go(Number(menu.value));
+document.addEventListener('keydown',e=>{
+  if(e.altKey||e.metaKey||e.ctrlKey||e.target.tagName==='SELECT')return;
+  if(e.key==='ArrowRight'||e.key==='PageDown'){e.preventDefault();next();}
+  if(e.key==='ArrowLeft'||e.key==='PageUp'){e.preventDefault();go(index-1);}
 });
-
-}
-});
-})();
-</script>
-
-</body>
-</html>
+function readHash(){const n=Number(location.hash.replace('#tela-',''));show(n>=1&&n<=pages.length&&Number.isInteger(n)?n-1:0);}
+readHash();window.addEventListener('hashchange',readHash);
+</script></body></html>
