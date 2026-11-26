@@ -1,18 +1,5 @@
-ENGENHARIA360 | Edição da apresentação e do site
+Atualização do domínio www.engenharia360pi.com.br
 
-Para abrir a cópia no computador
-Extraia a pasta inteira do ZIP. Abra index.html no navegador e escolha Apresentação > Abrir apresentação. Para ir direto aos slides, abra apresentacao.html.
+Extraia o ZIP e envie index.html, app.js, trabalho.pdf e trabalho.docx para a pasta do repositório que já contém esses quatro arquivos. Mantenha os nomes e publique a alteração. Os demais arquivos do site continuam em suas pastas atuais.
 
-Para editar as telas
-Abra apresentacao.html em um editor de texto, como o Visual Studio Code. Cada tela começa com uma tag <section> com o atributo data-title. Altere o título do menu em data-title e o título visível no elemento h1 ou h2 dessa seção. As seções aparecem na ordem do arquivo. A contagem de telas e o menu são atualizados automaticamente.
-
-Para alterar os gráficos e as cores
-O gráfico da sessão técnica usa a lista const results no final de apresentacao.html. Cada linha contém área, quantidade de escolhas e percentual exibido. Os níveis da rubrica ficam na seção “Como a rubrica classifica as respostas”. As cores da apresentação estão em :root no início do mesmo arquivo. Se os dados do projeto mudarem, atualize também os quadros em index.html, os CSVs correspondentes e as versões em PDF e PowerPoint em materiais/.
-
-Para atualizar só a apresentação em outro site
-Envie apresentacao.html para a mesma pasta da página inicial. Na página que receberá o botão, use:
-<a href="apresentacao.html">Abrir apresentação</a>
-Na apresentação, os dois links de retorno apontam para index.html#apresentacao. Ajuste esse endereço caso a página de origem seja diferente.
-
-Para publicar a cópia completa
-Os arquivos da pasta do ZIP já formam um site estático. Em uma hospedagem estática, envie index.html, apresentacao.html, os arquivos CSS, JS e CSV e a pasta materiais/ ao diretório publicado. Para gerar a pasta dist/ com Node.js, execute node build.mjs e envie seu conteúdo para a hospedagem.
+Em uma janela de celular, abra Menu > Materiais para acessar a nova versão. No teste, marque A nas nove situações para conferir o empate entre Civil e Elétrica.

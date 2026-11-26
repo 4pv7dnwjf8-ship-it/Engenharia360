@@ -527,10 +527,16 @@ function showResult() {
   progressWrap.hidden = true;
   document.querySelector('#result-emblem').className = `result-emblem ${primary}`;
   document.querySelector('#result-emblem').innerHTML = data.icon;
-  document.querySelector('#result-title').textContent = data.name;
   const tied = result.order.filter(key => result.counts[key] === result.counts[primary]);
+  const isTie = tied.length > 1;
+  document.querySelector('.result-kicker').textContent = isTie
+    ? 'Áreas empatadas em primeiro lugar'
+    : 'Sua maior afinidade é com';
+  document.querySelector('#result-title').textContent = isTie
+    ? tied.map(key => courseData[key].name.replace('Engenharia ', '')).join(' · ')
+    : data.name;
   document.querySelector('#result-tagline').textContent = tied.length > 1
-    ? 'Empate em número de escolhas: ' + tied.map(key => courseData[key].name).join(' e ') + '. O arredondamento pode gerar um ponto de diferença no gráfico.'
+    ? 'Cada área em primeiro lugar recebeu ' + result.counts[primary] + ' escolhas. Os percentuais são arredondados. As sugestões abaixo começam por ' + data.name + '.'
     : data.tagline;
   document.querySelector('#result-description').textContent = data.description;
   document.querySelector('#result-actions').innerHTML = data.actions[audience].map(item => `<li>${item}</li>`).join('');
@@ -541,7 +547,7 @@ function showResult() {
   document.querySelector('#result-skills').innerHTML = data.skills.map(item => `<span>${item}</span>`).join('');
   document.querySelector('#result-plan').innerHTML = data.plan.map(([period, title, copy]) => `<article><b>${period}</b><strong>${title}</strong><p>${copy}</p></article>`).join('');
   document.querySelector('#result-course-link').href = data.officialUrl;
-  document.querySelector('#score-bars').innerHTML = result.order.map(key => `<div class="score-row ${key}"><div class="score-row-top"><span>${courseData[key].name.replace('Engenharia ', '')}</span><b>${result.percentages[key]}%</b></div><div class="score-track"><i data-width="${result.percentages[key]}%"></i></div></div>`).join('');
+  document.querySelector('#score-bars').innerHTML = result.order.map(key => `<div class="score-row ${key}"><div class="score-row-top"><span>${courseData[key].name.replace('Engenharia ', '')}</span><b>${result.counts[key]} de ${questions.length} · ${result.percentages[key]}%</b></div><div class="score-track"><i data-width="${100 * result.counts[key] / questions.length}%"></i></div></div>`).join('');
   requestAnimationFrame(() => document.querySelectorAll('.score-track i').forEach(bar => { bar.style.width = bar.dataset.width; }));
   try { localStorage.setItem('engenharia360-last-result', JSON.stringify({primary, percentages: result.percentages, date: new Date().toISOString()})); } catch (_) {}
   resultView.scrollIntoView({block:'start'});
