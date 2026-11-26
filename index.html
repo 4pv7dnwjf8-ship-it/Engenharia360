@@ -1,5 +1,49 @@
 <!doctype html>
 <html lang="pt-BR">
+
+<button class="mobile-menu-toggle"
+        id="mobile-menu-toggle"
+        aria-label="Abrir menu"
+        aria-expanded="false"
+        aria-controls="mobile-nav"
+        type="button">
+  ☰
+</button>
+
+<nav id="mobile-nav" class="mobile-nav"
+     aria-label="Menu celular" hidden>
+  <a href="#inicio">Início</a>
+  <a href="#engenharias">Engenharias</a>
+  <a href="#carreiras">Carreiras</a>
+  <a href="#atividade">Atividade</a>
+  <a href="#verificacao">Resultados</a>
+  <a href="#apresentacao">Apresentação</a>
+</nav>
+
+<script>
+const menuBtn = document.getElementById('mobile-menu-toggle');
+const mobileNav = document.getElementById('mobile-nav');
+
+function toggleMenu(open) {
+  mobileNav.hidden = !open;
+  menuBtn.setAttribute('aria-expanded', String(open));
+  menuBtn.setAttribute('aria-label',
+    open ? 'Fechar menu' : 'Abrir menu');
+  menuBtn.textContent = open ? '✕' : '☰';
+}
+
+menuBtn.addEventListener('click', () => {
+  toggleMenu(mobileNav.hidden);
+});
+
+mobileNav.querySelectorAll('a').forEach(link => {
+  link.addEventListener('click', () => toggleMenu(false));
+});
+
+document.addEventListener('keydown', event => {
+  if (event.key === 'Escape') toggleMenu(false);
+});
+</script>
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
